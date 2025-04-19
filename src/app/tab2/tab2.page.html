@@ -69,35 +69,29 @@
 
           <ion-grid>
             <ion-row>
-              <ion-col size="12" size-sm="6" class="wishlist-item-col">
+              <ion-col size="12" size-sm="6" class="wishlist-item-col" *ngFor="let item of wishlistItems">
                 <div class="wishlist-item-card">
-                  <ion-button fill="clear" class="wishlist-heart-button">
-                    <ion-icon slot="icon-only" name="heart" color="danger"></ion-icon>
+                  <ion-button fill="clear" class="wishlist-heart-button" (click)="toggleLike(item)">
+                    <ion-icon slot="icon-only" 
+                      [name]="item.isLiked ? 'heart' : 'heart-outline'"
+                      [color]="item.isLiked ? 'danger' : 'medium'"> 
+
+                    </ion-icon>
                   </ion-button>
-                  <img src="assets/images/tocobo_protector.webp" alt="Protector Solar Tocobo"> 
+                  <img [src]="item.imageUrl" [alt]="item.name">
                   <div class="item-details">
-                    <p class="item-brand">TOCOBO</p>
-                    <p class="item-name">Cica Protector Solar En Barra Cotton Soft Sun Stick SPF50</p>
-                    <p class="item-price">$24.990</p>
-                  </div>
+                    <p class="item-brand">{{ item.brand }}</p>
+                    <p class="item-name">{{ item.name }}</p>
+                    <p class="item-price">{{ item.price }}</p>
+                    </div>
                 </div>
               </ion-col>
 
-              <ion-col size="12" size-sm="6" class="wishlist-item-col">
-                 <div class="wishlist-item-card">
-                   <ion-button fill="clear" class="wishlist-heart-button">
-                     <ion-icon slot="icon-only" name="heart" color="danger"></ion-icon>
-                   </ion-button>
-                   <img src="assets/images/rare_beauty.webp" alt="Bronceador Rare Beauty"> 
-                   <div class="item-details">
-                     <p class="item-brand">RARE BEAUTY</p>
-                     <p class="item-name">Bronceador en Barra Warm Wishes Effortless Bronzer Stick - Power Boost</p>
-                     <p class="item-price">$35.000</p>
-                   </div>
-                 </div>
-               </ion-col>
+              <ion-col size="12" *ngIf="wishlistItems.length === 0">
+                <p style="text-align: center; color: grey; margin-top: 20px;">Tu lista de deseos está vacía.</p>
+              </ion-col>
 
-              </ion-row>
+            </ion-row>
           </ion-grid>
         </div>
 
