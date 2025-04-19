@@ -15,8 +15,8 @@ ion-header {
     // Bordes redondeados SOLO en la parte inferior
     border-top-left-radius: 0;
     border-top-right-radius: 0;
-    border-bottom-left-radius: 10px; // O el radio que desees
-    border-bottom-right-radius: 10px;// O el radio que desees
+    border-bottom-left-radius: 10px; 
+    border-bottom-right-radius: 10px;
 
     // Asegura que el fondo se recorte correctamente en las esquinas redondeadas
     overflow: hidden;
@@ -41,11 +41,7 @@ ion-header {
     }
 
     .logo-4 { // Nueva clase para el "4"
-        // Aquí pones el color rosa que prefieras.
-        // Puedes usar nombres de color, códigos hexadecimales, rgb, etc.
-        // Ejemplo con un rosa similar al de la imagen que mostraste:
-        color: #FFB6C1; // <-- AJUSTA ESTE ROSA SI QUIERES OTRO TONO
-        // Otras opciones: hotpink, #FFC0CB (LightPink), #FF1493 (DeepPink)
+        color: #FFB6C1; 
       }
 
     .logo-beauty {
@@ -68,7 +64,7 @@ ion-header {
     --height: 40px; // Altura de la barra
     --placeholder-color: #888;
     --icon-color: #555; // Color del ícono de lupa
-    padding: 0; // Quitar padding interno si interfiere
+    padding: 0; 
   }
   
   // Contenedor para los items de navegación (links e iconos)
@@ -92,4 +88,192 @@ ion-header {
     --padding-start: 5px;
     --padding-end: 5px;
     font-size: 1.2em; // Tamaño del icono
+  }
+
+// Estilo base para el contenido de la página
+ion-content.profile-content {
+    --background: #FDF1EC; 
+    --padding-top: 20px;
+    --padding-start: 20px;
+    --padding-end: 20px;
+    --padding-bottom: 20px;
+  }
+  
+  // Estilos para la columna del menú lateral
+  .profile-menu-col {
+    // Añadir padding a la derecha para separar del contenido en pantallas grandes
+    padding-right: 20px;
+  
+    // Estilos para cada item del menú
+    .profile-menu-item {
+      text-transform: uppercase; // Texto en mayúsculas
+      font-weight: 500; // Un poco más grueso que normal
+      font-size: 0.9em;
+      color: #444; // Color gris oscuro
+      margin-bottom: 25px; // Espacio debajo de cada item
+      cursor: pointer; // Indica que es clickeable (si lo será)
+  
+      // Añadir una pequeña línea a la izquierda como en la imagen
+      border-left: 3px solid #a1818a; // Color del borde (igual al header)
+      padding-left: 10px; // Espacio entre la línea y el texto
+    }
+  }
+  
+  // Estilos para la columna de detalles del perfil
+  .profile-details-col {
+  
+    .profile-title {
+      font-size: 2.2em; // Tamaño grande para el título principal
+      font-weight: bold;
+      color: #333; // Color oscuro para el título
+      margin-bottom: 5px; // Menos espacio antes de la línea
+    }
+  
+    .profile-divider {
+      border: none; // Quita el borde por defecto
+      height: 1px; // Grosor de la línea
+      background-color: #555; // Color de la línea (gris oscuro)
+      margin-top: 10px; // Espacio arriba de la línea
+      margin-bottom: 30px; // Espacio debajo de la línea
+    }
+  
+    .account-info-label {
+      text-transform: uppercase; // Mayúsculas
+      font-size: 0.8em;
+      font-weight: 600; // Semibold
+      color: #666; // Gris medio
+      margin-bottom: 8px;
+    }
+  
+    p {
+      color: #333; // Color del texto normal
+      font-size: 1em;
+      margin-bottom: 5px; // Poco espacio entre nombre y email
+    }
+  
+    .user-email {
+      margin-bottom: 25px; // Más espacio antes de los botones
+    }
+  
+    // Contenedor para los botones de acción
+    .profile-actions {
+      display: flex; // Pone los botones en línea
+      gap: 15px; // Espacio entre los botones
+    }
+  
+    // Estilos para los botones de perfil (Editar, Cambiar Contraseña)
+    ion-button.profile-button {
+      --border-color: #a1818a; // Color del borde (igual al header)
+      --color: #a1818a; // Color del texto (igual al header)
+      --border-radius: 5px; // Bordes ligeramente redondeados
+      --border-width: 1px;
+      text-transform: none; // Texto normal (no mayúsculas)
+      font-weight: 500;
+      height: 35px; // Altura fija si se desea
+  
+      // Estilos para cuando el cursor pasa por encima (opcional)
+      &:hover {
+        --background: #a1818a; // Fondo del color del header
+        --color: white; // Texto blanco
+      }
+    }
+  }
+  
+  // --- Media Query para ajustar padding en pantallas pequeñas ---
+  // Cuando las columnas se apilan (menos de 'md'), quitar el padding derecho del menú
+  // y añadir padding inferior para separarlo del contenido principal.
+  @media (max-width: 767px) { // El breakpoint 'md' de Ionic es 768px
+    .profile-menu-col {
+      padding-right: 0;
+      padding-bottom: 30px; // Espacio debajo del menú antes del contenido del perfil
+    }
+  
+    ion-content.profile-content {
+       // Reducir padding en pantallas pequeñas si se ve muy apretado
+      --padding-start: 15px;
+      --padding-end: 15px;
+    }
+  }
+
+  ion-footer {
+    // Eliminar posible borde superior que Ionic a veces añade
+    &::before {
+      background-image: none;
+    }
+  }
+  
+  ion-toolbar.footer-toolbar {
+    --background: #a1818a; // Mismo color del header
+    --color: #f0f0f0; // Color de texto claro por defecto para el footer
+    --padding-top: 30px;
+    --padding-bottom: 30px;
+    --padding-start: 20px;
+    --padding-end: 20px;
+    --min-height: auto; // Permitir que la altura se ajuste al contenido
+  }
+  
+  .footer-col {
+    // Añadir espacio inferior cuando las columnas se apilan en móvil
+    @media (max-width: 767px) {
+      margin-bottom: 25px;
+      &:last-child {
+        margin-bottom: 0; // No añadir margen a la última columna apilada
+      }
+    }
+  }
+  
+  // Estilos específicos para el logo en el footer
+  .footer-logo {
+    .logo-look, .logo-4 {
+       color: white;
+    }
+     .logo-4 {
+       color: #FFB6C1;
+     }
+    .logo-beauty {
+      color: white; 
+    }
+  }
+  
+  .footer-description {
+    font-size: 0.85em;
+    color: #e0e0e0; 
+    line-height: 1.5;
+    margin-top: 15px;
+    margin-bottom: 20px;
+   
+    max-width: 350px;
+  }
+  
+  .social-icons {
+    ion-button {
+      --color: white; // Color de los iconos sociales
+      --padding-start: 0;
+      --padding-end: 10px; // Espacio entre iconos
+      font-size: 1.4em; // Tamaño de los iconos sociales
+    }
+  }
+  
+  .footer-title {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: white; // Títulos en blanco o un color claro destacado
+    margin-bottom: 15px;
+    text-transform: none; // Asegurar que no estén en mayúsculas si no se quiere
+  }
+  
+  .footer-link {
+    margin-bottom: 10px;
+    padding: 0; // Resetear padding si lo hubiera
+  
+    a {
+      color: #f0f0f0; // Color de los enlaces (gris muy claro)
+      text-decoration: none;
+      font-size: 0.9em;
+  
+      &:hover {
+        color: white; // Cambiar a blanco al pasar el cursor
+        text-decoration: underline; // Subrayar al pasar el cursor (opcional)
+      }
+    }
   }

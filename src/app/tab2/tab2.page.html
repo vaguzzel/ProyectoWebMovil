@@ -33,13 +33,82 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="profile-content">
+  <ion-grid>
+    <ion-row>
 
-  <p>Contenido de la página de inicio (carpeta tab2))...</p>
+      <ion-col size="12" size-md="3" class="profile-menu-col">
+        <div class="profile-menu-item">PERFIL</div>
+        <div class="profile-menu-item">MI LISTA DE DESEOS</div>
+        <div class="profile-menu-item">PRODUCTOS EN STOCK NUEVAMENTE</div>
+      </ion-col>
 
-</ion-content>
+      <ion-col size="12" size-md="9" class="profile-details-col">
+        <h2 class="profile-title">Mi Perfil</h2>
+        <hr class="profile-divider"/> 
+
+        <h4 class="account-info-label">INFORMACIÓN DE CUENTA</h4>
+        <p>Pepito Perez Gutierrez</p>
+        <p class="user-email">pepitoperez&#64;gmail.com</p>
+
+        <div class="profile-actions">
+          <ion-button fill="outline" class="profile-button">Editar</ion-button>
+          <ion-button fill="outline" class="profile-button">Cambiar contraseña</ion-button>
+        </div>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+
+</ion-content> <ion-footer>
+  <ion-toolbar class="footer-toolbar">
+    <ion-grid>
+      <ion-row class="ion-align-items-start"> 
+
+        <ion-col size="12" size-md="4" class="footer-col">
+          <div class="logo footer-logo"> 
+            <span class="logo-look">Look</span><span class="logo-4">4</span><span class="logo-beauty">Beauty</span>
+          </div>
+          <p class="footer-description">
+            Somos una compañía chilena creada con el propósito de encontrar y recopilar, por ti, los mejores precios en productos cosméticos de las tiendas en Chile.
+          </p>
+          <div class="social-icons">
+            <ion-button fill="clear" href="#" target="_blank" aria-label="Twitter">
+              <ion-icon slot="icon-only" name="logo-twitter"></ion-icon>
+            </ion-button>
+            <ion-button fill="clear" href="#" target="_blank" aria-label="Facebook">
+              <ion-icon slot="icon-only" name="logo-facebook"></ion-icon>
+            </ion-button>
+            <ion-button fill="clear" href="#" target="_blank" aria-label="TikTok">
+              <ion-icon slot="icon-only" name="logo-tiktok"></ion-icon>
+            </ion-button>
+             <ion-button fill="clear" href="#" target="_blank" aria-label="Instagram">
+               <ion-icon slot="icon-only" name="logo-instagram"></ion-icon> 
+             </ion-button>
+          </div>
+        </ion-col>
+
+        <ion-col size="12" size-md="4" class="footer-col">
+          <h5 class="footer-title">Servicios</h5>
+          <p class="footer-link"><a href="#">Bonus program</a></p>
+          <p class="footer-link"><a href="#">Gift cards</a></p>
+          <p class="footer-link"><a href="#">Credit and payment</a></p>
+          <p class="footer-link"><a href="#">Service contracts</a></p>
+          <p class="footer-link"><a href="#">Non-cash account</a></p>
+          <p class="footer-link"><a href="#">Payment</a></p>
+        </ion-col>
+
+        <ion-col size="12" size-md="4" class="footer-col">
+          <h5 class="footer-title">Soporte</h5>
+          <p class="footer-link"><a href="#">Find an order</a></p>
+          <p class="footer-link"><a href="#">Terms of delivery</a></p>
+          <p class="footer-link"><a href="#">Exchange and return/reimbursement of goods</a></p>
+          <p class="footer-link"><a href="#">Contacto con el soporte</a></p>
+          <p class="footer-link"><a href="#">Preguntas frecuentes</a></p>
+          <p class="footer-link"><a href="#">Términos de uso del sitio</a></p>
+        </ion-col>
+
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>
