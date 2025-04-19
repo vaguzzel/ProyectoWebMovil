@@ -1,20 +1,27 @@
-/* src/app/tab1/tab1.page.scss */
 
-ion-toolbar.custom-toolbar {
-    // Color de fondo del header (ajusta el color exacto)
-    --background: #a1818a; // Un color similar al de la imagen
-    --min-height: 65px; // Ajusta la altura si es necesario
-    padding: 0 15px; // Añade padding horizontal a la barra
-    border-radius: 10px; // Bordes redondeados (puede necesitar ajustes o aplicar al header)
-    margin: 5px; // Pequeño margen alrededor si es necesario
-    box-shadow: none; // Quitar sombra si no se desea
-  
-    // Aplica a toda la barra para asegurar bordes redondeados visibles
-    // A veces es mejor aplicar al ion-header directamente o a un div interno
-     border-radius: 15px; // Aumentar radio si se ve cortado
-     overflow: hidden; // Asegura que el contenido no se salga de los bordes redondeados
+// que sea transparente ayuda a que no se vea feo el header (como está redondeado abajo, se veia blanco de fondo)
+ion-header {
+    --background: transparent; // Hace que el contenedor del header sea transparente
+    // Si el header tiene alguna sombra por defecto que no quieras, puedes quitarla
+    box-shadow: none;
   }
   
+  // Mantén tus estilos para el ion-toolbar
+  ion-toolbar.custom-toolbar {
+      --background: #a1818a; // El color visible vendrá del toolbar
+      --min-height: 65px;
+      padding: 0 15px;
+      box-shadow: none;
+  
+    // Bordes redondeados SOLO en la parte inferior
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 10px; // O el radio que desees
+    border-bottom-right-radius: 10px;// O el radio que desees
+
+    // Asegura que el fondo se recorte correctamente en las esquinas redondeadas
+    overflow: hidden;
+}
   // Contenedor Flex principal dentro de la barra
   .toolbar-content {
     display: flex;
@@ -25,15 +32,24 @@ ion-toolbar.custom-toolbar {
   }
   
   // Estilos del Logo
-  .logo {
+   .logo {
     font-size: 1.8em; // Tamaño de fuente del logo
     font-weight: bold;
     flex-shrink: 0; // Evita que el logo se encoja
-  
+    
     .logo-look {
       color: white;
     }
-    .logo-4beauty {
+
+    .logo-4 { // Nueva clase para el "4"
+        // Aquí pones el color rosa que prefieras.
+        // Puedes usar nombres de color, códigos hexadecimales, rgb, etc.
+        // Ejemplo con un rosa similar al de la imagen que mostraste:
+        color: #FFB6C1; // <-- AJUSTA ESTE ROSA SI QUIERES OTRO TONO
+        // Otras opciones: hotpink, #FFC0CB (LightPink), #FF1493 (DeepPink)
+      }
+
+    .logo-beauty {
       color: black;
     }
   }
@@ -78,3 +94,12 @@ ion-toolbar.custom-toolbar {
     --padding-end: 5px;
     font-size: 1.2em; // Tamaño del icono
   }
+
+
+ion-content {
+    // Establece el color de fondo rosa claro sólido deseado
+    --background: #fdecef; // Este es un rosa muy pálido, ajústalo si prefieres otro tono
+                           // Por ejemplo: #FFF0F5 (LavenderBlush), #FFF5EE (Seashell), #FFE4E1 (MistyRose)
+  }
+  
+  // ... (el resto de tus estilos para .section-container, .product-card, .category-card, etc.)
