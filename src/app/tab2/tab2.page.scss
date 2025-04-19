@@ -253,6 +253,76 @@ ion-content.profile-content {
       font-size: 1.4em; // Tamaño de los iconos sociales
     }
   }
+
+  .profile-menu-item.active {
+    font-weight: 700; 
+    color: #a1818a; 
+  }
+  
+  .wishlist-item-col {
+    margin-bottom: 20px; // Espacio debajo de cada item en vista móvil
+  }
+  
+  .wishlist-item-card {
+    border: 1px solid #e0e0e0; // Borde sutil para la tarjeta
+    border-radius: 8px;
+    overflow: hidden; // Para que el borde redondeado funcione bien con la imagen
+    background-color: white; // Fondo blanco para la tarjeta
+    position: relative; // Necesario para posicionar el corazón
+    padding-bottom: 10px; // Espacio inferior dentro de la tarjeta
+  
+    img {
+      width: 100%;
+      height: 250px; // Ajusta la altura deseada
+      object-fit: contain; // 'cover' si quieres que llene el espacio, 'contain' para que se vea completa
+      display: block;
+    }
+  
+    .item-details {
+      padding: 10px 15px;
+      text-align: center; // Centrar texto
+    }
+  
+    .item-brand {
+      font-size: 0.8em;
+      text-transform: uppercase;
+      color: #777;
+      margin-bottom: 4px;
+    }
+  
+    .item-name {
+      font-size: 0.95em;
+      color: #333;
+      margin-bottom: 8px;
+      // Limitar altura y mostrar puntos suspensivos si es muy largo (opcional)
+      // height: 2.8em; // Aprox 2 líneas
+      // overflow: hidden;
+      // text-overflow: ellipsis;
+      // display: -webkit-box;
+      // -webkit-line-clamp: 2;
+      // -webkit-box-orient: vertical;
+    }
+  
+    .item-price {
+      font-size: 1.1em;
+      font-weight: bold;
+      color: #a1818a; // Color principal
+    }
+  
+    .wishlist-heart-button {
+      position: absolute; // Posicionar el corazón
+      top: 5px;
+      right: 5px;
+      --padding-start: 5px; // Reducir padding del botón
+      --padding-end: 5px;
+      --padding-top: 5px;
+      --padding-bottom: 5px;
+      font-size: 1.5em; // Tamaño del corazón
+      background-color: rgba(255, 255, 255, 0.7); // Fondo semitransparente opcional
+      border-radius: 50%; // Hacerlo redondo
+      z-index: 10; // Asegurar que esté sobre la imagen
+    }
+  }
   
   .footer-title {
     font-size: 1.1em;

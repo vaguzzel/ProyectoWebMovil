@@ -38,28 +38,78 @@
     <ion-row>
 
       <ion-col size="12" size-md="3" class="profile-menu-col">
-        <div class="profile-menu-item">PERFIL</div>
-        <div class="profile-menu-item">MI LISTA DE DESEOS</div>
-        <div class="profile-menu-item">PRODUCTOS EN STOCK NUEVAMENTE</div>
+        <div class="profile-menu-item"
+             [class.active]="currentView === 'perfil'"
+             (click)="changeView('perfil')">PERFIL</div>
+        <div class="profile-menu-item"
+             [class.active]="currentView === 'listaDeDeseos'"
+             (click)="changeView('listaDeDeseos')">MI LISTA DE DESEOS</div>
+        <div class="profile-menu-item"
+             [class.active]="currentView === 'productosEnStock'"
+             (click)="changeView('productosEnStock')">PRODUCTOS EN STOCK NUEVAMENTE</div>
       </ion-col>
 
       <ion-col size="12" size-md="9" class="profile-details-col">
-        <h2 class="profile-title">Mi Perfil</h2>
-        <hr class="profile-divider"/> 
 
-        <h4 class="account-info-label">INFORMACIÓN DE CUENTA</h4>
-        <p>Pepito Perez Gutierrez</p>
-        <p class="user-email">pepitoperez&#64;gmail.com</p>
-
-        <div class="profile-actions">
-          <ion-button fill="outline" class="profile-button">Editar</ion-button>
-          <ion-button fill="outline" class="profile-button">Cambiar contraseña</ion-button>
+        <div *ngIf="currentView === 'perfil'">
+          <h2 class="profile-title">Mi Perfil</h2>
+          <hr class="profile-divider"/>
+          <h4 class="account-info-label">INFORMACIÓN DE CUENTA</h4>
+          <p>Pepito Perez Gutierrez</p>
+          <p class="user-email">pepitoperez&#64;gmail.com</p>
+          <div class="profile-actions">
+            <ion-button fill="outline" class="profile-button">Editar</ion-button>
+            <ion-button fill="outline" class="profile-button">Cambiar contraseña</ion-button>
+          </div>
         </div>
-      </ion-col>
 
+        <div *ngIf="currentView === 'listaDeDeseos'">
+          <h2 class="profile-title">Mi lista de deseos</h2>
+          <hr class="profile-divider"/>
+
+          <ion-grid>
+            <ion-row>
+              <ion-col size="12" size-sm="6" class="wishlist-item-col">
+                <div class="wishlist-item-card">
+                  <ion-button fill="clear" class="wishlist-heart-button">
+                    <ion-icon slot="icon-only" name="heart" color="danger"></ion-icon>
+                  </ion-button>
+                  <img src="assets/images/tocobo_protector.webp" alt="Protector Solar Tocobo"> 
+                  <div class="item-details">
+                    <p class="item-brand">TOCOBO</p>
+                    <p class="item-name">Cica Protector Solar En Barra Cotton Soft Sun Stick SPF50</p>
+                    <p class="item-price">$24.990</p>
+                  </div>
+                </div>
+              </ion-col>
+
+              <ion-col size="12" size-sm="6" class="wishlist-item-col">
+                 <div class="wishlist-item-card">
+                   <ion-button fill="clear" class="wishlist-heart-button">
+                     <ion-icon slot="icon-only" name="heart" color="danger"></ion-icon>
+                   </ion-button>
+                   <img src="assets/images/rare_beauty.webp" alt="Bronceador Rare Beauty"> 
+                   <div class="item-details">
+                     <p class="item-brand">RARE BEAUTY</p>
+                     <p class="item-name">Bronceador en Barra Warm Wishes Effortless Bronzer Stick - Power Boost</p>
+                     <p class="item-price">$35.000</p>
+                   </div>
+                 </div>
+               </ion-col>
+
+              </ion-row>
+          </ion-grid>
+        </div>
+
+        <div *ngIf="currentView === 'productosEnStock'">
+          <h2 class="profile-title">Productos en Stock Nuevamente</h2>
+          <hr class="profile-divider"/>
+          <p>Aquí iría la lista de productos que volvieron a estar disponibles...</p>
+        </div>
+
+      </ion-col>
     </ion-row>
   </ion-grid>
-
 </ion-content> <ion-footer>
   <ion-toolbar class="footer-toolbar">
     <ion-grid>
