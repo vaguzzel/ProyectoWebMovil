@@ -8,6 +8,7 @@
 - Rodolfo Fernández
 - Valentina Guzmán   21.268.525-9
 - Matías Reyes
+  
 **Carrera:** Ingeniería Civil Informática  
 **Fecha de entrega:** 20/04/2025
 
@@ -17,8 +18,8 @@ Este proyecto corresponde a la primera entrega parcial del Proyecto Final. Se tr
 
 La app incluye una interfaz para visualizar:
 - **Inicio**
-- 
-- 
+-  a 
+-  b
 
 
 ### Estructura del Proyecto
@@ -51,13 +52,13 @@ src/
 
 ### ⚙️ Tecnologías utilizadas
 
-- [x] **Ionic Framework**
-- [x] **Angular 15+**
+- [x] Ionic Framework
+- [x] Angular 15+
 - [x] TypeScript
 - [x] HTML5 + SCSS
 - [x] Visual Studio Code
 
-### 📲 Cómo ejecutar el proyecto
+### Cómo ejecutar el proyecto
 Debes tener el node.js instalado
 
 1. Clona este repositorio o descarga el `.zip`.
@@ -70,7 +71,7 @@ ionic serve
 
 3. Se abrirá la app funcionando en tu navegador.
 
-### 📝 Comentarios adicionales
+### Comentarios adicionales
 
 - Las imágenes se encuentran en la carpeta `assets/img/`. FALTA PONER IMÁGENES!!!
 - Se deja listo para continuar con las siguientes entregas, como el uso de servicios, API REST, navegación y persistencia de datos.
