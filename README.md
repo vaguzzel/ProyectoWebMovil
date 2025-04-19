@@ -1,7 +1,4 @@
 **CREO q está funcionando la base LOL**
-¡Buena onda! Aquí tienes un ejemplo completo de `README.md` especialmente hecho para tu **Entrega Parcial 1** del proyecto final de **Ingeniería Web (ICI4247 / ICI4240)** con Ionic + Angular.
-
----
 
 ## Proyecto Final - Entrega Parcial 1  
 ### Ingeniería Web y móvil.
