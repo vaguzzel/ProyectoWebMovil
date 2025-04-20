@@ -148,7 +148,6 @@ swiper-slide {
 /* TARJETAS DE PRODUCTO */
 ion-card.product-card {
   --background: #fff;
-  
   margin: 5px 0;
   border-radius: 8px;
   position: relative;
@@ -164,76 +163,74 @@ ion-card.product-card {
   flex-direction: column;
   justify-content: flex-end;
   flex-grow: 1;
-  
 }
 
-  ion-img {
-    width: 100%;
-    height: 120px;
-    object-fit: contain;
-    padding: 10px;
-    background-color: #fff;
-  }
+ion-img {
+  width: 100%;
+  height: 120px;
+  object-fit: contain;
+  padding: 10px;
+  background-color: #fff;
+}
 
-  ion-card-header {
-    padding: 8px 10px 0;
-  }
+ion-card-header {
+  padding: 8px 10px 0;
+}
 
-  ion-card-subtitle {
-    font-size: 0.7em;
-    font-weight: bold;
-    text-transform: uppercase;
-    color: #333;
-    margin: 0;
-  }
+ion-card-subtitle {
+  font-size: 0.7em;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #333;
+  margin: 0;
+}
 
-  ion-card-title {
-    font-size: 0.85em;
-    font-weight: normal;
-    color: #333;
-    white-space: normal;
-    line-height: 1.3;
-    min-height: 35px;
-    margin: 0;
-  }
+ion-card-title {
+  font-size: 0.85em;
+  font-weight: normal;
+  color: #333;
+  white-space: normal;
+  line-height: 1.3;
+  min-height: 35px;
+  margin: 0;
+}
 
-  ion-card-content {
-    padding: 5px 10px 10px;
-  }
+ion-card-content {
+  padding: 5px 10px 10px;
+}
 
-  .price-container {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
+.price-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
 
-  .current-price {
-    font-size: 1em;
-    font-weight: bold;
-    color: #333;
-  }
+.current-price {
+  font-size: 1em;
+  font-weight: bold;
+  color: #333;
+}
 
-  .original-price {
-    font-size: 0.8em;
-    color: #888;
-    
-    s {
-      text-decoration: line-through;
-    }
-  }
+.original-price {
+  font-size: 0.8em;
+  color: #888;
 
-  .wishlist-button {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    z-index: 5;
-    --color: #a1818a;
-    --background: transparent;
-    --padding-start: 3px;
-    --padding-end: 3px;
-    margin: 0;
+  s {
+    text-decoration: line-through;
   }
+}
 
+.wishlist-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  z-index: 5;
+  --color: #a1818a;
+  --background: transparent;
+  --padding-start: 3px;
+  --padding-end: 3px;
+  margin: 0;
+}
 
 /* CATEGORÍAS */
 .categorias-container {
@@ -298,7 +295,6 @@ ion-card.product-card {
   justify-content: center;
   background-color: #fff;
   border-radius: 8px;
-  
 
   img {
     height: 100px;
@@ -308,108 +304,12 @@ ion-card.product-card {
   }
 }
 
-/* ESTILOS DEL FOOTER */
-ion-footer {
-  background: #4f4246;
-
-  ion-toolbar.footer-toolbar {
-    --background: #4f4246;
-    --color: #e0e0e0;
-    padding: 20px 0;
-  }
-
-  .footer-toolbar {
-    background-color: #ffe6ed; /* rosado suave */
-    color: #000000; /* texto oscuro para buen contraste */
-    margin-top: 40px;
-  }
-  
-  .footer-logo {
-    margin-bottom: 15px;
-    font-size: 1.6em;
-    font-weight: bold;
-  
-    .footer-grid {
-      padding: 0;
-    }
-    
-    .logo-look {
-      color: white;
-    }
-    
-    .logo-4 {
-      color: #FFB6C1;
-    }
-    
-    .logo-beauty {
-      color: white;
-    }
-  }
-
-  .social-icons {
-    margin-top: 10px;
-    display: flex;
-    gap: 5px;
-  }
-
-  ion-button.social-button {
-    --color: #e0e0e0;
-    font-size: 1.2em;
-    --background: rgba(255, 255, 255, 0.1);
-    --border-radius: 50%;
-    --padding-start: 8px;
-    --padding-end: 8px;
-    width: 36px;
-    height: 36px;
-  }
-
-  .footer-title {
-    font-size: 1em;
-    font-weight: bold;
-    color: #fff;
-    margin-bottom: 10px;
-  }
-
-  .footer-list {
-    background: transparent;
-    padding: 0;
-
-    ion-item {
-      --background: transparent;
-      --padding-start: 0;
-      --inner-padding-end: 0;
-      --min-height: 25px;
-      margin-bottom: 5px;
-
-      ion-label {
-        font-size: 0.85em;
-        color: #d0d0d0;
-        cursor: pointer;
-        
-        &:hover {
-          color: #fff;
-        }
-      }
-    }
-  }
-
-  @media (max-width: 767px) {
-    ion-col[size="6"] {
-      margin-bottom: 20px;
-    }
-    
-    .footer-title {
-      margin-top: 15px;
-    }
-  }
-}
-
 /* AJUSTES RESPONSIVOS PARA SLIDERS */
 @media (max-width: 576px) {
   .slider-container {
     padding: 0 25px;
   }
-  
+
   ion-card.product-card {
     width: 165px;
   }
@@ -424,22 +324,19 @@ ion-footer {
 
 /* OFERTAS DE HOY SECCIÓN */
 .ofertas-slider-container {
-  background-color: #a1818a; /* Cambiar de #fff a #a1818a */
+  background-color: #a1818a;
   border-radius: 15px;
   overflow: hidden;
 }
 
-/* Añadir este estilo específico para las tarjetas de ofertas */
 .ofertas-swiper ion-card.product-card {
-  width: 200px; /* Ancho ajustado para que se vean mejor */
-  background-color: #fff; /* Mantener las tarjetas en blanco */
-  height: 300px
+  width: 200px;
+  background-color: #fff;
+  height: 300px;
 }
 
-
-/* Ajustes específicos para que se vea como en la imagen */
 .ofertas-de-hoy {
-  color:#000000;
+  color: #000000;
   margin-top: 15px;
   font-size: 1.5em;
   font-weight: bold;
@@ -448,18 +345,12 @@ ion-footer {
   gap: 5px;
 }
 
-.custom-footer-toolbar {
-  --background: #a1818a; /* color de fondo */
-  --color: white;        /* color del texto */
-  padding-top: 40px ;
-}
-
 a {
   color: #e4dbdd;
 }
 
 .icon {
-  background-color:#a1818a;
+  background-color: #a1818a;
 }
 
 .img {
@@ -469,12 +360,98 @@ a {
 
 .big {
   height: 300px;
-  
 }
 
 .small {
   flex-grow: 1;
-  
 }
 
+//ESTILOS UNICAMENTE FOOTER
 
+ion-footer {
+  // Eliminar posible borde superior que Ionic a veces añade
+  &::before {
+    background-image: none;
+  }
+}
+
+ion-toolbar.footer-toolbar {
+  --background: #a1818a; // Mismo color del header
+  --color: #f0f0f0; // Color de texto claro por defecto para el footer
+  padding-left: 100px;
+}
+
+.custom-footer-toolbar {
+  --background: #a1818a; /* color de fondo */
+  --color: white;        /* color del texto */
+  padding-top: 40px;
+}
+
+.footer-col {
+  // Añadir espacio inferior cuando las columnas se apilan en móvil
+  @media (max-width: 767px) {
+    margin-bottom: 25px;
+    &:last-child {
+      margin-bottom: 0; // No añadir margen a la última columna apilada
+    }
+  }
+}
+
+// Estilos específicos para el logo en el footer
+.footer-logo {
+  .logo-look,
+  .logo-4 {
+    color: white;
+  }
+
+  .logo-4 {
+    color: #FFB6C1;
+  }
+
+  .logo-beauty {
+    color: BLACK;
+  }
+}
+
+.footer-description {
+  font-size: 0.85em;
+  color: #e0e0e0;
+  line-height: 1.5;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  max-width: 350px;
+}
+
+.social-icons {
+  ion-button {
+    --color: white; // Color de los iconos sociales
+    --padding-start: 0;
+    --padding-end: 10px; // Espacio entre iconos
+    font-size: 1.4em; // Tamaño de los iconos sociales
+  }
+}
+
+//DISEÑOS FOOTER SOLAMENTE
+.footer-title {
+  font-size: 1.1em;
+  font-weight: bold;
+  color: white; // Títulos en blanco o un color claro destacado
+  margin-bottom: 15px;
+  text-transform: none; // Asegurar que no estén en mayúsculas si no se quiere
+}
+
+.footer-link {
+  margin-bottom: 10px;
+  padding: 0; // Resetear padding si lo hubiera
+
+  a {
+    color: #f0f0f0; // Color de los enlaces (gris muy claro)
+    text-decoration: none;
+    font-size: 0.9em;
+
+    &:hover {
+      color: white; // Cambiar a blanco al pasar el cursor
+      text-decoration: underline; // Subrayar al pasar el cursor (opcional)
+    }
+  }
+}

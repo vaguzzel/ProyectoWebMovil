@@ -4,6 +4,10 @@ ion-header {
     // Si el header tiene alguna sombra por defecto que no quieras, puedes quitarla
     box-shadow: none;
   }
+
+  ion-content {
+    background-color: white;
+  }
   
   // Mantén tus estilos para el ion-toolbar
   ion-toolbar.custom-toolbar {
@@ -94,9 +98,6 @@ ion-header {
 ion-content.profile-content {
     --background: #FDF1EC; 
     --padding-top: 20px;
-    --padding-start: 20px;
-    --padding-end: 20px;
-    --padding-bottom: 20px;
   }
   
   // Estilos para la columna del menú lateral
@@ -205,11 +206,7 @@ ion-content.profile-content {
   ion-toolbar.footer-toolbar {
     --background: #a1818a; // Mismo color del header
     --color: #f0f0f0; // Color de texto claro por defecto para el footer
-    --padding-top: 30px;
-    --padding-bottom: 30px;
-    --padding-start: 20px;
-    --padding-end: 20px;
-    --min-height: auto; // Permitir que la altura se ajuste al contenido
+    padding-left: 100px;
   }
   
   .footer-col {
@@ -231,7 +228,7 @@ ion-content.profile-content {
        color: #FFB6C1;
      }
     .logo-beauty {
-      color: white; 
+      color: BLACK; 
     }
   }
   
@@ -324,6 +321,11 @@ ion-content.profile-content {
     }
   }
   
+
+
+
+  //DISENOS FOOTER SOLAMENTE
+  
   .footer-title {
     font-size: 1.1em;
     font-weight: bold;
@@ -347,3 +349,10 @@ ion-content.profile-content {
       }
     }
   }
+  .custom-footer-toolbar {
+    --background: #a1818a; /* color de fondo */
+    --color: white;        /* color del texto */
+    padding-top: 40px ;
+  }
+  
+

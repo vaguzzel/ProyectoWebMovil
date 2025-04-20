@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HostListener } from '@angular/core';
 
 interface WishlistItem {
   id: number; // O string, un identificador único
@@ -54,4 +55,9 @@ export class Tab2Page {
     item.isLiked = !item.isLiked; // Cambia el estado de likeado a no likeado y viceversa
     console.log('Estado actualizado para', item.name, ':', item.isLiked); // Para depuración
   }
+
+ 
+
+
+
 }
