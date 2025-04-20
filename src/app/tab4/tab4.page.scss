@@ -98,14 +98,14 @@ ion-header {
   
   /* Barra de degradado izquierda */
   .background-gradient-left {
-    width: 30%; /* Ajusta el ancho según necesites */
+    width: 40%; /* Ajusta el ancho según necesites */
     background: linear-gradient(to bottom, #9D8189, #F4ACB7); /* Tu degradado vertical */
     min-height: 100%; /* Asegura que ocupe al menos la altura del contenedor */
   }
   
   /* Contenedor del formulario */
   .form-container {
-    width: 70%; /* Ocupa el resto del ancho */
+    width: 60%; /* Ocupa el resto del ancho */
     padding: 30px; /* Espacio alrededor del formulario */
     padding-left: 60px; /* Aumentado el padding izquierdo */
     display: flex;
@@ -159,7 +159,7 @@ ion-header {
   }
   
   ion-input:focus {
-    border-color: #3880ff;
+    border-color: #9D8189;
     outline: none;
   }
   
