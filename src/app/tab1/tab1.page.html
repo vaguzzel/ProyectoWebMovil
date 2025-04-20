@@ -1,45 +1,177 @@
 <ion-header [translucent]="true">
   <ion-toolbar class="custom-toolbar">
-
     <div class="toolbar-content">
-
-      <div class="logo">
-        <span class="logo-look">Look</span><span class="logo-4">4</span><span class="logo-beauty">Beauty</span>
-      </div>
-
-      <div class="search-container">
-        <ion-searchbar placeholder="¿Qué buscas?" class="custom-searchbar"></ion-searchbar>
-        </div>
-
+      <div class="logo"><span class="logo-look">Look</span><span class="logo-4">4</span><span class="logo-beauty">Beauty</span></div>
+      <div class="search-container"><ion-searchbar placeholder="¿Qué buscas?" class="custom-searchbar"></ion-searchbar></div>
       <div class="navigation-items">
-        <ion-buttons>
-          <ion-button fill="clear" class="nav-link">Inicio</ion-button>
-          <ion-button fill="clear" class="nav-link">Categorías</ion-button>
-          <ion-button fill="clear" class="nav-link">Marcas</ion-button>
-          <ion-button fill="clear" class="nav-link">Contáctanos</ion-button>
-        </ion-buttons>
-        <ion-buttons>
-          <ion-button fill="clear" class="icon-button">
-            <ion-icon slot="icon-only" name="heart-outline"></ion-icon>
-          </ion-button>
-          <ion-button fill="clear" class="icon-button">
-            <ion-icon slot="icon-only" name="person-outline"></ion-icon>
-          </ion-button>
-        </ion-buttons>
+        <ion-buttons><ion-button fill="clear" class="nav-link">Inicio</ion-button><ion-button fill="clear" class="nav-link">Categorías</ion-button><ion-button fill="clear" class="nav-link">Marcas</ion-button><ion-button fill="clear" class="nav-link">Contáctanos</ion-button></ion-buttons>
+        <ion-buttons><ion-button fill="clear" class="icon-button"><ion-icon slot="icon-only" name="heart-outline"></ion-icon></ion-button><ion-button fill="clear" class="icon-button"><ion-icon slot="icon-only" name="person-outline"></ion-icon></ion-button></ion-buttons>
       </div>
-
     </div>
-
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <p>Contenido de la página de inicio (carpeta tab1))...</p>
+  <div class="section-container ion-padding-start ion-padding-end">
+    <h2 class="section-title">Ofertas de hoy 🔥</h2>
+    <div class="ofertas-slider-container slider-container"> <!-- Añadida clase genérica slider-container -->
+      <ion-button fill="clear" class="slider-nav prev-button ofertas-prev"> <!-- Clase específica para JS si es necesario -->
+        <ion-icon slot="icon-only" name="chevron-back-outline"></ion-icon>
+      </ion-button>
+      <swiper-container class="ofertas-swiper" slides-per-view="auto" [navigation]="{ nextEl: '.ofertas-next', prevEl: '.ofertas-prev' }" [spaceBetween]="10">
+        <swiper-slide>
+          <ion-card class="product-card">
+            <ion-button fill="clear" class="wishlist-button"><ion-icon slot="icon-only" name="heart-outline"></ion-icon></ion-button>
+            <ion-img src="/assets/images/placeholder-oferta-1.png" alt="Producto Oferta 1"></ion-img>
+            <ion-card-header><ion-card-subtitle>NYX</ion-card-subtitle><ion-card-title>Corrector HD photogenic concealer wand</ion-card-title></ion-card-header>
+            <ion-card-content><div class="price-container"><span class="current-price">$ 9.990</span><span class="original-price"><s>$12.000</s></span></div></ion-card-content>
+          </ion-card>
+        </swiper-slide>
+        <swiper-slide>
+          <ion-card class="product-card">
+             <ion-button fill="clear" class="wishlist-button"><ion-icon slot="icon-only" name="heart-outline"></ion-icon></ion-button>
+             <ion-img src="/assets/images/placeholder-oferta-2.png" alt="Producto Oferta 2"></ion-img>
+             <ion-card-header><ion-card-subtitle>TOCOBO</ion-card-subtitle><ion-card-title>Cica Protector Solar En Barra Spf50+</ion-card-title></ion-card-header>
+             <ion-card-content><div class="price-container"><span class="current-price">$15.990</span><span class="original-price"><s>$26.990</s></span></div></ion-card-content>
+           </ion-card>
+        </swiper-slide>
+        <swiper-slide>
+          <ion-card class="product-card">
+             <ion-button fill="clear" class="wishlist-button"><ion-icon slot="icon-only" name="heart-outline"></ion-icon></ion-button>
+             <ion-img src="/assets/images/placeholder-oferta-3.png" alt="Producto Oferta 3"></ion-img>
+             <ion-card-header><ion-card-subtitle>SKIN1004</ion-card-subtitle><ion-card-title>Limpiador Oleoso Ligero Centella 200Ml</ion-card-title></ion-card-header>
+             <ion-card-content><div class="price-container"><span class="current-price">$18.990</span><span class="original-price"><s>$27.990</s></span></div></ion-card-content>
+           </ion-card>
+         </swiper-slide>
+         <swiper-slide>
+           <ion-card class="product-card">
+             <ion-button fill="clear" class="wishlist-button"><ion-icon slot="icon-only" name="heart-outline"></ion-icon></ion-button>
+             <ion-img src="/assets/images/placeholder-oferta-4.png" alt="Producto Oferta 4"></ion-img>
+             <ion-card-header><ion-card-subtitle>KIKO MILANO</ion-card-subtitle><ion-card-title>3D Hydra Lip Gloss</ion-card-title></ion-card-header>
+             <ion-card-content><div class="price-container"><span class="current-price">$10.990</span><span class="original-price"><s>$14.990</s></span></div></ion-card-content>
+           </ion-card>
+         </swiper-slide>
+        </swiper-container>
+      <ion-button fill="clear" class="slider-nav next-button ofertas-next"> <!-- Clase específica para JS si es necesario -->
+        <ion-icon slot="icon-only" name="chevron-forward-outline"></ion-icon>
+      </ion-button>
+    </div>
+  </div>
+  <div class="section-container ion-padding-start ion-padding-end">
+    <h2 class="section-title">Categorías populares</h2>
+    <div class="categorias-container">
+      <div class="category-card">
+        <div class="category-text"><h3>Skincare</h3><p>Todo lo que necesitas para tu rutina</p><ion-button class="category-button" fill="solid" shape="round">Revisa aquí</ion-button></div>
+        <div class="category-image"><img src="/assets/images/placeholder-categoria-1.png" alt="Skincare"></div>
+      </div>
+      <div class="category-card">
+        <div class="category-text"><h3>Labios</h3><p>Encuentra tu tono ideal</p><ion-button class="category-button" fill="solid" shape="round">Revisa aquí</ion-button></div>
+        <div class="category-image"><img src="/assets/images/placeholder-categoria-2.png" alt="Labios"></div>
+      </div>
+      <div class="category-card">
+         <div class="category-text"><h3>Accesorios</h3><p>Las herramientas clave para tu estación de maquillaje</p><ion-button class="category-button" fill="solid" shape="round">Revisa aquí</ion-button></div>
+         <div class="category-image"><img src="/assets/images/placeholder-categoria-3.png" alt="Accesorios"></div>
+      </div>
+      <div class="category-card">
+         <div class="category-text"><h3>Capilar</h3><p>Descubre lo esencial para un pelo increíble</p><ion-button class="category-button" fill="solid" shape="round">Revisa aquí</ion-button></div>
+         <div class="category-image"><img src="/assets/images/placeholder-categoria-4.png" alt="Capilar"></div>
+      </div>
+    </div>
+  </div>
+  <div class="section-container ion-padding-start ion-padding-end">
+    <h2 class="section-title centered-title">MÁS VENDIDOS</h2>
+    <div class="mas-vendidos-slider-container slider-container"> <!-- Clase diferente si necesita estilos distintos, o usa la misma -->
+      <ion-button fill="clear" class="slider-nav prev-button mv-prev"> <!-- Clases distintas para los botones -->
+        <ion-icon slot="icon-only" name="chevron-back-outline"></ion-icon>
+      </ion-button>
+      <swiper-container class="mas-vendidos-swiper" slides-per-view="auto" [navigation]="{ nextEl: '.mv-next', prevEl: '.mv-prev' }" [spaceBetween]="10">
+         <swiper-slide>
+           <ion-card class="product-card"> <!-- Puedes reutilizar o crear .mv-product-card si es diferente -->
+             <ion-button fill="clear" class="wishlist-button"><ion-icon slot="icon-only" name="heart-outline"></ion-icon></ion-button>
+             <ion-img src="/assets/images/placeholder-mv-1.png" alt="Producto MV 1"></ion-img>
+             <ion-card-header><ion-card-subtitle>RARE BEAUTY</ion-card-subtitle><ion-card-title>Positive Light Tinted Moisturizer</ion-card-title></ion-card-header>
+             <ion-card-content><div class="price-container"><span class="current-price">$ 20.000</span></div></ion-card-content> <!-- Sin precio original aquí -->
+           </ion-card>
+         </swiper-slide>
+         <swiper-slide>
+           <ion-card class="product-card">
+             <ion-button fill="clear" class="wishlist-button"><ion-icon slot="icon-only" name="heart-outline"></ion-icon></ion-button>
+             <ion-img src="/assets/images/placeholder-mv-2.png" alt="Producto MV 2"></ion-img>
+             <ion-card-header><ion-card-subtitle>TOCOBO</ion-card-subtitle><ion-card-title>Glass Tinted Lip Balm</ion-card-title></ion-card-header>
+             <ion-card-content><div class="price-container"><span class="current-price">$24.990</span></div></ion-card-content>
+           </ion-card>
+         </swiper-slide>
+         <swiper-slide>
+            <ion-card class="product-card">
+              <ion-button fill="clear" class="wishlist-button"><ion-icon slot="icon-only" name="heart-outline"></ion-icon></ion-button>
+              <ion-img src="/assets/images/placeholder-mv-3.png" alt="Producto MV 3"></ion-img>
+              <ion-card-header><ion-card-subtitle>ANUA</ion-card-subtitle><ion-card-title>Heartleaf 77% Soothing Toner</ion-card-title></ion-card-header>
+              <ion-card-content><div class="price-container"><span class="current-price">$27.100</span></div></ion-card-content>
+            </ion-card>
+         </swiper-slide>
+         <swiper-slide>
+            <ion-card class="product-card">
+               <ion-button fill="clear" class="wishlist-button"><ion-icon slot="icon-only" name="heart-outline"></ion-icon></ion-button>
+               <ion-img src="/assets/images/placeholder-mv-4.png" alt="Producto MV 4"></ion-img>
+               <ion-card-header><ion-card-subtitle>RARE BEAUTY</ion-card-subtitle><ion-card-title>Soft Pinch Liquid Blush</ion-card-title></ion-card-header>
+               <ion-card-content><div class="price-container"><span class="current-price">$35.000</span></div></ion-card-content>
+            </ion-card>
+         </swiper-slide>
+         </swiper-container>
+      <ion-button fill="clear" class="slider-nav next-button mv-next"> <!-- Clases distintas para los botones -->
+        <ion-icon slot="icon-only" name="chevron-forward-outline"></ion-icon>
+      </ion-button>
+    </div>
+  </div>
+  </ion-content>
 
-</ion-content>
+<ion-footer>
+  <ion-toolbar class="footer-toolbar">
+    <ion-grid>
+      <ion-row class="ion-align-items-start">
+        <ion-col size="12" size-md="3">
+          <div class="footer-logo">
+             <span class="logo-look">Look</span><span class="logo-4">4</span><span class="logo-beauty">Beauty</span>
+          </div>
+          <div class="social-icons">
+             <ion-button fill="clear" class="social-button"><ion-icon slot="icon-only" name="logo-facebook"></ion-icon></ion-button>
+             <ion-button fill="clear" class="social-button"><ion-icon slot="icon-only" name="logo-instagram"></ion-icon></ion-button>
+             <ion-button fill="clear" class="social-button"><ion-icon slot="icon-only" name="logo-twitter"></ion-icon></ion-button>
+             <!-- Añade más si necesitas -->
+          </div>
+        </ion-col>
+
+        <ion-col size="6" size-md="3">
+          <h4 class="footer-title">Servicios</h4>
+          <ion-list lines="none" class="footer-list">
+            <ion-item><ion-label>Maquillaje</ion-label></ion-item>
+            <ion-item><ion-label>Skincare</ion-label></ion-item>
+            <ion-item><ion-label>Accesorios</ion-label></ion-item>
+            <ion-item><ion-label>Capilar</ion-label></ion-item>
+          </ion-list>
+        </ion-col>
+
+        <ion-col size="6" size-md="3">
+          <h4 class="footer-title">Soporte</h4>
+          <ion-list lines="none" class="footer-list">
+            <ion-item><ion-label>Preguntas Frecuentes</ion-label></ion-item>
+            <ion-item><ion-label>Política de Envío</ion-label></ion-item>
+            <ion-item><ion-label>Devoluciones</ion-label></ion-item>
+            <ion-item><ion-label>Contáctanos</ion-label></ion-item>
+          </ion-list>
+        </ion-col>
+
+        <ion-col size="12" size-md="3">
+           <h4 class="footer-title">Compañía</h4>
+           <ion-list lines="none" class="footer-list">
+             <ion-item><ion-label>Sobre Nosotros</ion-label></ion-item>
+             <ion-item><ion-label>Blog</ion-label></ion-item>
+             <ion-item><ion-label>Trabaja con Nosotros</ion-label></ion-item>
+             <ion-item><ion-label>Términos y Condiciones</ion-label></ion-item>
+           </ion-list>
+         </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>
