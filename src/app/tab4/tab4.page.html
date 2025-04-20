@@ -27,47 +27,49 @@
       </div>
     </ion-toolbar>
   </ion-header>
-  
-  <ion-content [fullscreen]="true" class="ion-padding">
-    <h1>Crear una cuenta</h1>
-    <p>¿Tienes ya una cuenta? <a href="#">Inicia Sesión</a></p>
-  
-    <ion-item>
-      <ion-label position="floating">Nombre de Usuario</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
-  
-    <ion-item>
-      <ion-label position="floating">Correo Electronico</ion-label>
-      <ion-input type="email"></ion-input>
-    </ion-item>
-  
-    <ion-item>
-      <ion-label position="floating">Contraseña</ion-label>
-      <ion-input type="password"></ion-input>
-    </ion-item>
-  
-    <ion-item>
-      <ion-label position="floating">Repetir Contraseña</ion-label>
-      <ion-input type="password"></ion-input>
-    </ion-item>
-  
-    <ion-item>
-      <ion-checkbox slot="start" value="terminos"></ion-checkbox>
-      <ion-label>Acepto los términos y condiciones para crear una cuenta</ion-label>
-    </ion-item>
-  
-    <ion-item>
-      <ion-checkbox slot="start" value="notificaciones"></ion-checkbox>
-      <ion-label>Deseo recibir notificaciones y correos con información de promociones y ofertas</ion-label>
-    </ion-item>
-  
-    <div class="recaptcha-container">
-      <p>No soy un robot</p>
-      <div style="/* estilos del recaptcha */ border: 1px solid #ccc; width: 80px; height: 40px;"></div>
-    </div>
-  
-    <ion-button expand="block">Crear Cuenta</ion-button>
-  </ion-content>
 
+  <div class="container"> 
+    <div class="background-gradient-left"></div>
+    <div class="form-container">
+      <h1>Crear una cuenta</h1>
+      <p>¿Tienes ya una cuenta? <a href="#">Inicia Sesión</a></p>
+
+      <ion-item>
+        <ion-label position="floating">Nombre de Usuario</ion-label>
+        <ion-input type="text"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Correo Electronico</ion-label>
+        <ion-input type="email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Contraseña</ion-label>
+        <ion-input type="password"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Repetir Contraseña</ion-label>
+        <ion-input type="password"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-checkbox slot="start" value="terminos"></ion-checkbox>
+        <ion-label>Acepto los términos y condiciones para crear una cuenta</ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-checkbox slot="start" value="notificaciones"></ion-checkbox>
+        <ion-label>Deseo recibir notificaciones y correos con información de promociones y ofertas</ion-label>
+      </ion-item>
+
+      <div class="recaptcha-container">
+        <p>No soy un robot</p>
+        <div style="/* estilos del recaptcha */ border: 1px solid #ccc; width: 80px; height: 40px;"></div>
+      </div>
+
+      <ion-button expand="block">Crear Cuenta</ion-button>
+    </div>
+  </div>
 </ion-content>
