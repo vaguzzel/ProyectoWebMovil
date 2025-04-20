@@ -1,7 +1,7 @@
 import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { register } from 'swiper/element/bundle';
 
-// Añade esta interfaz en la parte superior del archivo, después de los imports
+// Definir la interfaz para el contenedor Swiper
 interface SwiperContainer extends HTMLElement {
   swiper?: any;
 }
@@ -17,15 +17,16 @@ register();
 })
 export class Tab1Page implements AfterViewInit {
   
-  // Referencias a los sliders para poder manipularlos
   @ViewChild('ofertasSwiper') ofertasSwiper: ElementRef | undefined;
   @ViewChild('masVendidosSwiper') masVendidosSwiper: ElementRef | undefined;
   
   constructor() {}
   
   ngAfterViewInit() {
-    // Configurar los controles de navegación después de que la vista se haya inicializado
-    this.initializeSwiperNavigation();
+    // Inicializar la navegación cuando la vista se haya cargado completamente
+    setTimeout(() => {
+      this.initializeSwiperNavigation();
+    }, 500);
   }
   
   initializeSwiperNavigation() {
