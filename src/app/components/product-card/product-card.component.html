@@ -1,0 +1,20 @@
+<ion-card class="product-card">
+  <ion-button fill="clear" class="wishlist-button">
+    <ion-icon slot="icon-only" name="heart-outline"></ion-icon>
+  </ion-button>
+  <div class="big">
+    <ion-img [src]="image" [alt]="title" class="img"></ion-img>
+  </div>
+  <div class="small">
+    <ion-card-header>
+      <ion-card-subtitle>{{ brand }}</ion-card-subtitle>
+      <ion-card-title>{{ title }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div class="price-container">
+        <span class="current-price">$ {{ price | number:'1.0-0' }}</span>
+        <span *ngIf="previousPrice" class="old-price"><s>${{ previousPrice | number:'1.0-0' }}</s></span>
+      </div>
+    </ion-card-content>
+  </div>
+</ion-card>

@@ -1,0 +1,480 @@
+/* ESTILOS DEL HEADER */
+ion-header {
+  --background: transparent;
+  box-shadow: none;
+}
+
+ion-toolbar.custom-toolbar {
+  --background: #a1818a;
+  --min-height: 65px;
+  padding: 0 15px;
+  box-shadow: none;
+  border-radius: 0;
+  overflow: hidden;
+}
+
+.toolbar-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+}
+
+.logo {
+  font-size: 1.8em;
+  font-weight: bold;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+.logo-look {
+  color: white;
+}
+
+.logo-4 {
+  color: #FFB6C1;
+}
+
+.logo-beauty {
+  color: black;
+}
+
+.search-container {
+  flex-grow: 1;
+  max-width: 400px;
+  margin: 0 20px;
+}
+
+ion-searchbar.custom-searchbar {
+  --background: #f0f0f0;
+  --border-radius: 20px;
+  --box-shadow: none;
+  --height: 40px;
+  --placeholder-color: #888;
+  --icon-color: #555;
+  padding: 0;
+}
+
+.navigation-items {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+ion-button.nav-link {
+  --color: #333;
+  font-size: 0.9em;
+  text-transform: none;
+  margin: 0 5px;
+}
+
+ion-button.icon-button {
+  --color: #333;
+  --padding-start: 5px;
+  --padding-end: 5px;
+  font-size: 1.2em;
+}
+
+/* ESTILOS DEL CONTENIDO */
+ion-content {
+  --background: #fde9ee;
+}
+
+.section-container {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.section-title {
+  font-size: 1.6em;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 15px;
+
+  &.centered-title {
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+}
+
+/* ESTILOS DE LOS SLIDERS */
+.slider-container {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 30px;
+  background-color: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+swiper-container {
+  width: 100%;
+  overflow: visible;
+}
+
+swiper-slide {
+  width: auto;
+  padding: 10px;
+}
+
+.slider-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  --color: #555;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  --padding-start: 5px;
+  --padding-end: 5px;
+  height: 35px;
+  width: 35px;
+  margin: 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+  &.prev-button {
+    left: 10px;
+  }
+
+  &.next-button {
+    right: 10px;
+  }
+}
+
+/* TARJETAS DE PRODUCTO */
+ion-card.product-card {
+  --background: #fff;
+  
+  margin: 5px 0;
+  border-radius: 8px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  box-shadow: none;
+  border: 1px solid #f0f0f0;
+}
+
+.product-card > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  flex-grow: 1;
+  
+}
+
+  ion-img {
+    width: 100%;
+    height: 120px;
+    object-fit: contain;
+    padding: 10px;
+    background-color: #fff;
+  }
+
+  ion-card-header {
+    padding: 8px 10px 0;
+  }
+
+  ion-card-subtitle {
+    font-size: 0.7em;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #333;
+    margin: 0;
+  }
+
+  ion-card-title {
+    font-size: 0.85em;
+    font-weight: normal;
+    color: #333;
+    white-space: normal;
+    line-height: 1.3;
+    min-height: 35px;
+    margin: 0;
+  }
+
+  ion-card-content {
+    padding: 5px 10px 10px;
+  }
+
+  .price-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .current-price {
+    font-size: 1em;
+    font-weight: bold;
+    color: #333;
+  }
+
+  .original-price {
+    font-size: 0.8em;
+    color: #888;
+    
+    s {
+      text-decoration: line-through;
+    }
+  }
+
+  .wishlist-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    z-index: 5;
+    --color: #a1818a;
+    --background: transparent;
+    --padding-start: 3px;
+    --padding-end: 3px;
+    margin: 0;
+  }
+
+
+/* CATEGORÍAS */
+.categorias-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 15px;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.category-card {
+  background-color: #a1818a;
+  border-radius: 10px;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  overflow: hidden;
+  min-height: 120px;
+}
+
+.category-text {
+  flex: 1;
+  color: #fff;
+
+  h3 {
+    font-size: 1.3em;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 5px;
+    color: #fff;
+  }
+
+  p {
+    font-size: 0.85em;
+    margin-bottom: 10px;
+    opacity: 0.9;
+    color: #f0f0f0;
+  }
+}
+
+.category-button {
+  --background: #fff;
+  --color: #333;
+  --border-radius: 20px;
+  --padding-start: 15px;
+  --padding-end: 15px;
+  height: 30px;
+  font-size: 0.8em;
+  text-transform: none;
+  margin-top: 5px;
+}
+
+.category-image {
+  flex-shrink: 0;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  border-radius: 8px;
+  
+
+  img {
+    height: 100px;
+    width: 100px;
+    object-fit: fill;
+    border-radius: 8px;
+  }
+}
+
+/* ESTILOS DEL FOOTER */
+ion-footer {
+  background: #4f4246;
+
+  ion-toolbar.footer-toolbar {
+    --background: #4f4246;
+    --color: #e0e0e0;
+    padding: 20px 0;
+  }
+
+  .footer-toolbar {
+    background-color: #ffe6ed; /* rosado suave */
+    color: #000000; /* texto oscuro para buen contraste */
+    margin-top: 40px;
+  }
+  
+  .footer-logo {
+    margin-bottom: 15px;
+    font-size: 1.6em;
+    font-weight: bold;
+  
+    .footer-grid {
+      padding: 0;
+    }
+    
+    .logo-look {
+      color: white;
+    }
+    
+    .logo-4 {
+      color: #FFB6C1;
+    }
+    
+    .logo-beauty {
+      color: white;
+    }
+  }
+
+  .social-icons {
+    margin-top: 10px;
+    display: flex;
+    gap: 5px;
+  }
+
+  ion-button.social-button {
+    --color: #e0e0e0;
+    font-size: 1.2em;
+    --background: rgba(255, 255, 255, 0.1);
+    --border-radius: 50%;
+    --padding-start: 8px;
+    --padding-end: 8px;
+    width: 36px;
+    height: 36px;
+  }
+
+  .footer-title {
+    font-size: 1em;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 10px;
+  }
+
+  .footer-list {
+    background: transparent;
+    padding: 0;
+
+    ion-item {
+      --background: transparent;
+      --padding-start: 0;
+      --inner-padding-end: 0;
+      --min-height: 25px;
+      margin-bottom: 5px;
+
+      ion-label {
+        font-size: 0.85em;
+        color: #d0d0d0;
+        cursor: pointer;
+        
+        &:hover {
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 767px) {
+    ion-col[size="6"] {
+      margin-bottom: 20px;
+    }
+    
+    .footer-title {
+      margin-top: 15px;
+    }
+  }
+}
+
+/* AJUSTES RESPONSIVOS PARA SLIDERS */
+@media (max-width: 576px) {
+  .slider-container {
+    padding: 0 25px;
+  }
+  
+  ion-card.product-card {
+    width: 165px;
+  }
+}
+
+/* MÁS VENDIDOS SECCIÓN */
+.mas-vendidos-slider-container {
+  margin-top: 20px;
+  margin-bottom: 30px;
+  background-color: #a1818a;
+}
+
+/* OFERTAS DE HOY SECCIÓN */
+.ofertas-slider-container {
+  background-color: #a1818a; /* Cambiar de #fff a #a1818a */
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+/* Añadir este estilo específico para las tarjetas de ofertas */
+.ofertas-swiper ion-card.product-card {
+  width: 200px; /* Ancho ajustado para que se vean mejor */
+  background-color: #fff; /* Mantener las tarjetas en blanco */
+  height: 300px
+}
+
+
+/* Ajustes específicos para que se vea como en la imagen */
+.ofertas-de-hoy {
+  color:#000000;
+  margin-top: 15px;
+  font-size: 1.5em;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.custom-footer-toolbar {
+  --background: #a1818a; /* color de fondo */
+  --color: white;        /* color del texto */
+  padding-top: 40px ;
+}
+
+a {
+  color: #e4dbdd;
+}
+
+.icon {
+  background-color:#a1818a;
+}
+
+.img {
+  padding-top: 20px;
+  height: 200px;
+}
+
+.big {
+  height: 300px;
+  
+}
+
+.small {
+  flex-grow: 1;
+  
+}
+
+

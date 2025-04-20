@@ -1,17 +1,259 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
+  <ion-toolbar class="custom-toolbar">
+    <div class="toolbar-content">
+      <div class="logo">
+        <span class="logo-look">Look</span><span class="logo-4">4</span><span class="logo-beauty">Beauty</span>
+      </div>
+      <div class="search-container">
+        <ion-searchbar placeholder="¿Qué buscas?" class="custom-searchbar"></ion-searchbar>
+      </div>
+      <div class="navigation-items">
+        <ion-buttons>
+          <ion-button fill="clear" class="nav-link">Inicio</ion-button>
+          <ion-button fill="clear" class="nav-link">Categorías</ion-button>
+          <ion-button fill="clear" class="nav-link">Marcas</ion-button>
+          <ion-button fill="clear" class="nav-link">Contáctanos</ion-button>
+        </ion-buttons>
+        <ion-buttons>
+          <ion-button fill="clear" class="icon-button">
+            <ion-icon slot="icon-only" name="heart-outline"></ion-icon>
+          </ion-button>
+          <ion-button fill="clear" class="icon-button">
+            <ion-icon slot="icon-only" name="person-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </div>
+    </div>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" >
+  <div class="section-container ion-padding-start ion-padding-end">
+    <h2 class="ofertas-de-hoy">Ofertas de hoy 🔥</h2>
+    <div class="ofertas-slider-container slider-container">
+      <swiper-container class="ofertas-swiper" slides-per-view="auto" space-between="10">
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+        
+        <swiper-slide>
+          <app-product-card
+            [image]="'/assets/images/placeholder-oferta-1.png'"
+            [brand]="'NYX'"
+            [title]="'Corrector HD photogenic concealer wand'"
+            [price]="9990"
+            [previousPrice]="12900"
+            >
+        </app-product-card>
+        </swiper-slide>
+
+        <swiper-slide>
+          <app-product-card
+            [image]="'/assets/images/placeholder-oferta-2.png'"
+            [brand]="'TOCOBO'"
+            [title]="'Cica Protector Solar En Barra Spf50'"
+            [price]="15990"
+            [previousPrice]="26990"
+            >
+        </app-product-card>
+        </swiper-slide>
+
+        <swiper-slide>
+          <app-product-card
+            [image]="'/assets/images/placeholder-oferta-3.png'"
+            [brand]="'SKIN1004'"
+            [title]="'Limpiador Oleoso Ligero Centella 200Ml'"
+            [price]="18990"
+            [previousPrice]="27990"
+            >
+        </app-product-card>
+        </swiper-slide>
+
+        <swiper-slide>
+          <app-product-card
+            [image]="'/assets/images/placeholder-oferta-4.png'"
+            [brand]="'KIKO MILANO'"
+            [title]="'3D Hydra Lip Gloss'"
+            [price]="10990"
+            [previousPrice]="14990"
+            >
+        </app-product-card>
+        </swiper-slide>
+
+        
+
+
+      </swiper-container>
+      <ion-button fill="clear" class="slider-nav prev-button ofertas-prev">
+        <ion-icon slot="icon-only" name="chevron-back-outline"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear" class="slider-nav next-button ofertas-next">
+        <ion-icon slot="icon-only" name="chevron-forward-outline"></ion-icon>
+      </ion-button>
+    </div>
+  </div>
+
+  <div class="section-container ion-padding-start ion-padding-end">
+    <h2 class="section-title">Categorías populares</h2>
+    <div class="categorias-container">
+      <div class="category-card">
+        <div class="category-text">
+          <h3>Skincare</h3>
+          <p>Todo lo que necesitas para tu rutina</p>
+          <ion-button class="category-button" fill="solid" shape="round">Revisa aquí</ion-button>
+        </div>
+        <div class="category-image">
+          <img src="/assets/images/placeholder-categoria-1.png" alt="Skincare">
+        </div>
+      </div>
+      <div class="category-card">
+        <div class="category-text">
+          <h3>Labios</h3>
+          <p>Encuentra tu tono ideal</p>
+          <ion-button class="category-button" fill="solid" shape="round">Revisa aquí</ion-button>
+        </div>
+        <div class="category-image">
+          <img src="/assets/images/placeholder-categoria-2.png" alt="Labios">
+        </div>
+      </div>
+      <div class="category-card">
+        <div class="category-text">
+          <h3>Accesorios</h3>
+          <p>Las herramientas clave para tu estación de maquillaje</p>
+          <ion-button class="category-button" fill="solid" shape="round">Revisa aquí</ion-button>
+        </div>
+        <div class="category-image">
+          <img src="/assets/images/placeholder-categoria-3.png" alt="Accesorios">
+        </div>
+      </div>
+      <div class="category-card">
+        <div class="category-text">
+          <h3>Capilar</h3>
+          <p>Descubre lo esencial para un pelo increíble</p>
+          <ion-button class="category-button" fill="solid" shape="round">Revisa aquí</ion-button>
+        </div>
+        <div class="category-image">
+          <img src="/assets/images/placeholder-categoria-4.png" alt="Capilar">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-container ion-padding-start ion-padding-end">
+    <h2 class="section-title centered-title">MÁS VENDIDOS</h2>
+    <div class="mas-vendidos-slider-container slider-container">
+      <swiper-container class="mas-vendidos-swiper" class="ofertas-swiper" slides-per-view="auto" space-between="10">
+
+        
+
+        <swiper-slide>
+          
+          <app-product-card
+            [image]="'/assets/images/placeholder-mv-1.png'"
+            [brand]="'RARE BEAUTY'"
+            [title]="'Positive Light Tinted Moisturizer'"
+            [price]="20000"
+            >
+        </app-product-card>
+        
+        </swiper-slide>
+
+        <swiper-slide>
+          <app-product-card
+            [image]="'/assets/images/placeholder-mv-2.png'"
+            [brand]="'TOCOBO'"
+            [title]="'Glass Tinted Lip Balm'"
+            [price]="24990"
+            >
+          </app-product-card>
+          
+        </swiper-slide>
+
+        <swiper-slide>
+            <app-product-card
+              [image]="'/assets/images/placeholder-mv-3.png'"
+              [brand]="'ANUA'"
+              [title]="'Heartleaf 77% Soothing Toner'"
+              [price]="27100"
+              >
+            </app-product-card>
+        </swiper-slide>
+
+        <swiper-slide>
+          <app-product-card
+            [image]="'/assets/images/placeholder-mv-4.png'"
+            [brand]="'RARE BEAUTY'"
+            [title]="'Soft Pinch Liquid Blush'"
+            [price]="35000"
+            >
+          </app-product-card>
+      </swiper-slide>
+      </swiper-container>
+
+      <ion-button fill="clear" class="slider-nav prev-button mv-prev">
+        <ion-icon slot="icon-only" name="chevron-back-outline"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear" class="slider-nav next-button mv-next">
+        <ion-icon slot="icon-only" name="chevron-forward-outline"></ion-icon>
+      </ion-button>
+    </div>
+  </div>
+
+
+  <!--footer al final de página-->
+  <div class="footer-simple">
+    <ion-toolbar class="custom-footer-toolbar">
+      <ion-grid>
+        <ion-row class="ion-align-items-start"> 
+  
+          <ion-col size="12" size-md="4" class="footer-col">
+            <div class="logo footer-logo"> 
+              <span class="logo-look">Look</span><span class="logo-4">4</span><span class="logo-beauty">Beauty</span>
+            </div>
+            <p class="footer-description">
+              Somos una compañía chilena creada con el propósito de encontrar y recopilar, por ti, los mejores precios en productos cosméticos de las tiendas en Chile.
+            </p>
+            <div class="social-icons">
+              <ion-button class="icon" fill="clear" href="#" target="_blank" aria-label="Twitter">
+                <ion-icon slot="icon-only" name="logo-twitter" ></ion-icon>
+              </ion-button>
+              <ion-button fill="clear" href="#" target="_blank" aria-label="Facebook">
+                <ion-icon slot="icon-only" name="logo-facebook"></ion-icon>
+              </ion-button>
+              <ion-button fill="clear" href="#" target="_blank" aria-label="TikTok">
+                <ion-icon slot="icon-only" name="logo-tiktok"></ion-icon>
+              </ion-button>
+               <ion-button fill="clear" href="#" target="_blank" aria-label="Instagram">
+                 <ion-icon slot="icon-only" name="logo-instagram"></ion-icon> 
+               </ion-button>
+            </div>
+          </ion-col>
+  
+          <ion-col size="12" size-md="4" class="footer-col">
+            <h5 class="footer-title">Servicios</h5>
+            <p class="footer-link"><a href="#">Bonus program</a></p>
+            <p class="footer-link"><a href="#">Gift cards</a></p>
+            <p class="footer-link"><a href="#">Credit and payment</a></p>
+            <p class="footer-link"><a href="#">Service contracts</a></p>
+            <p class="footer-link"><a href="#">Non-cash account</a></p>
+            <p class="footer-link"><a href="#">Payment</a></p>
+          </ion-col>
+  
+          <ion-col size="12" size-md="4" class="footer-col">
+            <h5 class="footer-title">Soporte</h5>
+            <p class="footer-link"><a href="#">Find an order</a></p>
+            <p class="footer-link"><a href="#">Terms of delivery</a></p>
+            <p class="footer-link"><a href="#">Exchange and return/reimbursement of goods</a></p>
+            <p class="footer-link"><a href="#">Contacto con el soporte</a></p>
+            <p class="footer-link"><a href="#">Preguntas frecuentes</a></p>
+            <p class="footer-link"><a href="#">Términos de uso del sitio</a></p>
+          </ion-col>
+  
+        </ion-row>
+      </ion-grid>
+    </ion-toolbar>
+    
+  </div>
+
+ 
 </ion-content>
+
+
