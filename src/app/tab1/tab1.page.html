@@ -33,116 +33,52 @@
     <div class="ofertas-slider-container slider-container">
       <swiper-container class="ofertas-swiper" slides-per-view="auto" space-between="10">
 
+        
         <swiper-slide>
-
-          <ion-card class="product-card">
-            <ion-button fill="clear" class="wishlist-button">
-              <ion-icon slot="icon-only" name="heart-outline"></ion-icon>
-            </ion-button>
-            <div class="big">
-              <ion-img class="img" src="/assets/images/placeholder-oferta-1.png" alt="Producto Oferta 1"></ion-img>
-
-            </div>
-            
-            <div class="small">
-              <ion-card-header>
-                <ion-card-subtitle>NYX</ion-card-subtitle>
-                <ion-card-title>Corrector HD photogenic concealer wand</ion-card-title>
-              </ion-card-header>
-              <ion-card-content>
-                <div class="price-container">
-                  <span class="current-price">$ 9.990</span>
-                  <span class="original-price"><s>$12.900</s></span>
-                </div>
-              </ion-card-content>
-            </div>
-          </ion-card>
-
-          
-        </swiper-slide>
-
-
-        <swiper-slide>
-          <ion-card class="product-card">
-            <ion-button fill="clear" class="wishlist-button">
-              <ion-icon slot="icon-only" name="heart-outline"></ion-icon>
-            </ion-button>
-            <div class="big">
-              <ion-img src="/assets/images/placeholder-oferta-2.png" alt="Producto Oferta 2"></ion-img>
-
-            </div>
-            
-            <div class="small">
-              <ion-card-header>
-                <ion-card-subtitle>TOCOBO</ion-card-subtitle>
-                <ion-card-title>Cica Protector Solar En Barra Spf50+</ion-card-title>
-              </ion-card-header>
-              <ion-card-content>
-                <div class="price-container">
-                  <span class="current-price">$15.990</span>
-                  <span class="original-price"><s>$26.990</s></span>
-                </div>
-              </ion-card-content>
-            </div>
-          </ion-card>
-
+          <app-product-card
+            [image]="'/assets/images/placeholder-oferta-1.png'"
+            [brand]="'NYX'"
+            [title]="'Corrector HD photogenic concealer wand'"
+            [price]="9990"
+            [previousPrice]="12900"
+            >
+        </app-product-card>
         </swiper-slide>
 
         <swiper-slide>
-
-          <ion-card class="product-card">
-            <ion-button fill="clear" class="wishlist-button">
-              <ion-icon slot="icon-only" name="heart-outline"></ion-icon>
-            </ion-button>
-            <div class="big">
-              <ion-img src="/assets/images/placeholder-oferta-3.png" alt="Producto Oferta 3"></ion-img>
-
-            </div>
-            
-            <div class="small">
-              <ion-card-header>
-                <ion-card-subtitle>SKIN1004</ion-card-subtitle>
-                <ion-card-title>Limpiador Oleoso Ligero Centella 200Ml</ion-card-title>
-              </ion-card-header>
-              <ion-card-content>
-                <div class="price-container">
-                  <span class="current-price">$18.990</span>
-                  <span class="original-price"><s>$27.990</s></span>
-                </div>
-              </ion-card-content>
-            </div>
-          </ion-card>
-
+          <app-product-card
+            [image]="'/assets/images/placeholder-oferta-2.png'"
+            [brand]="'TOCOBO'"
+            [title]="'Cica Protector Solar En Barra Spf50'"
+            [price]="15990"
+            [previousPrice]="26990"
+            >
+        </app-product-card>
         </swiper-slide>
-
-
 
         <swiper-slide>
-
-          <ion-card class="product-card">
-            <ion-button fill="clear" class="wishlist-button">
-              <ion-icon slot="icon-only" name="heart-outline"></ion-icon>
-            </ion-button>
-            <div class="big">
-              <ion-img src="/assets/images/placeholder-oferta-4.png" alt="Producto Oferta 4"></ion-img>
-
-            </div>
-            
-            <div class="small">
-              <ion-card-header>
-                <ion-card-subtitle>KIKO MILANO</ion-card-subtitle>
-                <ion-card-title>3D Hydra Lip Gloss</ion-card-title>
-              </ion-card-header>
-              <ion-card-content>
-                <div class="price-container">
-                  <span class="current-price">$10.990</span>
-                  <span class="original-price"><s>$14.990</s></span>
-                </div>
-              </ion-card-content>
-            </div>
-          </ion-card>
+          <app-product-card
+            [image]="'/assets/images/placeholder-oferta-3.png'"
+            [brand]="'SKIN1004'"
+            [title]="'Limpiador Oleoso Ligero Centella 200Ml'"
+            [price]="18990"
+            [previousPrice]="27990"
+            >
+        </app-product-card>
         </swiper-slide>
 
+        <swiper-slide>
+          <app-product-card
+            [image]="'/assets/images/placeholder-oferta-4.png'"
+            [brand]="'KIKO MILANO'"
+            [title]="'3D Hydra Lip Gloss'"
+            [price]="10990"
+            [previousPrice]="14990"
+            >
+        </app-product-card>
+        </swiper-slide>
+
+        
 
 
       </swiper-container>
@@ -209,99 +145,49 @@
         
 
         <swiper-slide>
-          <ion-card class="product-card">
-            <ion-button fill="clear" class="wishlist-button">
-              <ion-icon slot="icon-only" name="heart-outline"></ion-icon>
-            </ion-button>
-            <div class="big">
-              <ion-img src="/assets/images/placeholder-mv-1.png" alt="Producto MV 1"></ion-img>
-  
-            </div>
-            
-            <div class="small">
-              <ion-card-header>
-                <ion-card-subtitle>RARE BEAUTY</ion-card-subtitle>
-                <ion-card-title>Positive Light Tinted Moisturizer</ion-card-title>
-              </ion-card-header>
-              <ion-card-content>
-                <div class="price-container">
-                  <span class="current-price">$ 20.000</span>
-                  
-                </div>
-              </ion-card-content>
-            </div>
-          </ion-card>
+          
+          <app-product-card
+            [image]="'/assets/images/placeholder-mv-1.png'"
+            [brand]="'RARE BEAUTY'"
+            [title]="'Positive Light Tinted Moisturizer'"
+            [price]="20000"
+            >
+        </app-product-card>
+        
         </swiper-slide>
 
         <swiper-slide>
-          <ion-card class="product-card">
-            <ion-button fill="clear" class="wishlist-button">
-              <ion-icon slot="icon-only" name="heart-outline"></ion-icon>
-            </ion-button>
-            <div class="big">
-              <ion-img src="/assets/images/placeholder-mv-2.png" alt="Producto MV 2"></ion-img>
-            </div>
-            
-            <div class="small">
-              <ion-card-header>
-                <ion-card-subtitle>TOCOBO</ion-card-subtitle>
-                <ion-card-title>Glass Tinted Lip Balm</ion-card-title>
-              </ion-card-header>
-              <ion-card-content>
-                <div class="price-container">
-                  <span class="current-price">$24.990</span>
-                </div>
-              </ion-card-content>
-            </div>
-          </ion-card>
+          <app-product-card
+            [image]="'/assets/images/placeholder-mv-2.png'"
+            [brand]="'TOCOBO'"
+            [title]="'Glass Tinted Lip Balm'"
+            [price]="24990"
+            >
+          </app-product-card>
+          
         </swiper-slide>
 
         <swiper-slide>
-          <ion-card class="product-card">
-            <ion-button fill="clear" class="wishlist-button">
-              <ion-icon slot="icon-only" name="heart-outline"></ion-icon>
-            </ion-button>
-            <div class="big">
-              <ion-img src="/assets/images/placeholder-mv-3.png" alt="Producto MV 3"></ion-img>
-            </div>
-            
-            <div class="small">
-              <ion-card-header>
-                <ion-card-subtitle>ANUA</ion-card-subtitle>
-                <ion-card-title>Heartleaf 77% Soothing Toner</ion-card-title>
-              </ion-card-header>
-              <ion-card-content>
-                <div class="price-container">
-                  <span class="current-price">$27.100</span>
-                </div>
-              </ion-card-content>
-            </div>
-          </ion-card>
+            <app-product-card
+              [image]="'/assets/images/placeholder-mv-3.png'"
+              [brand]="'ANUA'"
+              [title]="'Heartleaf 77% Soothing Toner'"
+              [price]="27100"
+              >
+            </app-product-card>
         </swiper-slide>
 
         <swiper-slide>
-          <ion-card class="product-card">
-            <ion-button fill="clear" class="wishlist-button">
-              <ion-icon slot="icon-only" name="heart-outline"></ion-icon>
-            </ion-button>
-            <div class="big">
-              <ion-img src="/assets/images/placeholder-mv-4.png" alt="Producto MV 4"></ion-img>
-            </div>
-            
-            <div class="small">
-              <ion-card-header>
-                <ion-card-subtitle>RARE BEAUTY</ion-card-subtitle>
-                <ion-card-title>Soft Pinch Liquid Blush</ion-card-title>
-              </ion-card-header>
-              <ion-card-content>
-                <div class="price-container">
-                  <span class="current-price">$35.000</span>
-                </div>
-              </ion-card-content>
-            </div>
-          </ion-card>
-        </swiper-slide>
+          <app-product-card
+            [image]="'/assets/images/placeholder-mv-4.png'"
+            [brand]="'RARE BEAUTY'"
+            [title]="'Soft Pinch Liquid Blush'"
+            [price]="35000"
+            >
+          </app-product-card>
+      </swiper-slide>
       </swiper-container>
+
       <ion-button fill="clear" class="slider-nav prev-button mv-prev">
         <ion-icon slot="icon-only" name="chevron-back-outline"></ion-icon>
       </ion-button>
