@@ -148,13 +148,24 @@ swiper-slide {
 /* TARJETAS DE PRODUCTO */
 ion-card.product-card {
   --background: #fff;
-  width: 180px;
+  
   margin: 5px 0;
   border-radius: 8px;
   position: relative;
-  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
   box-shadow: none;
   border: 1px solid #f0f0f0;
+}
+
+.product-card > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  flex-grow: 1;
+  
+}
 
   ion-img {
     width: 100%;
@@ -222,7 +233,7 @@ ion-card.product-card {
     --padding-end: 3px;
     margin: 0;
   }
-}
+
 
 /* CATEGORÍAS */
 .categorias-container {
@@ -306,10 +317,20 @@ ion-footer {
     padding: 20px 0;
   }
 
+  .footer-toolbar {
+    background-color: #ffe6ed; /* rosado suave */
+    color: #000000; /* texto oscuro para buen contraste */
+    margin-top: 40px;
+  }
+  
   .footer-logo {
     margin-bottom: 15px;
     font-size: 1.6em;
     font-weight: bold;
+  
+    .footer-grid {
+      padding: 0;
+    }
     
     .logo-look {
       color: white;
@@ -397,6 +418,7 @@ ion-footer {
 .mas-vendidos-slider-container {
   margin-top: 20px;
   margin-bottom: 30px;
+  background-color: #a1818a;
 }
 
 /* OFERTAS DE HOY SECCIÓN */
@@ -410,11 +432,13 @@ ion-footer {
 .ofertas-swiper ion-card.product-card {
   width: 200px; /* Ancho ajustado para que se vean mejor */
   background-color: #fff; /* Mantener las tarjetas en blanco */
+  height: 300px
 }
 
 
 /* Ajustes específicos para que se vea como en la imagen */
 .ofertas-de-hoy {
+  color:#000000;
   margin-top: 15px;
   font-size: 1.5em;
   font-weight: bold;
@@ -422,3 +446,34 @@ ion-footer {
   align-items: center;
   gap: 5px;
 }
+
+.custom-footer-toolbar {
+  --background: #a1818a; /* color de fondo */
+  --color: white;        /* color del texto */
+  padding-top: 40px ;
+}
+
+a {
+  color: #e4dbdd;
+}
+
+.icon {
+  background-color:#a1818a;
+}
+
+.img {
+  padding-top: 20px;
+  height: 200px;
+}
+
+.big {
+  height: 300px;
+  
+}
+
+.small {
+  flex-grow: 1;
+  
+}
+
+
