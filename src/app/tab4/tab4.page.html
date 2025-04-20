@@ -28,30 +28,26 @@
     </ion-toolbar>
   </ion-header>
 
-  <div class="container"> 
+  <div class="container">
     <div class="background-gradient-left"></div>
     <div class="form-container">
       <h1>Crear una cuenta</h1>
       <p>¿Tienes ya una cuenta? <a href="#">Inicia Sesión</a></p>
 
       <ion-item>
-        <ion-label position="floating">Nombre de Usuario</ion-label>
-        <ion-input type="text"></ion-input>
+        <ion-input type="text" placeholder="Nombre de Usuario"></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-label position="floating">Correo Electronico</ion-label>
-        <ion-input type="email"></ion-input>
+        <ion-input type="email" placeholder="Correo Electronico"></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-label position="floating">Contraseña</ion-label>
-        <ion-input type="password"></ion-input>
+        <ion-input type="password" placeholder="Contraseña"></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-label position="floating">Repetir Contraseña</ion-label>
-        <ion-input type="password"></ion-input>
+        <ion-input type="password" placeholder="Repetir Contraseña"></ion-input>
       </ion-item>
 
       <ion-item>
@@ -64,9 +60,20 @@
         <ion-label>Deseo recibir notificaciones y correos con información de promociones y ofertas</ion-label>
       </ion-item>
 
-      <div class="recaptcha-container">
-        <p>No soy un robot</p>
-        <div style="/* estilos del recaptcha */ border: 1px solid #ccc; width: 80px; height: 40px;"></div>
+      <div class="custom-recaptcha-container">
+        <div class="custom-recaptcha-checkbox">
+          <div class="custom-recaptcha-tick"></div>
+        </div>
+        <span class="custom-recaptcha-text">No soy un robot</span>
+        <div class="custom-recaptcha-logo">
+          <svg viewBox="0 0 32 32" width="20" height="20">
+            <path d="M16 4a12 12 0 1 0 12 12A12 12 0 0 0 16 4zm0 2a10 10 0 1 1 10 10A10 10 0 0 1 16 6z" fill="#4285f4"/>
+            <path d="M16 6v5.33L21.33 16H16z" fill="#1967d2"/>
+            <path d="M16 26a10 10 0 0 1-5.33-18H16V26z" fill="#757575"/>
+            <path d="M16 26v-5.33L10.67 16H16z" fill="#616161"/>
+          </svg>
+          <span style="font-size: 0.7em; color: #757575; margin-left: 3px;">reCAPTCHA</span>
+        </div>
       </div>
 
       <ion-button expand="block">Crear Cuenta</ion-button>
