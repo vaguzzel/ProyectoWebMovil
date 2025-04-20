@@ -1,275 +1,374 @@
-// que sea transparente ayuda a que no se vea feo el header (como está redondeado abajo, se veia blanco de fondo)
+/* ESTILOS DEL HEADER */
 ion-header {
-  --background: transparent; // Hace que el contenedor del header sea transparente
-  // Si el header tiene alguna sombra por defecto que no quieras, puedes quitarla
+  --background: transparent;
   box-shadow: none;
 }
 
-// Mantén tus estilos para el ion-toolbar
 ion-toolbar.custom-toolbar {
-    --background: #a1818a; // El color visible vendrá del toolbar
-    --min-height: 65px;
-    padding: 0 15px;
-    box-shadow: none;
-
-  // Bordes redondeados SOLO en la parte inferior
+  --background: #a1818a;
+  --min-height: 65px;
+  padding: 0 15px;
+  box-shadow: none;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
-  border-bottom-left-radius: 10px; // O el radio que desees
-  border-bottom-right-radius: 10px;// O el radio que desees
-
-  // Asegura que el fondo se recorte correctamente en las esquinas redondeadas
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
   overflow: hidden;
 }
-// Contenedor Flex principal dentro de la barra
+
 .toolbar-content {
   display: flex;
-  align-items: center; // Centra verticalmente los items
-  justify-content: space-between; // Espacio entre logo, search, y nav
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
   height: 100%;
 }
 
-// Estilos del Logo
- .logo {
-  font-size: 1.8em; // Tamaño de fuente del logo
+.logo {
+  font-size: 1.8em;
   font-weight: bold;
-  flex-shrink: 0; // Evita que el logo se encoja
-  
-  .logo-look {
-    color: white;
-  }
-
-  .logo-4 { // Nueva clase para el "4"
-      // Aquí pones el color rosa que prefieras.
-      // Puedes usar nombres de color, códigos hexadecimales, rgb, etc.
-      // Ejemplo con un rosa similar al de la imagen que mostraste:
-      color: #FFB6C1; // <-- AJUSTA ESTE ROSA SI QUIERES OTRO TONO
-      // Otras opciones: hotpink, #FFC0CB (LightPink), #FF1493 (DeepPink)
-    }
-
-  .logo-beauty {
-    color: black;
-  }
+  flex-shrink: 0;
+  display: flex; // Añadido para asegurar que los spans estén juntos
+  align-items: center; // Alineación vertical
 }
 
-// Contenedor de la barra de búsqueda para controlar tamaño/posición
+.logo-look {
+  color: white;
+}
+
+.logo-4 {
+  color: #FFB6C1;
+}
+
+.logo-beauty {
+  color: black;
+}
+
 .search-container {
-  flex-grow: 1; // Permite que la barra ocupe el espacio disponible
-  max-width: 400px; // Limita el ancho máximo de la búsqueda
-  margin: 0 20px; // Espacio alrededor de la barra de búsqueda
+  flex-grow: 1;
+  max-width: 400px;
+  margin: 0 20px;
 }
 
-// Estilos de la Barra de Búsqueda
 ion-searchbar.custom-searchbar {
-  --background: #f0f0f0; // Fondo claro para la barra
-  --border-radius: 20px; // Bordes redondeados
-  --box-shadow: none; // Sin sombra interna
-  --height: 40px; // Altura de la barra
+  --background: #f0f0f0;
+  --border-radius: 20px;
+  --box-shadow: none;
+  --height: 40px;
   --placeholder-color: #888;
-  --icon-color: #555; // Color del ícono de lupa
-  padding: 0; // Quitar padding interno si interfiere
+  --icon-color: #555;
+  padding: 0;
 }
 
-// Contenedor para los items de navegación (links e iconos)
 .navigation-items {
   display: flex;
   align-items: center;
-  flex-shrink: 0; // Evita que esta sección se encoja
+  flex-shrink: 0;
 }
 
-// Estilos para los botones de navegación (links)
 ion-button.nav-link {
-  --color: #333; // Color del texto de los links (ajusta)
+  --color: #333;
   font-size: 0.9em;
-  text-transform: none; // Evita que el texto se ponga en mayúsculas
-  margin: 0 5px; // Espacio entre links
+  text-transform: none;
+  margin: 0 5px;
 }
 
-// Estilos para los botones de iconos
 ion-button.icon-button {
-  --color: #333; // Color de los iconos (ajusta)
+  --color: #333;
   --padding-start: 5px;
   --padding-end: 5px;
-  font-size: 1.2em; // Tamaño del icono
+  font-size: 1.2em;
 }
 
-//ion-content {
-  // Establece el color de fondo rosa claro sólido deseado
-  //--background: #fdecef; // Este es un rosa muy pálido, ajústalo si prefieres otro tono
-                         // Por ejemplo: #FFF0F5 (LavenderBlush), #FFF5EE (Seashell), #FFE4E1 (MistyRose)
-// }
-
-// ... (el resto de tus estilos para .section-container, .product-card, .category-card, etc.)
-/* ========== ESTILOS DEL CONTENIDO ========== */
-
+/* ESTILOS DEL CONTENIDO */
 ion-content {
---background: #fdecef; // Fondo rosa claro sólido
+  --background: #fdecef;
 }
 
-/* --- Estilos Generales Secciones --- */
 .section-container {
-margin-top: 25px;
-margin-bottom: 25px;
+  margin-top: 25px;
+  margin-bottom: 25px;
 }
 
 .section-title {
-font-size: 1.6em;
-font-weight: bold;
-color: #333;
-margin-bottom: 15px;
-
-&.centered-title { // Estilo adicional para títulos centrados
-  text-align: center;
-  text-transform: uppercase; // Añadido para "MÁS VENDIDOS"
-  margin-bottom: 20px;
-}
-}
-
-/* --- Estilos Sliders (Ofertas y Más Vendidos) --- */
-.slider-container { // Clase genérica para ambos sliders
-position: relative;
-}
-
-// Contenedores Swiper (puedes añadir estilos específicos si es necesario)
-.ofertas-swiper, .mas-vendidos-swiper {
- padding-left: 40px;
- padding-right: 40px;
-}
-
-swiper-slide {
-width: auto;
-}
-
-.slider-nav {
-position: absolute; top: 50%; transform: translateY(-50%); z-index: 10;
---color: #a1818a;
-background: rgba(255, 255, 255, 0.8);
-border-radius: 50%;
---padding-start: 5px; --padding-end: 5px; height: 35px; width: 35px;
-&.prev-button { left: 5px; }
-&.next-button { right: 5px; }
-}
-
-/* Estilos Tarjeta de Producto (Reutilizada para ambos sliders) */
-ion-card.product-card {
---background: #fff; width: 200px; margin: 5px 0;
-box-shadow: 0 2px 5px rgba(0,0,0,0.1); border-radius: 10px; position: relative;
-
-ion-img { width: 100%; height: 150px; object-fit: contain; padding: 10px; }
-ion-card-header { padding: 5px 10px; }
-ion-card-subtitle { font-size: 0.8em; text-transform: uppercase; color: #666; }
-ion-card-title { font-size: 0.9em; font-weight: normal; color: #333; white-space: normal; line-height: 1.3; min-height: 40px; }
-ion-card-content { padding: 5px 10px 10px 10px; }
-.price-container { display: flex; align-items: baseline; gap: 8px; }
-.current-price { font-size: 1.1em; font-weight: bold; color: #333; }
-.original-price { font-size: 0.9em; color: #888; s { text-decoration: line-through; } }
-.wishlist-button { position: absolute; top: 5px; right: 5px; z-index: 5; --color: #e8a0bf; --padding-start: 3px; --padding-end: 3px; }
-}
-
-/* --- Estilos Sección Categorías --- */
-.categorias-container {
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); // Ajustado minmax para que quepan 2+
-gap: 20px;
-
-// Para forzar 2 columnas en pantallas medianas y grandes
-@media (min-width: 768px) {
-    grid-template-columns: repeat(2, 1fr);
-}
-}
-
-.category-card {
-background-color: #a1818a; border-radius: 10px; padding: 20px;
-display: flex; align-items: center; gap: 15px; overflow: hidden;
-}
-
-.category-text {
-flex: 1; color: #fff;
-h3 { font-size: 1.4em; font-weight: bold; margin-top: 0; margin-bottom: 8px; }
-p { font-size: 0.9em; margin-bottom: 15px; opacity: 0.9; }
-}
-
-.category-button {
- --background: #f0f0f0; --color: #333; --padding-start: 15px; --padding-end: 15px;
- height: 40px; font-size: 0.9em; text-transform: none;
-}
-
-.category-image {
-flex-shrink: 0; width: 100px; height: 100px;
-display: flex; align-items: center; justify-content: center;
-img { max-width: 100%; max-height: 100%; object-fit: contain; }
-}
-
-/* ========== ESTILOS DEL FOOTER ========== */
-ion-footer {
-background: var(--ion-color-step-150, #a1818a); // Color oscuro del footer, usa variable o color directo
-
-ion-toolbar.footer-toolbar {
-  --background: #4f4246; // Un mauve más oscuro para el footer
-  --color: #e0e0e0; // Color de texto claro por defecto en el footer
-  padding: 20px 0; // Padding vertical
-}
-
-.footer-logo {
+  font-size: 1.6em;
+  font-weight: bold;
+  color: #333;
   margin-bottom: 15px;
-  // Reutiliza estilos de logo del header pero ajusta color si es necesario
-  .logo {
-     font-size: 1.8em; font-weight: bold;
-     .logo-look { color: white; }
-     .logo-4 { color: #FFB6C1; /* Rosa claro */ }
-     .logo-beauty { color: white; } // Cambiado a blanco para contraste
+
+  &.centered-title {
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 20px;
   }
 }
 
-.social-icons {
-   margin-top: 10px;
+/* ESTILOS DE LOS SLIDERS */
+.slider-container {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 30px; // Espacio para los botones de navegación
 }
 
-ion-button.social-button {
-   --color: #e0e0e0; // Color iconos sociales
-   font-size: 1.4em;
-   --padding-start: 5px;
-   --padding-end: 5px;
+swiper-container {
+  width: 100%;
+  overflow: visible; // Para mostrar parcialmente slides adyacentes
 }
 
-.footer-title {
-   font-size: 1.1em;
-   font-weight: bold;
-   color: #fff; // Títulos de columna en blanco
-   margin-bottom: 10px;
+swiper-slide {
+  width: auto; // Permite que el ancho sea determinado por contenido
 }
 
-.footer-list {
-  background: transparent; // Sin fondo para la lista
-  padding: 0;
+.slider-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  --color: #a1818a;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  --padding-start: 5px;
+  --padding-end: 5px;
+  height: 35px;
+  width: 35px;
+  margin: 0;
 
-  ion-item {
-    --background: transparent; // Sin fondo para los items
-    --padding-start: 0;
-    --inner-padding-end: 0;
-    --min-height: 30px; // Menor altura para los links
-    margin-bottom: 5px;
+  &.prev-button {
+    left: 0px;
+  }
 
-    ion-label {
-      font-size: 0.9em;
-      color: #d0d0d0; // Color links (gris claro)
-      cursor: pointer; // Indicar que son clickables
-      &:hover {
-        color: #fff; // Blanco al pasar el mouse
+  &.next-button {
+    right: 0px;
+  }
+}
+
+/* TARJETAS DE PRODUCTO */
+ion-card.product-card {
+  --background: #fff;
+  width: 200px;
+  margin: 5px 0;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  border-radius: 10px;
+  position: relative;
+  overflow: visible; // Para el botón de wishlist
+
+  ion-img {
+    width: 100%;
+    height: 150px;
+    object-fit: contain;
+    padding: 10px;
+  }
+
+  ion-card-header {
+    padding: 5px 10px;
+  }
+
+  ion-card-subtitle {
+    font-size: 0.8em;
+    text-transform: uppercase;
+    color: #666;
+    margin: 0;
+  }
+
+  ion-card-title {
+    font-size: 0.9em;
+    font-weight: normal;
+    color: #333;
+    white-space: normal;
+    line-height: 1.3;
+    min-height: 40px;
+    margin: 0;
+  }
+
+  ion-card-content {
+    padding: 5px 10px 10px 10px;
+  }
+
+  .price-container {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+
+  .current-price {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #333;
+  }
+
+  .original-price {
+    font-size: 0.9em;
+    color: #888;
+    
+    s {
+      text-decoration: line-through;
+    }
+  }
+
+  .wishlist-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    z-index: 5;
+    --color: #e8a0bf;
+    --padding-start: 3px;
+    --padding-end: 3px;
+    margin: 0;
+  }
+}
+
+/* CATEGORÍAS */
+.categorias-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.category-card {
+  background-color: #a1818a;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  overflow: hidden;
+}
+
+.category-text {
+  flex: 1;
+  color: #fff;
+
+  h3 {
+    font-size: 1.4em;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 8px;
+  }
+
+  p {
+    font-size: 0.9em;
+    margin-bottom: 15px;
+    opacity: 0.9;
+  }
+}
+
+.category-button {
+  --background: #f0f0f0;
+  --color: #333;
+  --padding-start: 15px;
+  --padding-end: 15px;
+  height: 40px;
+  font-size: 0.9em;
+  text-transform: none;
+}
+
+.category-image {
+  flex-shrink: 0;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+}
+
+/* ESTILOS DEL FOOTER */
+ion-footer {
+  background: #4f4246;
+
+  ion-toolbar.footer-toolbar {
+    --background: #4f4246;
+    --color: #e0e0e0;
+    padding: 20px 0;
+  }
+
+  .footer-logo {
+    margin-bottom: 15px;
+    font-size: 1.8em;
+    font-weight: bold;
+    
+    .logo-look {
+      color: white;
+    }
+    
+    .logo-4 {
+      color: #FFB6C1;
+    }
+    
+    .logo-beauty {
+      color: white;
+    }
+  }
+
+  .social-icons {
+    margin-top: 10px;
+  }
+
+  ion-button.social-button {
+    --color: #e0e0e0;
+    font-size: 1.4em;
+    --padding-start: 5px;
+    --padding-end: 5px;
+  }
+
+  .footer-title {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 10px;
+  }
+
+  .footer-list {
+    background: transparent;
+    padding: 0;
+
+    ion-item {
+      --background: transparent;
+      --padding-start: 0;
+      --inner-padding-end: 0;
+      --min-height: 30px;
+      margin-bottom: 5px;
+
+      ion-label {
+        font-size: 0.9em;
+        color: #d0d0d0;
+        cursor: pointer;
+        
+        &:hover {
+          color: #fff;
+        }
       }
+    }
+  }
+
+  @media (max-width: 767px) {
+    ion-col[size="6"] {
+      margin-bottom: 20px;
+    }
+    
+    .footer-title {
+      margin-top: 15px;
     }
   }
 }
 
-// Ajustes para pantallas pequeñas en el footer si es necesario
- @media (max-width: 767px) {
-     ion-col[size="6"] { // Las columnas de soporte/compañía
-         margin-bottom: 20px; // Añadir espacio debajo en móvil
-     }
-     .footer-title {
-         margin-top: 15px; // Espacio sobre títulos en móvil
-     }
- }
-
-} // Fin de estilos ion-footer
+/* AJUSTES RESPONSIVOS PARA SLIDERS */
+@media (max-width: 576px) {
+  .slider-container {
+    padding: 0 25px;
+  }
+  
+  ion-card.product-card {
+    width: 170px;
+  }
+}
