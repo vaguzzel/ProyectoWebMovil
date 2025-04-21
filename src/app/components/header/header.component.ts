@@ -16,4 +16,7 @@ export class HeaderComponent  implements OnInit {
   goToTab2() {
     this.router.navigate(['/tabs/tab2']);
 }
+goToTab1() {
+  this.router.navigate(['/tabs/tab1']);
+}
 }
