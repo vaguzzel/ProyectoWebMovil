@@ -94,7 +94,7 @@ ion-header {
     background-color: #A9777F;
   }
   
-  .right-column {
+  .right-column {   
     background-color: #FFE5D9;
     display: flex;
     flex-direction: column;
@@ -181,6 +181,23 @@ ion-header {
          font-size: 14px;
       }
     }
+
+    .forgot-password-container {
+        text-align: center;
+        margin-top: 8px;
+        margin-bottom: 20px;
+        max-width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      
+      .forgot-password-link {
+        color: #000000;
+        text-decoration: underline;
+        font-size: 0.9em;
+        font-weight: Regular;
+        cursor: pointer;
+      }
   
     .checkbox-item {
       max-width: 350px;
