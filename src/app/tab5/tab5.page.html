@@ -1,0 +1,73 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="custom-toolbar">
+    <div class="toolbar-content">
+      <div class="logo">
+        <span class="logo-look">Look</span><span class="logo-4">4</span><span class="logo-beauty">Beauty</span>
+      </div>
+      <div class="search-container">
+        <ion-searchbar placeholder="¿Qué buscas?" class="custom-searchbar"></ion-searchbar>
+      </div>
+      <div class="navigation-items">
+        <ion-buttons>
+          <ion-button fill="clear" class="nav-link" [routerLink]="['/tabs/tab1']">Inicio</ion-button>
+          <ion-button fill="clear" class="nav-link" [routerLink]="['/ruta/categorias']">Categorías</ion-button>
+          <ion-button fill="clear" class="nav-link" [routerLink]="['/ruta/marcas']">Marcas</ion-button>
+          <ion-button fill="clear" class="nav-link" [routerLink]="['/ruta/contacto']">Contáctanos</ion-button>
+        </ion-buttons>
+        <ion-buttons>
+          <ion-button fill="clear" class="icon-button" [routerLink]="['/ruta/wishlist']">
+            <ion-icon slot="icon-only" name="heart-outline"></ion-icon>
+          </ion-button>
+          <ion-button fill="clear" class="icon-button" [routerLink]="['/tabs/tab5']">
+            <ion-icon slot="icon-only" name="person-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-grid class="login-grid">
+    <ion-row class="ion-align-items-stretch ion-no-padding">
+
+      <ion-col size="12" size-md="5" class="left-column ion-hide-md-down">
+         </ion-col>
+
+      <ion-col size="12" size-md="7" class="right-column ion-padding">
+
+        <h1>Iniciar Sesión</h1>
+        <p>¿No tienes una cuenta? <a class="register-link" [routerLink]="['/ruta/a/registro']">Crea una aquí</a></p>
+
+        <ion-button expand="block" fill="outline" class="social-button facebook-button">
+          <ion-icon slot="start" name="logo-facebook"></ion-icon>
+          Continua con Facebook
+        </ion-button>
+        <ion-button expand="block" fill="outline" class="social-button google-button">
+          <ion-icon slot="start" name="logo-google"></ion-icon>
+          Continua con Google
+        </ion-button>
+
+        <div class="separator"></div> <ion-item lines="none" class="input-item">
+          <ion-label position="stacked">Nombre de Usuario</ion-label>
+          <ion-input type="text" placeholder="Ingresa tu usuario"></ion-input>
+        </ion-item>
+
+        <ion-item lines="none" class="input-item">
+          <ion-label position="stacked">Contraseña</ion-label>
+          <ion-input type="password" placeholder="Ingresa tu contraseña"></ion-input>
+        </ion-item>
+
+        <ion-item lines="none" class="checkbox-item">
+          <ion-checkbox slot="start"></ion-checkbox> <ion-label>Recuerda mi contraseña</ion-label> 
+        </ion-item>
+
+        <ion-button expand="block" class="login-button">
+          Iniciar Sesión
+        </ion-button>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <app-footer></app-footer>
+</ion-content>

@@ -1,0 +1,229 @@
+ion-header {
+    --background: transparent;
+    box-shadow: none;
+  }
+  
+  ion-toolbar.custom-toolbar {
+    --background: #a1818a;
+    --min-height: 65px;
+    padding: 0 15px;
+    box-shadow: none;
+  
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  
+    overflow: hidden;
+  }
+  
+  .toolbar-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .logo {
+    font-size: 1.8em;
+    font-weight: bold;
+    flex-shrink: 0;
+  
+    .logo-look {
+      color: white;
+    }
+  
+    .logo-4 {
+      color: #FFB6C1;
+    }
+  
+    .logo-beauty {
+      color: black;
+    }
+  }
+  
+  .search-container {
+    flex-grow: 1;
+    max-width: 400px;
+    margin: 0 20px;
+  }
+  
+  ion-searchbar.custom-searchbar {
+    --background: #f0f0f0;
+    --border-radius: 20px;
+    --box-shadow: none;
+    --height: 40px;
+    --placeholder-color: #888;
+    --icon-color: #989898;
+    padding: 0;
+  }
+  
+  .navigation-items {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+  
+  ion-button.nav-link {
+    --color: #333;
+    font-size: 0.9em;
+    text-transform: none;
+    margin: 0 5px;
+  }
+  
+  ion-button.icon-button {
+    --color: #333;
+    --padding-start: 5px;
+    --padding-end: 5px;
+    font-size: 1.2em;
+  }
+  
+  ion-grid.login-grid {
+    padding : 0;
+    margin : 0;
+  }
+  
+  .left-column {
+    background: linear-gradient(
+      to bottom,
+      #9D8189 0%,
+      #A9777F 48%,
+      #F4ACB7 100%
+    );
+    background-color: #A9777F;
+  }
+  
+  .right-column {
+    background-color: #FFE5D9;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 20px 30px;
+  
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+  
+    h1 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 24px;
+      color: #000000;
+      text-align: center;
+      margin-top: 0;
+      margin-bottom: 10px;
+    }
+  
+    p {
+      text-align: center;
+      margin-bottom: 25px;
+      font-size: 14px;
+      color: #000000;
+  
+      a.register-link {
+        color: #000000;
+        font-weight: 600;
+        text-decoration: underline;
+      }
+    }
+  
+    .social-button {
+      margin-top: 10px;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 320px;
+      --border-radius: 10px;
+      border-radius: 10px;
+      text-transform: none;
+      height: 48px;
+      font-size: 14px;
+      font-weight: 400;
+  
+      &.facebook-button {
+        --border-color: #1877F2;
+        --color: #1877F2;
+      }
+      &.google-button {
+         --border-color: #DB4437;
+         --color: #DB4437;
+      }
+    }
+  
+    .separator {
+      height: 30px;
+    }
+  
+    .input-item {
+      --background: #FFFFFF;
+      --border-radius: 10px;
+      --padding-start: 15px;
+      --padding-end: 15px;
+      --highlight-height: 0;
+      border: 1px solid #EAEAEA;
+      border-radius: 10px;
+      margin-top: 15px;
+      max-width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+  
+      ion-label[position="stacked"] {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 400;
+        font-size: 13px;
+        color: #545454;
+        margin-left: 5px;
+        margin-bottom: 4px;
+      }
+  
+      ion-input {
+         font-family: 'Poppins', sans-serif;
+         font-weight: 400;
+         font-size: 14px;
+      }
+    }
+  
+    .checkbox-item {
+      max-width: 350px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 15px;
+      margin-bottom: 25px;
+      --inner-padding-start: 0;
+      --inner-padding-end: 0;
+      --background: transparent;
+      border: none;
+  
+      ion-label {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 400;
+        font-size: 13px;
+        color: #000000;
+        white-space: nowrap;
+        margin: 0;
+      }
+      ion-checkbox[slot="start"] {
+         --size: 18px;
+         margin-right: 10px;
+         margin-left: 0;
+         margin-top: 0;
+         margin-bottom: 0;
+      }
+    }
+  
+    .login-button {
+      --border-radius: 10px;
+      --background: #D3B8AE;
+      --background-activated: #c5a99e;
+      --color: #FFFFFF;
+      --box-shadow: none;
+      height: 48px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 16px;
+      text-transform: none;
+      max-width: 350px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 10px;
+    }
+  }
