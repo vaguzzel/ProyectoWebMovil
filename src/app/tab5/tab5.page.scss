@@ -95,68 +95,57 @@ ion-header {
     font-size: 1.2em; // Tamaño del icono
   }
   
-  /* ================================================================ */
-  /* ========= FIN NUEVOS ESTILOS DEL HEADER ======================== */
-  /* ================================================================ */
-  
-  
-  /* ================================================================ */
-  /* == ESTILOS CONTENIDO LOGIN (Mantenidos de antes) ============= */
-  /* ================================================================ */
   ion-grid.login-grid {
-    height: 100%;
+    height: 100%; // Opcional: si quieres que la rejilla intente ocupar toda la altura
     ion-row {
-      height: 100%;
+      height: 100%; // Opcional: si quieres que la fila ocupe toda la altura
     }
   }
   
   .left-column {
+    // Aplica el degradado correcto de Figma
     background: linear-gradient(
       to bottom,
       #9D8189 0%,
       #A9777F 48%,
       #F4ACB7 100%
     );
-    background-color: #A9777F; // Fallback
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-  
-    .brand-logo-left {
-        font-size: 2.5em;
-        font-weight: bold;
-        color: white; // <-- ¡VERIFICA ESTE COLOR!
-        text-align: center;
-        .logo-look {color: white}
-        .logo-4 { color: #F4ACB7; } // <-- ¡VERIFICA ESTE COLOR!
-        .logo-beauty { color: black; } // <-- ¡VERIFICA ESTE COLOR!
-      }
+    background-color: #A9777F; // Color de respaldo
+    // Asegúrate de que no haya otros estilos aquí si quitaste el logo
   }
   
   .right-column {
-    background-color: #FFE5D9; // <-- USA TU COLOR EXACTO AQUÍ
+    background-color: #FFE5D9; // <-- COLOR FONDO FORM (VERIFICAR CON FIGMA)
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    // Ajusta el padding si el del header ya da espacio suficiente arriba
-    // padding-top: 0; // Ejemplo si el header ya espacia
+    justify-content: center; // Centra verticalmente el contenido
+    padding: 20px 30px; // Añadido padding (ajusta según Figma)
   
-    h1 {
-      font-weight: bold;
-      color: #000000; // <-- USA TU COLOR EXACTO AQUÍ
+    // Aplicar Poppins Regular como fuente base para esta columna
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+  
+    h1 { // Estilo específico para el Título
+      font-family: 'Poppins', sans-serif; // Verifica si es otro peso/estilo en Figma
+      font-weight: 700; // Asumiendo Bold para título (VERIFICAR)
+      font-size: 24px; // Tamaño (VERIFICAR)
+      color: #000000; // Color oscuro (VERIFICAR)
       text-align: center;
-      margin-bottom: 10px;
+      margin-top: 0;
+      margin-bottom: 10px; // Espacio bajo el título
     }
   
-    p {
+    p { // Estilo para el subtítulo
       text-align: center;
-      margin-bottom: 20px;
-      font-size: 0.9em;
-      a {
-        color: #000000; // <-- USA TU COLOR EXACTO AQUÍ
+      margin-bottom: 25px; // Espacio antes de botones sociales
+      font-size: 14px; // Tamaño (VERIFICAR)
+      color: #000000; // Color grisáceo (VERIFICAR)
+  
+      a.register-link { // Estilo específico para el enlace "Crea una aquí"
+        color: #000000; // Usando color medio del gradiente (VERIFICAR)
+        font-weight: 600; // SemiBold (VERIFICAR)
         text-decoration: underline;
-        font-weight: bold;
+        // Hereda Poppins Regular por defecto, ajusta si es necesario
       }
     }
   
@@ -164,74 +153,102 @@ ion-header {
       margin-top: 10px;
       margin-left: auto;
       margin-right: auto;
-      max-width: 300px;
-      border-radius: 25px;
-      --border-radius: 25px;
+      max-width: 320px;
+      --border-radius: 10px; // Redondeo ajustado (VERIFICAR)
+      border-radius: 10px;
       text-transform: none;
-      height: 45px;
+      height: 48px;
+      font-size: 14px; // Tamaño texto botón (VERIFICAR)
+      font-weight: 400; // Asegurar Regular (Poppins)
   
       &.facebook-button {
-        --border-color: #1877F2;
+        --border-color: #1877F2; // Azul Facebook
         --color: #1877F2;
       }
       &.google-button {
-         --border-color: #DB4437;
+         --border-color: #DB4437; // Rojo Google
          --color: #DB4437;
       }
     }
   
+    .separator { // Espacio entre botones sociales y form
+      height: 30px; // Ajustar espacio (VERIFICAR)
+    }
+  
     .input-item {
-      --background: #FFFFFF;
-      --border-radius: 10px;
+      --background: #FFFFFF; // Fondo blanco input
+      --border-radius: 10px; // Redondeo ajustado (VERIFICAR)
       --padding-start: 15px;
       --padding-end: 15px;
-      --highlight-height: 0;
-      border: 1px solid #E0E0E0; // <-- USA TU COLOR EXACTO DE BORDE AQUÍ
+      --highlight-height: 0; // Quitar línea focus (opcional)
+      border: 1px solid #EAEAEA; // Borde claro (VERIFICAR)
       border-radius: 10px;
-      margin-top: 20px;
-      max-width: 400px;
+      margin-top: 15px;
+      max-width: 350px; // Ancho ajustado (VERIFICAR)
       margin-left: auto;
       margin-right: auto;
   
-       ion-label[position="stacked"] {
-          margin-left: 5px;
-          margin-bottom: 3px;
-          font-size: 0.85em;
-          color: #545454; // <-- USA TU COLOR EXACTO AQUÍ
-       }
+      ion-label[position="stacked"] {
+        font-family: 'Poppins', sans-serif; // Asegurar fuente
+        font-weight: 400; // Asegurar peso
+        font-size: 13px; // Tamaño etiqueta (VERIFICAR)
+        color: #545454; // Color etiqueta (VERIFICAR)
+        margin-left: 5px;
+        margin-bottom: 4px;
+      }
+  
+      ion-input { // Asegurar fuente dentro del input
+         font-family: 'Poppins', sans-serif;
+         font-weight: 400;
+         font-size: 14px; // Tamaño texto input (VERIFICAR)
+         // Color del texto del input se define con --color si es necesario
+         // --color: #333; // Ejemplo
+      }
     }
   
     .checkbox-item {
-      max-width: 400px;
+      max-width: 350px; // Mismo ancho que inputs
       margin-left: auto;
       margin-right: auto;
+      margin-top: 15px;
+      margin-bottom: 25px; // Espacio bajo checkbox
+      --inner-padding-start: 0;
       --inner-padding-end: 0;
       --background: transparent;
       border: none;
+  
       ion-label {
-        font-size: 0.9em;
-         color: #111111; // <-- USA TU COLOR EXACTO AQUÍ
+        font-family: 'Poppins', sans-serif; // Asegurar fuente
+        font-weight: 400; // Asegurar peso
+        font-size: 13px; // Tamaño etiqueta (VERIFICAR)
+        color: #000000; // Color etiqueta (VERIFICAR)
+        white-space: nowrap;
+
+        margin: 0;
       }
-      ion-checkbox {
-         --size: 18px;
-         margin-right: 8px;
+      ion-checkbox[slot="start"] {
+         --size: 18px; // Tamaño checkbox (VERIFICAR)
+         margin-right: 10px; // Espacio entre check y label
+         margin-left: 0;
+         margin-top: 0;
+         margin-bottom: 0;
       }
     }
   
     .login-button {
-      --border-radius: 10px;
-      --background: #tu-color-fondo-boton-login; // <-- USA TU COLOR EXACTO AQUÍ
-      --background-activated: #tu-color-fondo-boton-login-activado; // <-- USA TU COLOR EXACTO AQUÍ
-      --color: #tu-color-texto-boton-login; // <-- USA TU COLOR EXACTO AQUÍ
-      height: 48px;
-      font-weight: bold;
-      text-transform: none;
-      max-width: 400px;
+      --border-radius: 10px; // Redondeo ajustado (VERIFICAR)
+      --background: #D3B8AE; // <-- COLOR BOTON LOGIN (VERIFICAR CON FIGMA)
+      --background-activated: #c5a99e; // <-- COLOR ACTIVADO (VERIFICAR CON FIGMA)
+      --color: #FFFFFF; // Texto blanco (VERIFICAR)
+      --box-shadow: none; // Quitar sombra si no se desea
+      height: 48px; // Altura (VERIFICAR)
+      font-family: 'Poppins', sans-serif; // Asegurar fuente
+      font-weight: 600; // SemiBold para botón principal (VERIFICAR)
+      font-size: 16px; // Tamaño texto botón (VERIFICAR)
+      text-transform: none; // No convertir a mayúsculas
+      max-width: 350px; // Ancho ajustado (VERIFICAR)
       margin-left: auto;
       margin-right: auto;
-      margin-top: 20px; // Añadido margen superior
+      margin-top: 10px; // Espacio sobre el botón
     }
   }
-  /* ================================================================ */
-  /* ========= FIN ESTILOS CONTENIDO LOGIN ========================== */
-  /* ================================================================ */
