@@ -59,7 +59,7 @@ La app (programada) en esta entrega incluye una interfaz para visualizar:
 - **Inicio**
 - **Mi perfil**
 - **Iniciar sesión**
-- **Mi ista de deseos**
+- **Mi lista de deseos**
 - **Crear cuenta**
 
 ---
