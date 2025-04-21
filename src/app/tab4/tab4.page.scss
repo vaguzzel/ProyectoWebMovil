@@ -1,0 +1,236 @@
+ion-header {
+    --background: transparent;
+    box-shadow: none;
+  }
+  
+  ion-toolbar.custom-toolbar {
+    --background: #a1818a;
+    --min-height: 65px;
+    padding: 0 15px;
+    box-shadow: none;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .toolbar-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .logo {
+    font-size: 1.8em;
+    font-weight: bold;
+    flex-shrink: 0;
+  
+    .logo-look {
+      color: white; /* Dejar blanco si así lo deseas */
+    }
+  
+    .logo-4 {
+      color: #FFB6C1; /* Dejar como está */
+    }
+  
+    .logo-beauty {
+      color: black; /* Dejar como está */
+    }
+  }
+  
+  .search-container {
+    flex-grow: 1;
+    max-width: 400px;
+    margin: 0 20px;
+  }
+  
+  ion-searchbar.custom-searchbar {
+    --background: #f0f0f0;
+    --border-radius: 20px;
+    --box-shadow: none;
+    --height: 40px;
+    --placeholder-color: #888;
+    --icon-color: #555;
+    padding: 0;
+  }
+  
+  .navigation-items {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+  
+  ion-button.nav-link {
+    --color: #333; /* Ajusta si los links de navegación también están blancos */
+    font-size: 0.9em;
+    text-transform: none;
+    margin: 0 5px;
+  }
+  
+  ion-button.icon-button {
+    --color: #333; /* Ajusta si los iconos también están blancos */
+    --padding-start: 5px;
+    --padding-end: 5px;
+    font-size: 1.2em;
+  }
+  
+  /* Estilos para el contenedor principal del contenido */
+  ion-content {
+    --background: #FFE5D9; /* Color de fondo para la parte derecha (por defecto) */
+    overflow: auto; /* Permitir scroll si el contenido es largo */
+    padding: 20px 0; /* Ajustado el padding para solo arriba y abajo */
+    display: flex; /* Mantenemos flex para la disposición lateral */
+    flex-direction: row;
+    min-height: 100%; /* Asegura que ocupe al menos la altura de la pantalla */
+  }
+  
+  /* Contenedor para el degradado y el formulario */
+  .container {
+    display: flex; /* Coloca los hijos (degradado y formulario) en fila */
+    flex-direction: row; /* Asegura la dirección horizontal */
+    height: auto; /* Se ajusta al contenido */
+    width: 100%; /* Ocupa todo el ancho del ion-content */
+    min-height: 100%; /* Asegura que ocupe al menos la altura del ion-content */
+  }
+  
+  /* Barra de degradado izquierda */
+  .background-gradient-left {
+    width: 40%; /* Ajusta el ancho según necesites */
+    background: linear-gradient(to bottom, #9D8189, #F4ACB7); /* Tu degradado vertical */
+    min-height: 100%; /* Asegura que ocupe al menos la altura del contenedor */
+  }
+  
+  /* Contenedor del formulario */
+  .form-container {
+    width: 60%; /* Ocupa el resto del ancho */
+    padding: 30px; /* Espacio alrededor del formulario */
+    padding-left: 60px; /* Aumentado el padding izquierdo */
+    display: flex;
+    flex-direction: column; /* Apila los elementos verticalmente */
+    align-items: flex-start; /* Alinea los elementos a la izquierda */
+    justify-content: flex-start; /* Alinea el contenido desde la parte superior */
+    color: black; /* Color de texto por defecto */
+  }
+  
+  /* Estilos específicos para los elementos del formulario */
+  .form-container h1,
+  .form-container p,
+  .form-container .recaptcha-container p {
+    color: black;
+    text-align: left; /* Alinea el texto a la izquierda */
+    width: 100%; /* Ocupa todo el ancho del contenedor del formulario */
+    margin-left: 10px; /* Añade un pequeño margen izquierdo */
+  }
+  
+  ion-item {
+    --background: transparent;
+    --border-color: #ccc; /* Añadido un borde sutil al ion-item si lo prefieres */
+    margin-bottom: 15px; /* Aumentado el espacio entre los items del formulario */
+    display: flex;
+    flex-direction: column; /* Asegura que la etiqueta y el input estén en columnas */
+    align-items: flex-start; /* Alinea los elementos internos a la izquierda */
+    width: 80%; /* Reduce el ancho para evitar que ocupe todo el espacio horizontal */
+    max-width: 400px; /* Limita el ancho máximo del item */
+    margin-left: 10px; /* Añade un pequeño margen izquierdo */
+  }
+  
+  ion-label {
+    color: black !important; /* Forzando el color negro */
+    display: block; /* Hace que la etiqueta ocupe una línea completa */
+    margin-bottom: 5px; /* Añade espacio entre la etiqueta y el campo */
+    text-align: left; /* Alinea el texto de la etiqueta a la izquierda */
+    width: 100%; /* Ocupa todo el ancho disponible */
+  }
+  
+  ion-input {
+    --background: #FFE5D9; /* Fondo del input */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    color: black;
+    width: 100%; /* El input ocupa todo el ancho de su contenedor (ion-item) */
+  }
+  
+  ion-input::placeholder {
+    color: black;
+  }
+  
+  ion-input:focus {
+    border-color: #9D8189;
+    outline: none;
+  }
+  
+  .recaptcha-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alinea a la izquierda */
+    margin-bottom: 20px;
+    width: 80%;
+    max-width: 400px;
+    margin-left: 10px; /* Añade un pequeño margen izquierdo */
+  }
+  
+  .recaptcha-container p {
+    text-align: left;
+    margin-left: 0; /* Asegura que no tenga doble margen */
+  }
+  
+  .recaptcha-container > div {
+    border: 1px solid #ccc;
+    width: 80px;
+    height: 40px;
+    margin-top: 5px;
+    margin-left: 10px; /* Añade un pequeño margen izquierdo */
+  }
+  
+  ion-button {
+    width: 80%;
+    max-width: 400px;
+    --color: black;
+    --background: #9D8189;
+    margin-top: 20px; /* Añade espacio encima del botón */
+    margin-left: 10px; /* Añade un pequeño margen izquierdo */
+  }
+  
+  .custom-recaptcha-container {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 8px 12px;
+    width: fit-content; /* Ajusta el ancho al contenido */
+    margin-left: 10px; /* Para alinearlo con el resto del formulario */
+    margin-bottom: 20px;
+  }
+  
+  .custom-recaptcha-checkbox {
+    width: 18px;
+    height: 18px;
+    border: 1px solid #26962b;
+    background-color: #26962b;
+    border-radius: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 8px;
+  }
+  
+  .custom-recaptcha-tick {
+    width: 12px;
+    height: 12px;
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='white' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20.29 4.71a1 1 0 0 1 0 1.414l-11.7 11.7a1 1 0 0 1-1.414 0L3.71 11.7a1 1 0 0 1 1.414-1.414L8 14.586l10.879-10.88a1 1 0 0 1 1.414 0z'/%3E%3C/svg%3E") center/contain no-repeat;
+  }
+  
+  .custom-recaptcha-text {
+    font-size: 1em;
+    color: #444;
+    margin-right: 10px;
+  }
+  
+  .custom-recaptcha-logo {
+    display: flex;
+    align-items: center;
+  }
