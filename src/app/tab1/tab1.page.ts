@@ -1,6 +1,6 @@
 import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { register } from 'swiper/element/bundle';
-
+import { Router } from '@angular/router';
 // Definir la interfaz para el contenedor Swiper
 interface SwiperContainer extends HTMLElement {
   swiper?: any;
@@ -20,7 +20,7 @@ export class Tab1Page implements AfterViewInit {
   @ViewChild('ofertasSwiper') ofertasSwiper: ElementRef | undefined;
   @ViewChild('masVendidosSwiper') masVendidosSwiper: ElementRef | undefined;
   
-  constructor() {}
+  constructor(private router: Router) {}
   
   ngAfterViewInit() {
     // Inicializar la navegación cuando la vista se haya cargado completamente
@@ -30,6 +30,7 @@ export class Tab1Page implements AfterViewInit {
   }
   
   initializeSwiperNavigation() {
+    
     // Botones de navegación para Ofertas slider
     const ofertasPrev = document.querySelector('.ofertas-prev');
     const ofertasNext = document.querySelector('.ofertas-next');
@@ -74,4 +75,11 @@ export class Tab1Page implements AfterViewInit {
       });
     }
   }
+
+  //funcion pa direccionar a mi perfil
+  goToTab2() {
+    this.router.navigate(['/tabs/tab2']);
+  }
+  
 }
+
