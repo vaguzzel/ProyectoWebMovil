@@ -26,7 +26,7 @@ ionic serve
 
 ---
 
-# Sistema de comparación de precios de mercado de productos de maquillaje
+# Sistema de comparación de precios de mercado de productos cosméticos (Look4Beauty)
 
 ## Resumen del Proyecto
 Look4Beauty es una aplicación web diseñada para centralizar y simplificar la comparación de precios de maquillaje online. Su objetivo fundamental es mitigar la necesidad del consumidor de visitar múltiples sitios de comercios online para encontrar el mejor precio. El sistema permite a los usuarios buscar artículos de maquillaje por nombre, marca, categoría o precio, aplicar filtros personalizables (color, tiendas específicas, tipo de producto, etc) y visualizar una comparativa de precios del mismo producto ofrecido por distintos vendedores online, con enlaces directos a las páginas correspondientes. La aplicación contempla una interfaz responsiva para asegurar la usabilidad en dispositivos móviles y de escritorio.
