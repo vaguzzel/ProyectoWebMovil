@@ -26,7 +26,7 @@ ionic serve
 
 ---
 
-# Sistema de comparación de precios de mercado de productos cosméticos (Look4Beauty)
+# Sistema de comparación de precios de mercado de productos de maquillaje
 
 ## Resumen del Proyecto
 Look4Beauty es una aplicación web diseñada para centralizar y simplificar la comparación de precios de maquillaje online. Su objetivo fundamental es mitigar la necesidad del consumidor de visitar múltiples sitios de comercios online para encontrar el mejor precio. El sistema permite a los usuarios buscar artículos de maquillaje por nombre, marca, categoría o precio, aplicar filtros personalizables (color, tiendas específicas, tipo de producto, etc) y visualizar una comparativa de precios del mismo producto ofrecido por distintos vendedores online, con enlaces directos a las páginas correspondientes. La aplicación contempla una interfaz responsiva para asegurar la usabilidad en dispositivos móviles y de escritorio.
@@ -39,7 +39,7 @@ Este proyecto corresponde a la primera entrega parcial del Proyecto Final. Se tr
 
 El proyecto tiene como objetivo diseñar y simular una plataforma web para la comparación de precios de productos cosméticos entre diversas tiendas online, tomando como modelo de referencia la funcionalidad de 'solotodo.cl'.
 
-El diseño en figma de esta entrega incluye la navegación prevista para la página, incluyendo: 
+El diseño en figma de esta entrega incluye casi la totalidad de la navegación prevista para la página, incluyendo: 
 
 Para Desktop y móvil:
 
@@ -51,8 +51,8 @@ Para Desktop y móvil:
 - **Mi Perfil- Perfil**
 - **Mi Perfil- Lista de deseos**
 
-Todo esto también incluye la interactividad, integrando además un carrusel en la vista de productos del inicio 
-y menú mega dropdown para las categorías y para marcas.
+Todo esto también incluye la interactividad, integrando además un carrusel en la vista de productos del inicio
+y menú mega dropdown para las categorías y para marcas (se pueden encontrar interacciones así en gran parte del prototipo). 
 
 
 La app (programada) en esta entrega incluye una interfaz para visualizar:
@@ -137,6 +137,8 @@ La app (programada) en esta entrega incluye una interfaz para visualizar:
 ## Arquitectura de la Información
 [Estructura de Navegación](https://whimsical.com/look4beauty-RssnWPKSDMGrXbKVyYxjRJ)
 
+**Para más detalle, revisar figma con detenimiento por favor.**
+
 ---
 
 ## Prototipo de diseño
@@ -147,18 +149,18 @@ La app (programada) en esta entrega incluye una interfaz para visualizar:
 ## Librerías usadas con Angular
 - Ionic Framework
 - Swiper.js (swiper)
-- Angular Core
-- Angular Common
-- Angular Route
+- Librerías del Núcleo de Angular (Angular Core, common, forms, router, platform-browse)
+- RxJS (Reactive Extensions for JavaScript)
 ---
 
 ## Tecnologías
-- **Ionic Framework** (v7+)
-- **Angular** (v15+)
+- **Ionic Framework**
+- **Angular** 
 - **TypeScript**
-- **Capacitor** (para plugins nativos, si aplica)
-- **SASS** (para estilos)
-- **RxJS** (para manejo reactivo)
-- **Angular Router** (para navegación entre vistas)
+- **JavaScript**
+- **HTML** 
+- **CSS** 
+- **SVG (Scalable Vector Graphics)**
+- **Angular Router**
 
 ---
