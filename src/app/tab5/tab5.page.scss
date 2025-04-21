@@ -1,0 +1,237 @@
+// que sea transparente ayuda a que no se vea feo el header (como está redondeado abajo, se veia blanco de fondo)
+ion-header {
+    --background: transparent; // Hace que el contenedor del header sea transparente
+    // Si el header tiene alguna sombra por defecto que no quieras, puedes quitarla
+    box-shadow: none;
+    // NOTA: Ionic podría añadir un borde inferior por defecto en algunos modos.
+    // Si ves una línea abajo que no quieres, podrías necesitar añadir:
+    // &::after { display: none; }
+  }
+  
+  // Mantén tus estilos para el ion-toolbar
+  ion-toolbar.custom-toolbar {
+    --background: #a1818a; // <-- ¡VERIFICA ESTE COLOR CON TU DISEÑO!
+    --min-height: 65px; // Altura mínima de la barra
+    padding: 0 15px; // Padding horizontal
+    box-shadow: none; // Asegura que no haya sombra en la barra misma
+  
+    // Bordes redondeados SOLO en la parte inferior
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  
+    // Asegura que el fondo se recorte correctamente en las esquinas redondeadas
+    // Importante para que el contenido interno no se salga de las esquinas
+    overflow: hidden;
+  }
+  
+  // Contenedor Flex principal dentro de la barra
+  .toolbar-content {
+    display: flex;
+    align-items: center; // Centra verticalmente los items
+    justify-content: space-between; // Espacio entre logo, search, y nav
+    width: 100%;
+    height: 100%; // Opcional, si min-height ya define la altura
+  }
+  
+  // Estilos del Logo
+  .logo {
+    font-size: 1.8em; // Tamaño de fuente del logo
+    font-weight: bold;
+    flex-shrink: 0; // Evita que el logo se encoja si no hay espacio
+  
+    .logo-look {
+      color: white; // <-- ¡VERIFICA ESTE COLOR!
+    }
+  
+    .logo-4 { // Clase para el "4"
+      color: #FFB6C1; // <-- ¡VERIFICA ESTE COLOR!
+    }
+  
+    .logo-beauty {
+      color: black; // <-- ¡VERIFICA ESTE COLOR!
+    }
+  }
+  
+  // Contenedor de la barra de búsqueda para controlar tamaño/posición
+  .search-container {
+    flex-grow: 1; // Permite que la barra ocupe el espacio disponible
+    max-width: 400px; // Limita el ancho máximo de la búsqueda
+    margin: 0 20px; // Espacio alrededor de la barra de búsqueda
+  }
+  
+  // Estilos de la Barra de Búsqueda
+  ion-searchbar.custom-searchbar {
+    --background: #f0f0f0; // <-- ¡VERIFICA ESTE COLOR! Fondo claro para la barra
+    --border-radius: 20px; // Bordes redondeados
+    --box-shadow: none; // Sin sombra interna
+    --height: 40px; // Altura de la barra
+    --placeholder-color: #888; // <-- ¡VERIFICA ESTE COLOR!
+    --icon-color: #989898; // <-- ¡VERIFICA ESTE COLOR! Color del ícono de lupa
+    padding: 0; // Quitar padding interno si no se necesita
+  }
+  
+  // Contenedor para los items de navegación (links e iconos)
+  .navigation-items {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0; // Evita que esta sección se encoja
+  }
+  
+  // Estilos para los botones de navegación (links)
+  ion-button.nav-link {
+    --color: #333; // <-- ¡VERIFICA ESTE COLOR! Color del texto de los links
+    font-size: 0.9em;
+    text-transform: none; // Evita que el texto se ponga en mayúsculas
+    margin: 0 5px; // Espacio entre links
+  }
+  
+  // Estilos para los botones de iconos
+  ion-button.icon-button {
+    --color: #333; // <-- ¡VERIFICA ESTE COLOR! Color de los iconos
+    --padding-start: 5px;
+    --padding-end: 5px;
+    font-size: 1.2em; // Tamaño del icono
+  }
+  
+  /* ================================================================ */
+  /* ========= FIN NUEVOS ESTILOS DEL HEADER ======================== */
+  /* ================================================================ */
+  
+  
+  /* ================================================================ */
+  /* == ESTILOS CONTENIDO LOGIN (Mantenidos de antes) ============= */
+  /* ================================================================ */
+  ion-grid.login-grid {
+    height: 100%;
+    ion-row {
+      height: 100%;
+    }
+  }
+  
+  .left-column {
+    background: linear-gradient(
+      to bottom,
+      #9D8189 0%,
+      #A9777F 48%,
+      #F4ACB7 100%
+    );
+    background-color: #A9777F; // Fallback
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+  
+    .brand-logo-left {
+        font-size: 2.5em;
+        font-weight: bold;
+        color: white; // <-- ¡VERIFICA ESTE COLOR!
+        text-align: center;
+        .logo-look {color: white}
+        .logo-4 { color: #F4ACB7; } // <-- ¡VERIFICA ESTE COLOR!
+        .logo-beauty { color: black; } // <-- ¡VERIFICA ESTE COLOR!
+      }
+  }
+  
+  .right-column {
+    background-color: #FFE5D9; // <-- USA TU COLOR EXACTO AQUÍ
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    // Ajusta el padding si el del header ya da espacio suficiente arriba
+    // padding-top: 0; // Ejemplo si el header ya espacia
+  
+    h1 {
+      font-weight: bold;
+      color: #000000; // <-- USA TU COLOR EXACTO AQUÍ
+      text-align: center;
+      margin-bottom: 10px;
+    }
+  
+    p {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 0.9em;
+      a {
+        color: #000000; // <-- USA TU COLOR EXACTO AQUÍ
+        text-decoration: underline;
+        font-weight: bold;
+      }
+    }
+  
+    .social-button {
+      margin-top: 10px;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 300px;
+      border-radius: 25px;
+      --border-radius: 25px;
+      text-transform: none;
+      height: 45px;
+  
+      &.facebook-button {
+        --border-color: #1877F2;
+        --color: #1877F2;
+      }
+      &.google-button {
+         --border-color: #DB4437;
+         --color: #DB4437;
+      }
+    }
+  
+    .input-item {
+      --background: #FFFFFF;
+      --border-radius: 10px;
+      --padding-start: 15px;
+      --padding-end: 15px;
+      --highlight-height: 0;
+      border: 1px solid #E0E0E0; // <-- USA TU COLOR EXACTO DE BORDE AQUÍ
+      border-radius: 10px;
+      margin-top: 20px;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+  
+       ion-label[position="stacked"] {
+          margin-left: 5px;
+          margin-bottom: 3px;
+          font-size: 0.85em;
+          color: #545454; // <-- USA TU COLOR EXACTO AQUÍ
+       }
+    }
+  
+    .checkbox-item {
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+      --inner-padding-end: 0;
+      --background: transparent;
+      border: none;
+      ion-label {
+        font-size: 0.9em;
+         color: #111111; // <-- USA TU COLOR EXACTO AQUÍ
+      }
+      ion-checkbox {
+         --size: 18px;
+         margin-right: 8px;
+      }
+    }
+  
+    .login-button {
+      --border-radius: 10px;
+      --background: #tu-color-fondo-boton-login; // <-- USA TU COLOR EXACTO AQUÍ
+      --background-activated: #tu-color-fondo-boton-login-activado; // <-- USA TU COLOR EXACTO AQUÍ
+      --color: #tu-color-texto-boton-login; // <-- USA TU COLOR EXACTO AQUÍ
+      height: 48px;
+      font-weight: bold;
+      text-transform: none;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 20px; // Añadido margen superior
+    }
+  }
+  /* ================================================================ */
+  /* ========= FIN ESTILOS CONTENIDO LOGIN ========================== */
+  /* ================================================================ */
