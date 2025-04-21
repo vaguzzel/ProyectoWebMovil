@@ -6,7 +6,6 @@ import { FormsModule } from '@angular/forms';
 import { Tab1Page } from './tab1.page'; // Importación corregida
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 import { Tab1PageRoutingModule } from './tab1-routing.module';
-import { ProductCardComponent } from '../components/product-card/product-card.component';
 import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
@@ -18,7 +17,7 @@ import { SharedModule } from '../shared/shared.module';
     Tab1PageRoutingModule,
     SharedModule
   ],
-  declarations: [Tab1Page, ProductCardComponent], // Añadido Tab1Page aquí
+  declarations: [Tab1Page], // Añadido Tab1Page aquí
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 
