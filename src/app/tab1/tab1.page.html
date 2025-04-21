@@ -1,31 +1,4 @@
-<ion-header [translucent]="true">
-  <ion-toolbar class="custom-toolbar">
-    <div class="toolbar-content">
-      <div class="logo">
-        <span class="logo-look">Look</span><span class="logo-4">4</span><span class="logo-beauty">Beauty</span>
-      </div>
-      <div class="search-container">
-        <ion-searchbar placeholder="¿Qué buscas?" class="custom-searchbar"></ion-searchbar>
-      </div>
-      <div class="navigation-items">
-        <ion-buttons>
-          <ion-button fill="clear" class="nav-link">Inicio</ion-button>
-          <ion-button fill="clear" class="nav-link">Categorías</ion-button>
-          <ion-button fill="clear" class="nav-link">Marcas</ion-button>
-          <ion-button fill="clear" class="nav-link">Contáctanos</ion-button>
-        </ion-buttons>
-        <ion-buttons>
-          <ion-button fill="clear" class="icon-button">
-            <ion-icon slot="icon-only" name="heart-outline"></ion-icon>
-          </ion-button>
-          <ion-button fill="clear" class="icon-button" (click)="goToTab2()">
-            <ion-icon slot="icon-only" name="person-outline"></ion-icon>
-          </ion-button>
-        </ion-buttons>
-      </div>
-    </div>
-  </ion-toolbar>
-</ion-header>
+<app-header></app-header>
 
 <ion-content [fullscreen]="true" >
   <div class="section-container ion-padding-start ion-padding-end">

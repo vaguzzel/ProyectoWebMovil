@@ -2,9 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FooterComponent } from '../components/footer/footer.component';
 import { IonicModule } from '@ionic/angular';
+import { HeaderComponent } from '../components/header/header.component';
+import { ProductCardComponent } from '../components/product-card/product-card.component';
 
 @NgModule({
-  declarations: [FooterComponent],
+  declarations: [FooterComponent, HeaderComponent, ProductCardComponent],
   imports: [
     CommonModule,
     IonicModule
@@ -12,7 +14,9 @@ import { IonicModule } from '@ionic/angular';
   exports: [
     CommonModule,
     IonicModule,
-    FooterComponent 
+    FooterComponent ,
+    HeaderComponent,
+    ProductCardComponent
   ]
 })
 export class SharedModule { }
