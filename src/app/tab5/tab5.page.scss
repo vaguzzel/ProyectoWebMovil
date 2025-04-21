@@ -1,151 +1,129 @@
-// que sea transparente ayuda a que no se vea feo el header (como está redondeado abajo, se veia blanco de fondo)
 ion-header {
-    --background: transparent; // Hace que el contenedor del header sea transparente
-    // Si el header tiene alguna sombra por defecto que no quieras, puedes quitarla
+    --background: transparent;
     box-shadow: none;
-    // NOTA: Ionic podría añadir un borde inferior por defecto en algunos modos.
-    // Si ves una línea abajo que no quieres, podrías necesitar añadir:
-    // &::after { display: none; }
   }
   
-  // Mantén tus estilos para el ion-toolbar
   ion-toolbar.custom-toolbar {
-    --background: #a1818a; // <-- ¡VERIFICA ESTE COLOR CON TU DISEÑO!
-    --min-height: 65px; // Altura mínima de la barra
-    padding: 0 15px; // Padding horizontal
-    box-shadow: none; // Asegura que no haya sombra en la barra misma
+    --background: #a1818a;
+    --min-height: 65px;
+    padding: 0 15px;
+    box-shadow: none;
   
-    // Bordes redondeados SOLO en la parte inferior
     border-top-left-radius: 0;
     border-top-right-radius: 0;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
   
-    // Asegura que el fondo se recorte correctamente en las esquinas redondeadas
-    // Importante para que el contenido interno no se salga de las esquinas
     overflow: hidden;
   }
   
-  // Contenedor Flex principal dentro de la barra
   .toolbar-content {
     display: flex;
-    align-items: center; // Centra verticalmente los items
-    justify-content: space-between; // Espacio entre logo, search, y nav
+    align-items: center;
+    justify-content: space-between;
     width: 100%;
-    height: 100%; // Opcional, si min-height ya define la altura
+    height: 100%;
   }
   
-  // Estilos del Logo
   .logo {
-    font-size: 1.8em; // Tamaño de fuente del logo
+    font-size: 1.8em;
     font-weight: bold;
-    flex-shrink: 0; // Evita que el logo se encoja si no hay espacio
+    flex-shrink: 0;
   
     .logo-look {
-      color: white; // <-- ¡VERIFICA ESTE COLOR!
+      color: white;
     }
   
-    .logo-4 { // Clase para el "4"
-      color: #FFB6C1; // <-- ¡VERIFICA ESTE COLOR!
+    .logo-4 {
+      color: #FFB6C1;
     }
   
     .logo-beauty {
-      color: black; // <-- ¡VERIFICA ESTE COLOR!
+      color: black;
     }
   }
   
-  // Contenedor de la barra de búsqueda para controlar tamaño/posición
   .search-container {
-    flex-grow: 1; // Permite que la barra ocupe el espacio disponible
-    max-width: 400px; // Limita el ancho máximo de la búsqueda
-    margin: 0 20px; // Espacio alrededor de la barra de búsqueda
+    flex-grow: 1;
+    max-width: 400px;
+    margin: 0 20px;
   }
   
-  // Estilos de la Barra de Búsqueda
   ion-searchbar.custom-searchbar {
-    --background: #f0f0f0; // <-- ¡VERIFICA ESTE COLOR! Fondo claro para la barra
-    --border-radius: 20px; // Bordes redondeados
-    --box-shadow: none; // Sin sombra interna
-    --height: 40px; // Altura de la barra
-    --placeholder-color: #888; // <-- ¡VERIFICA ESTE COLOR!
-    --icon-color: #989898; // <-- ¡VERIFICA ESTE COLOR! Color del ícono de lupa
-    padding: 0; // Quitar padding interno si no se necesita
+    --background: #f0f0f0;
+    --border-radius: 20px;
+    --box-shadow: none;
+    --height: 40px;
+    --placeholder-color: #888;
+    --icon-color: #989898;
+    padding: 0;
   }
   
-  // Contenedor para los items de navegación (links e iconos)
   .navigation-items {
     display: flex;
     align-items: center;
-    flex-shrink: 0; // Evita que esta sección se encoja
+    flex-shrink: 0;
   }
   
-  // Estilos para los botones de navegación (links)
   ion-button.nav-link {
-    --color: #333; // <-- ¡VERIFICA ESTE COLOR! Color del texto de los links
+    --color: #333;
     font-size: 0.9em;
-    text-transform: none; // Evita que el texto se ponga en mayúsculas
-    margin: 0 5px; // Espacio entre links
+    text-transform: none;
+    margin: 0 5px;
   }
   
-  // Estilos para los botones de iconos
   ion-button.icon-button {
-    --color: #333; // <-- ¡VERIFICA ESTE COLOR! Color de los iconos
+    --color: #333;
     --padding-start: 5px;
     --padding-end: 5px;
-    font-size: 1.2em; // Tamaño del icono
+    font-size: 1.2em;
   }
   
   ion-grid.login-grid {
-    height: 100%; // Opcional: si quieres que la rejilla intente ocupar toda la altura
-    ion-row {
-      height: 100%; // Opcional: si quieres que la fila ocupe toda la altura
-    }
+    padding : 0;
+    margin : 0;
   }
   
   .left-column {
-    // Aplica el degradado correcto de Figma
     background: linear-gradient(
       to bottom,
       #9D8189 0%,
       #A9777F 48%,
       #F4ACB7 100%
     );
-    background-color: #A9777F; // Color de respaldo
-    // Asegúrate de que no haya otros estilos aquí si quitaste el logo
+    background-color: #A9777F;
   }
   
   .right-column {
-    background-color: #FFE5D9; // <-- COLOR FONDO FORM (VERIFICAR CON FIGMA)
+    background-color: #FFE5D9;
     display: flex;
     flex-direction: column;
-    justify-content: center; // Centra verticalmente el contenido
-    padding: 20px 30px; // Añadido padding (ajusta según Figma)
+    justify-content: flex-start;
+    padding: 20px 30px;
   
-    // Aplicar Poppins Regular como fuente base para esta columna
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
   
-    h1 { // Estilo específico para el Título
-      font-family: 'Poppins', sans-serif; // Verifica si es otro peso/estilo en Figma
-      font-weight: 700; // Asumiendo Bold para título (VERIFICAR)
-      font-size: 24px; // Tamaño (VERIFICAR)
-      color: #000000; // Color oscuro (VERIFICAR)
+    h1 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 24px;
+      color: #000000;
       text-align: center;
       margin-top: 0;
-      margin-bottom: 10px; // Espacio bajo el título
+      margin-bottom: 10px;
     }
   
-    p { // Estilo para el subtítulo
+    p {
       text-align: center;
-      margin-bottom: 25px; // Espacio antes de botones sociales
-      font-size: 14px; // Tamaño (VERIFICAR)
-      color: #000000; // Color grisáceo (VERIFICAR)
+      margin-bottom: 25px;
+      font-size: 14px;
+      color: #000000;
   
-      a.register-link { // Estilo específico para el enlace "Crea una aquí"
-        color: #000000; // Usando color medio del gradiente (VERIFICAR)
-        font-weight: 600; // SemiBold (VERIFICAR)
+      a.register-link {
+        color: #000000;
+        font-weight: 600;
         text-decoration: underline;
-        // Hereda Poppins Regular por defecto, ajusta si es necesario
       }
     }
   
@@ -154,81 +132,78 @@ ion-header {
       margin-left: auto;
       margin-right: auto;
       max-width: 320px;
-      --border-radius: 10px; // Redondeo ajustado (VERIFICAR)
+      --border-radius: 10px;
       border-radius: 10px;
       text-transform: none;
       height: 48px;
-      font-size: 14px; // Tamaño texto botón (VERIFICAR)
-      font-weight: 400; // Asegurar Regular (Poppins)
+      font-size: 14px;
+      font-weight: 400;
   
       &.facebook-button {
-        --border-color: #1877F2; // Azul Facebook
+        --border-color: #1877F2;
         --color: #1877F2;
       }
       &.google-button {
-         --border-color: #DB4437; // Rojo Google
+         --border-color: #DB4437;
          --color: #DB4437;
       }
     }
   
-    .separator { // Espacio entre botones sociales y form
-      height: 30px; // Ajustar espacio (VERIFICAR)
+    .separator {
+      height: 30px;
     }
   
     .input-item {
-      --background: #FFFFFF; // Fondo blanco input
-      --border-radius: 10px; // Redondeo ajustado (VERIFICAR)
+      --background: #FFFFFF;
+      --border-radius: 10px;
       --padding-start: 15px;
       --padding-end: 15px;
-      --highlight-height: 0; // Quitar línea focus (opcional)
-      border: 1px solid #EAEAEA; // Borde claro (VERIFICAR)
+      --highlight-height: 0;
+      border: 1px solid #EAEAEA;
       border-radius: 10px;
       margin-top: 15px;
-      max-width: 350px; // Ancho ajustado (VERIFICAR)
+      max-width: 90%;
       margin-left: auto;
       margin-right: auto;
   
       ion-label[position="stacked"] {
-        font-family: 'Poppins', sans-serif; // Asegurar fuente
-        font-weight: 400; // Asegurar peso
-        font-size: 13px; // Tamaño etiqueta (VERIFICAR)
-        color: #545454; // Color etiqueta (VERIFICAR)
+        font-family: 'Poppins', sans-serif;
+        font-weight: 400;
+        font-size: 13px;
+        color: #545454;
         margin-left: 5px;
         margin-bottom: 4px;
       }
   
-      ion-input { // Asegurar fuente dentro del input
+      ion-input {
          font-family: 'Poppins', sans-serif;
          font-weight: 400;
-         font-size: 14px; // Tamaño texto input (VERIFICAR)
-         // Color del texto del input se define con --color si es necesario
-         // --color: #333; // Ejemplo
+         font-size: 14px;
       }
     }
   
     .checkbox-item {
-      max-width: 350px; // Mismo ancho que inputs
+      max-width: 350px;
       margin-left: auto;
       margin-right: auto;
       margin-top: 15px;
-      margin-bottom: 25px; // Espacio bajo checkbox
+      margin-bottom: 25px;
       --inner-padding-start: 0;
       --inner-padding-end: 0;
       --background: transparent;
       border: none;
   
       ion-label {
-        font-family: 'Poppins', sans-serif; // Asegurar fuente
-        font-weight: 400; // Asegurar peso
-        font-size: 13px; // Tamaño etiqueta (VERIFICAR)
-        color: #000000; // Color etiqueta (VERIFICAR)
+        font-family: 'Poppins', sans-serif;
+        font-weight: 400;
+        font-size: 13px;
+        color: #000000;
         white-space: nowrap;
-
         margin: 0;
       }
       ion-checkbox[slot="start"] {
-         --size: 18px; // Tamaño checkbox (VERIFICAR)
-         margin-right: 10px; // Espacio entre check y label
+         --size: 18px;
+         margin-right: 10px;
          margin-left: 0;
          margin-top: 0;
          margin-bottom: 0;
@@ -236,19 +211,19 @@ ion-header {
     }
   
     .login-button {
-      --border-radius: 10px; // Redondeo ajustado (VERIFICAR)
-      --background: #D3B8AE; // <-- COLOR BOTON LOGIN (VERIFICAR CON FIGMA)
-      --background-activated: #c5a99e; // <-- COLOR ACTIVADO (VERIFICAR CON FIGMA)
-      --color: #FFFFFF; // Texto blanco (VERIFICAR)
-      --box-shadow: none; // Quitar sombra si no se desea
-      height: 48px; // Altura (VERIFICAR)
-      font-family: 'Poppins', sans-serif; // Asegurar fuente
-      font-weight: 600; // SemiBold para botón principal (VERIFICAR)
-      font-size: 16px; // Tamaño texto botón (VERIFICAR)
-      text-transform: none; // No convertir a mayúsculas
-      max-width: 350px; // Ancho ajustado (VERIFICAR)
+      --border-radius: 10px;
+      --background: #D3B8AE;
+      --background-activated: #c5a99e;
+      --color: #FFFFFF;
+      --box-shadow: none;
+      height: 48px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 16px;
+      text-transform: none;
+      max-width: 350px;
       margin-left: auto;
       margin-right: auto;
-      margin-top: 10px; // Espacio sobre el botón
+      margin-top: 10px;
     }
   }

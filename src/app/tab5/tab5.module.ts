@@ -8,12 +8,16 @@ import { Tab5PageRoutingModule } from './tab5-routing.module';
 
 import { Tab5Page } from './tab5.page';
 
+import { SharedModule } from '../shared/shared.module';
+
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    Tab5PageRoutingModule
+    Tab5PageRoutingModule,
+    SharedModule
   ],
   declarations: [Tab5Page]
 })
