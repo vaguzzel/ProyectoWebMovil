@@ -20,8 +20,9 @@ ion-content {
 
 .producto-imagen {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: left;
     background-color: #fde9ee;
     border-radius: 10px;
     padding: 15px;
@@ -29,7 +30,8 @@ ion-content {
   
     .imagen-wrapper {
       position: relative;
-      display: inline-block;
+      display: flex;
+      flex-direction: column;
       border-radius: 8px;
       //border-style: solid;
       //border-color: #a1818a;  
@@ -62,7 +64,7 @@ ion-content {
     ion-button {
       background-color: #a1818a;
       color: black;
-      border: none;
+      
     }
 }
 
