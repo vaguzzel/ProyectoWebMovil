@@ -1,0 +1,69 @@
+
+ion-card {
+  --background: #9d81899d; 
+  margin-bottom: 12px; // Espacio entre tarjetas
+  border-radius: 6px;
+  box-shadow: none; 
+  
+}
+
+ion-card-content {
+  padding: 10px 15px; 
+}
+
+.card-layout {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 20px; 
+  align-items: center; 
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.store-info {
+  // Estilos para el bloque de nombre, precio y disponibilidad
+}
+
+.store-name {
+  font-size: 1.5em;  
+  margin: 0 0 4px 0; // Sin margen superior/inferior, 4px abajo
+  color: #333333b4;
+}
+
+.price {
+  font-size: 2em; 
+  font-weight: bold; 
+  color: #000; 
+  margin: 0 0 5px 0; 
+}
+
+.availability {
+  font-size: 1em; 
+  color: #000000; 
+  margin: 0; 
+  line-height: 1.3; 
+}
+
+.rating-wrapper {
+  display:flex;
+  flex-direction: column;
+  min-width: 100px; 
+  min-height: 100px;
+}
+
+.store-rating {
+  display: flex; 
+  flex-direction: row; 
+  align-items: center; 
+  align-items: top;
+  justify-content: flex-end; 
+  
+  
+
+
+  .star-icon {
+    font-size: 1.5em; 
+    color: #FFB547;
+    margin-left: 1px; 
+  }
+}

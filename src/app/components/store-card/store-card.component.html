@@ -1,0 +1,17 @@
+<ion-card>
+  <ion-card-content>
+    <div class="card-layout">
+      <div class="store-info">
+        <h3 class="store-name">{{ storeName }}</h3>
+        <div class="price">{{ price | currency:'$':'symbol':'1.0-0' }}</div>
+        <p class="availability">{{ availability }}</p>
+      </div>
+      <div class="rating-wrapper">
+        <div class="store-rating">
+          <ion-icon *ngFor="let starType of stars" [name]="starType" class="star-icon"></ion-icon>
+        </div>
+      </div>
+      
+    </div>
+  </ion-card-content>
+</ion-card>

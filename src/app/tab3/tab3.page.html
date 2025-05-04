@@ -1,0 +1,54 @@
+<app-header></app-header>
+
+<ion-content>
+  <div class="producto-grid">
+    
+    <!-- Columna: Imagen del producto -->
+    <div class="producto-imagen">
+      <div class="imagen-wrapper">
+        <img src="assets/images/placeholder-oferta-1.png"/>
+        <ion-button fill="clear" class="wishlist-button">
+          <ion-icon name="heart-outline"></ion-icon>
+        </ion-button>
+      </div>
+    </div>
+
+    <!-- Columna: Descripción y título -->
+    <div class="producto-info">
+      <h1>MAYBELLINE <br> <strong>SuperStay Vinyl Ink WITTY</strong></h1>
+      <div class="descripcion">
+        <h2 >Detalles del producto</h2>
+        <p class="description-text">Sella el vinilo en tus labios con Super Stay Vinyl Ink  Nude y ¡márcate unos labios con poder! Su acabado de efecto vinilo y su fórmula en tinta líquida llega para romper los límites de la larga duración. Agita y aplica para conseguir 16H de color y brillo. ¡Olvídate de retocar tus labios! Máximo color y brillo en una sola pasada. ¿Preparada para romper las reglas?</p>
+        <ion-button expand="block" color="#a1818a">Modo de uso</ion-button>
+      </div>
+    </div>
+
+    <!-- Columna: Tiendas disponibles -->
+    <div class="producto-tiendas">
+      <app-store-card
+        storeName="Maicao"
+        [price]="6990"
+        availability="Solo retiro en tienda"
+        [rating]="4">
+      </app-store-card>
+
+      <app-store-card
+        storeName="Maicao"
+        [price]="6990"
+        availability="Solo retiro en tienda"
+        [rating]="4">
+      </app-store-card>
+
+      <app-store-card
+        storeName="Maicao"
+        [price]="6990"
+        availability="Solo retiro en tienda"
+        [rating]="4">
+      </app-store-card>
+      
+    </div>
+
+
+
+  </div>
+</ion-content>

@@ -4,9 +4,10 @@ import { FooterComponent } from '../components/footer/footer.component';
 import { IonicModule } from '@ionic/angular';
 import { HeaderComponent } from '../components/header/header.component';
 import { ProductCardComponent } from '../components/product-card/product-card.component';
+import { StoreCardComponent } from '../components/store-card/store-card.component';
 
 @NgModule({
-  declarations: [FooterComponent, HeaderComponent, ProductCardComponent],
+  declarations: [FooterComponent, HeaderComponent, ProductCardComponent, StoreCardComponent],
   imports: [
     CommonModule,
     IonicModule
@@ -16,7 +17,8 @@ import { ProductCardComponent } from '../components/product-card/product-card.co
     IonicModule,
     FooterComponent ,
     HeaderComponent,
-    ProductCardComponent
+    ProductCardComponent,
+    StoreCardComponent
   ]
 })
 export class SharedModule { }

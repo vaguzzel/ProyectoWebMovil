@@ -1,0 +1,84 @@
+/* ESTILOS DEL CONTENIDO */
+ion-content {
+    --background: #fde9ee;
+  }
+
+
+
+//grid del producto que engloba la foto, descripccion y las tiendas
+.producto-grid {
+    display: grid;
+    min-height: 400px;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 50px;
+    padding-inline: 50px;
+    padding-top: 50px;
+    @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+      }
+}
+
+.producto-imagen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fde9ee;
+    border-radius: 10px;
+    padding: 15px;
+    
+  
+    .imagen-wrapper {
+      position: relative;
+      display: inline-block;
+      border-radius: 8px;
+      //border-style: solid;
+      //border-color: #a1818a;  
+      padding: 40px;
+      
+    
+      img {
+        max-width: 100%;
+        height: auto;
+        min-height: 400px;
+        object-fit: contain;
+        
+      }
+  
+      .wishlist-button {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        --color: #a1818a;
+        --background: transparent;
+        z-index: 10;
+        font-size: 1.4em;
+      }
+    }
+  }
+//para definir los colores
+.producto-info {
+    color: black;
+  
+    ion-button {
+      background-color: #a1818a;
+      color: black;
+      border: none;
+    }
+}
+
+//fonts de la descripcion
+.descripcion {
+    font-size: 1.2em; // Esto afecta a los <p>, pero no a los <h2> si no lo fuerzas
+  
+    .detalles {
+      font-size: 0.9em !important; // o prueba con 0.9em, según lo que necesites
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+  
+    p {
+      font-size: 0.9em;
+      line-height: 1.4;
+    }
+  }
+  
