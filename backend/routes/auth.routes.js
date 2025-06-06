@@ -1,18 +1,15 @@
+// backend/routes/auth.routes.js
+
 const express = require('express');
 const router = express.Router();
-
-
+const UserController = require('../controllers/userController');
 
 // Ruta para el registro de usuarios
-router.post('/register', (req, res) => {
-    
-    res.status(201).json({ message: "Ruta /register alcanzada." });
-});
+// POST /api/auth/register
+router.post('/register', UserController.register);
 
 // Ruta para el inicio de sesión de usuarios
-router.post('/login', (req, res) => {
-    
-    res.json({ message: "Ruta /login alcanzada." });
-});
+// POST /api/auth/login
+router.post('/login', UserController.login);
 
 module.exports = router;
