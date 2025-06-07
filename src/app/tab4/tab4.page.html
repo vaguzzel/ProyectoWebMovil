@@ -1,69 +1,99 @@
 <app-header></app-header>
 
-<ion-content>
-  <ion-grid class="register-grid">
-    <ion-row class="ion-align-items-stretch ion-no-padding">
-      
-      <ion-col size="12" size-md="5" class="left-column ion-hide-md-down">
-        <!-- Columna de gradiente -->
-      </ion-col>
+<ion-content [fullscreen]="true">
+  <form [formGroup]="registroForm" (ngSubmit)="registrar()">
+    <ion-grid class="register-grid">
+      <ion-row class="ion-align-items-stretch ion-no-padding">
+        
+        <ion-col size="12" size-md="5" class="left-column ion-hide-md-down">
+          <!-- Columna de gradiente o imagen -->
+        </ion-col>
 
-      <ion-col size="12" size-md="7" class="right-column ion-padding">
-        <h1>Crear una cuenta</h1>
-        <p>¿Tienes ya una cuenta? <a class="login-link" [routerLink]="['/tabs/tab5']">Inicia Sesión</a></p>
+        <ion-col size="12" size-md="7" class="right-column ion-padding">
+          <h1>Crear una cuenta</h1>
+          <p>¿Tienes ya una cuenta? 
+            <a class="login-link" [routerLink]="['/tabs/tab5']">Inicia Sesión</a>
+          </p>
 
-        <ion-item lines="none" class="input-item">
-          <ion-label position="stacked">Nombre de Usuario</ion-label>
-          <ion-input type="text" placeholder="Ingresa tu usuario"></ion-input>
-        </ion-item>
+          <ion-item lines="none" class="input-item">
+            <ion-label position="stacked">Nombre Completo</ion-label>
+            <ion-input type="text" formControlName="nombre" placeholder="Ingresa tu nombre"></ion-input>
+          </ion-item>
+          <ion-note color="danger" *ngIf="registroForm.get('nombre')?.invalid && registroForm.get('nombre')?.touched">
+            El nombre es requerido.
+          </ion-note>
 
-        <ion-item lines="none" class="input-item">
-          <ion-label position="stacked">Correo Electrónico</ion-label>
-          <ion-input type="email" placeholder="Ingresa tu correo"></ion-input>
-        </ion-item>
+          <ion-item lines="none" class="input-item">
+            <ion-label position="stacked">RUT</ion-label>
+            <ion-input type="text" formControlName="rut" placeholder="12345678-9"></ion-input>
+          </ion-item>
+          <ion-note color="danger" *ngIf="registroForm.get('rut')?.invalid && registroForm.get('rut')?.touched">
+            El RUT es requerido.
+          </ion-note>
 
-        <ion-item lines="none" class="input-item">
-          <ion-label position="stacked">Contraseña</ion-label>
-          <ion-input type="password" placeholder="Ingresa tu contraseña"></ion-input>
-        </ion-item>
+          <ion-item lines="none" class="input-item">
+            <ion-label position="stacked">Correo Electrónico</ion-label>
+            <ion-input type="email" formControlName="email" placeholder="Ingresa tu correo"></ion-input>
+          </ion-item>
+          <ion-note color="danger" *ngIf="registroForm.get('email')?.invalid && registroForm.get('email')?.touched">
+            Correo inválido o vacío.
+          </ion-note>
 
-        <ion-item lines="none" class="input-item">
-          <ion-label position="stacked">Repetir Contraseña</ion-label>
-          <ion-input type="password" placeholder="Confirma tu contraseña"></ion-input>
-        </ion-item>
+          <ion-item lines="none" class="input-item">
+            <ion-label position="stacked">Región</ion-label>
+            <ion-input type="text" formControlName="region" placeholder="Ej: Metropolitana"></ion-input>
+          </ion-item>
+          <ion-note color="danger" *ngIf="registroForm.get('region')?.invalid && registroForm.get('region')?.touched">
+            Región requerida.
+          </ion-note>
 
-        <ion-item lines="none" class="checkbox-item">
-          <ion-checkbox slot="start"></ion-checkbox>
-          <ion-label>Acepto los términos y condiciones para crear una cuenta</ion-label>
-        </ion-item>
+          <ion-item lines="none" class="input-item">
+            <ion-label position="stacked">Comuna</ion-label>
+            <ion-input type="text" formControlName="comuna" placeholder="Ej: Santiago"></ion-input>
+          </ion-item>
+          <ion-note color="danger" *ngIf="registroForm.get('comuna')?.invalid && registroForm.get('comuna')?.touched">
+            Comuna requerida.
+          </ion-note>
 
-        <ion-item lines="none" class="checkbox-item">
-          <ion-checkbox slot="start"></ion-checkbox>
-          <ion-label>Deseo recibir notificaciones y correos con información de promociones y ofertas</ion-label>
-        </ion-item>
+          <ion-item lines="none" class="input-item">
+            <ion-label position="stacked">Contraseña</ion-label>
+            <ion-input type="password" formControlName="password" placeholder="Ingresa tu contraseña"></ion-input>
+          </ion-item>
+          <ion-note color="danger" *ngIf="registroForm.get('password')?.invalid && registroForm.get('password')?.touched">
+            Mínimo 6 caracteres.
+          </ion-note>
 
-        <div class="custom-recaptcha-container">
-          <div class="custom-recaptcha-checkbox">
-            <div class="custom-recaptcha-tick"></div>
-          </div>
-          <span class="custom-recaptcha-text">No soy un robot</span>
-          <div class="custom-recaptcha-logo">
-            <svg viewBox="0 0 32 32" width="20" height="20">
-              <path d="M16 4a12 12 0 1 0 12 12A12 12 0 0 0 16 4zm0 2a10 10 0 1 1 10 10A10 10 0 0 1 16 6z" fill="#4285f4"/>
-              <path d="M16 6v5.33L21.33 16H16z" fill="#1967d2"/>
-              <path d="M16 26a10 10 0 0 1-5.33-18H16V26z" fill="#757575"/>
-              <path d="M16 26v-5.33L10.67 16H16z" fill="#616161"/>
-            </svg>
-            <span style="font-size: 0.7em; color: #757575; margin-left: 3px;">reCAPTCHA</span>
-          </div>
-        </div>
 
-        <ion-button expand="block" class="register-button">
-          Crear Cuenta
-        </ion-button>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+          <!--
+          <ion-item lines="none" class="input-item">
+            <ion-label position="stacked">Repetir Contraseña</ion-label>
+            <ion-input type="password" formControlName="confirmarPassword" placeholder="Confirma tu contraseña"></ion-input>
+          </ion-item>
+          <ion-note color="danger" *ngIf="registroForm.hasError('passwordMismatch') && registroForm.get('confirmarPassword')?.touched">
+            Las contraseñas no coinciden.
+          </ion-note>
+
+          <ion-item lines="none" class="checkbox-item">
+            <ion-checkbox slot="start" formControlName="aceptaTerminos"></ion-checkbox>
+            <ion-label>Acepto los términos y condiciones</ion-label>
+          </ion-item>
+          <ion-note color="danger" *ngIf="registroForm.get('aceptaTerminos')?.invalid && registroForm.get('aceptaTerminos')?.touched">
+            Debes aceptar los términos.
+          </ion-note>
+          -->
+          <!-- Puedes dejar esto opcional 
+          <ion-item lines="none" class="checkbox-item">
+            <ion-checkbox slot="start" formControlName="recibirNotificaciones"></ion-checkbox>
+            <ion-label>Deseo recibir promociones y ofertas</ion-label>
+          </ion-item>
+          -->
+          <ion-button expand="block" type="submit" class="register-button" [disabled]="registroForm.invalid">
+            Crear Cuenta
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
 
   <app-footer></app-footer>
 </ion-content>
