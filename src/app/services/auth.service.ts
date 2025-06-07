@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
   // hay que reemplazar esto con la api del backend
-  private API_URL = 'http://localhost:5000/api/auth/register'; 
+  private API_URL = 'http://localhost:5000/api/auth'; 
 
   // Inyectamos HttpClient para poder hacer peticiones HTTP
   constructor(private http: HttpClient) { }
@@ -22,6 +22,10 @@ export class AuthService {
     // Usamos http.post para crear un nuevo recurso (un nuevo usuario)
     // El primer argumento es la URL del endpoint
     // El segundo argumento es el cuerpo (body) de la petición con los datos
-    return this.http.post(this.API_URL, datosUsuario);
+    return this.http.post(`${this.API_URL}/register`, datosUsuario);
+  }
+
+   loginUsuario(credentials: { email: string; password: string }): Observable<any> {
+    return this.http.post(`${this.API_URL}/login`, credentials);
   }
 }
