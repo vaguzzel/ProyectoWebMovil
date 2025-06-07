@@ -63,6 +63,8 @@
             Mínimo 6 caracteres.
           </ion-note>
 
+
+          <!--
           <ion-item lines="none" class="input-item">
             <ion-label position="stacked">Repetir Contraseña</ion-label>
             <ion-input type="password" formControlName="confirmarPassword" placeholder="Confirma tu contraseña"></ion-input>
@@ -78,13 +80,13 @@
           <ion-note color="danger" *ngIf="registroForm.get('aceptaTerminos')?.invalid && registroForm.get('aceptaTerminos')?.touched">
             Debes aceptar los términos.
           </ion-note>
-
-          <!-- Puedes dejar esto opcional -->
+          -->
+          <!-- Puedes dejar esto opcional 
           <ion-item lines="none" class="checkbox-item">
             <ion-checkbox slot="start" formControlName="recibirNotificaciones"></ion-checkbox>
             <ion-label>Deseo recibir promociones y ofertas</ion-label>
           </ion-item>
-
+          -->
           <ion-button expand="block" type="submit" class="register-button" [disabled]="registroForm.invalid">
             Crear Cuenta
           </ion-button>

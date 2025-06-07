@@ -6,8 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  // 👇 Reemplaza esta URL con la dirección de tu API de backend
-  private API_URL = 'http://localhost:3000/api/usuarios'; // Ejemplo de endpoint de registro
+  // hay que reemplazar esto con la api del backend
+  private API_URL = 'http://localhost:5000/api/auth/register'; 
 
   // Inyectamos HttpClient para poder hacer peticiones HTTP
   constructor(private http: HttpClient) { }

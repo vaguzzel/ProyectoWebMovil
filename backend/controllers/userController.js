@@ -9,7 +9,11 @@ const UserController = {
   // --- Registro de un nuevo usuario ---
   register: async (req, res) => {
     try {
-      const { nombre, rut, email, region, comuna, password, rol } = req.body;
+      
+      const { nombre, rut, email, region, comuna, password} = req.body;
+
+      // Asignar rol por defecto
+      const rol = 'usuario';
 
       // 1. Validar que la contraseña exista
       if (!password) {
