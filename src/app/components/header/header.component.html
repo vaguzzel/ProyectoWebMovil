@@ -18,9 +18,19 @@
           <ion-button fill="clear" class="icon-button">
             <ion-icon slot="icon-only" name="heart-outline"></ion-icon>
           </ion-button>
-          <ion-button fill="clear" class="icon-button" (click)="goToTab2()">
-            <ion-icon slot="icon-only" name="person-outline"></ion-icon>
-          </ion-button>
+
+          <ng-container *ngIf="isLoggedIn; else loggedOutButtons">
+            <ion-button fill="clear" class="nav-link" (click)="goToTab2()">
+              ¡Hola, {{ userName }}!
+            </ion-button>
+            <ion-button fill="clear" class="icon-button" (click)="logout()">
+              <ion-icon slot="icon-only" name="log-out-outline"></ion-icon> </ion-button>
+          </ng-container>
+          <ng-template #loggedOutButtons>
+            <ion-button fill="clear" class="icon-button" (click)="goToTab5()"> <ion-icon slot="icon-only" name="person-outline"></ion-icon>
+            </ion-button>
+          </ng-template>
+
         </ion-buttons>
       </div>
     </div>

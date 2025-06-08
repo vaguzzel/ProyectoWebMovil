@@ -1,16 +1,35 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs'; // Importar BehaviorSubject
+import { tap } from 'rxjs/operators'; // Importar tap para efectos secundarios en el Observable
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  // hay que reemplazar esto con la api del backend
-  private API_URL = 'http://localhost:5000/api/auth'; 
+  // Asegúrate de que esta URL coincida con tu endpoint de login en el backend
+  private API_URL = 'http://localhost:5000/api/auth'; // Tu URL base de la API, ya está aquí.
+
+  // BehaviorSubjects para emitir cambios en el estado de autenticación y datos del usuario
+  // Se inicializan con los valores que podrían estar ya en localStorage al cargar la app
+  private _isAuthenticated = new BehaviorSubject<boolean>(this.hasToken());
+  private _userName = new BehaviorSubject<string | null>(localStorage.getItem('userName'));
+  private _userEmail = new BehaviorSubject<string | null>(localStorage.getItem('userEmail'));
+  private _userRole = new BehaviorSubject<string | null>(localStorage.getItem('userRole'));
+
+  // Observables públicos para que otros componentes puedan suscribirse a los cambios
+  isAuthenticated$ = this._isAuthenticated.asObservable();
+  userName$ = this._userName.asObservable();
+  userEmail$ = this._userEmail.asObservable();
+  userRole$ = this._userRole.asObservable();
 
   // Inyectamos HttpClient para poder hacer peticiones HTTP
   constructor(private http: HttpClient) { }
+
+  // Función privada para verificar si ya hay un token en localStorage
+  private hasToken(): boolean {
+    return !!localStorage.getItem('token');
+  }
 
   /**
    * Envía los datos del nuevo usuario al backend.
@@ -19,13 +38,73 @@ export class AuthService {
    * @returns Un Observable con la respuesta del servidor (ej: el usuario creado).
    */
   registrarUsuario(datosUsuario: any): Observable<any> {
-    // Usamos http.post para crear un nuevo recurso (un nuevo usuario)
-    // El primer argumento es la URL del endpoint
-    // El segundo argumento es el cuerpo (body) de la petición con los datos
     return this.http.post(`${this.API_URL}/register`, datosUsuario);
   }
 
-   loginUsuario(credentials: { email: string; password: string }): Observable<any> {
-    return this.http.post(`${this.API_URL}/login`, credentials);
+  loginUsuario(credentials: { email: string; password: string }): Observable<any> {
+    return this.http.post(`${this.API_URL}/login`, credentials).pipe(
+      tap((res: any) => {
+        // Almacenar token y datos del usuario en localStorage
+        localStorage.setItem('token', res.token);
+        localStorage.setItem('userName', res.user.nombre); // 'nombre' es la propiedad que obtuvimos de tu consola
+        localStorage.setItem('userEmail', res.user.email);
+        localStorage.setItem('userRole', res.user.rol);
+
+        // Actualizar los BehaviorSubjects para notificar a los suscriptores
+        this._isAuthenticated.next(true);
+        this._userName.next(res.user.nombre);
+        this._userEmail.next(res.user.email);
+        this._userRole.next(res.user.rol);
+      })
+    );
+  }
+
+  /**
+   * Cierra la sesión del usuario.
+   * Elimina los datos de sesión de localStorage y actualiza los BehaviorSubjects.
+   */
+  logout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('userName');
+    localStorage.removeItem('userEmail');
+    localStorage.removeItem('userRole');
+
+    // Actualizar los BehaviorSubjects a su estado inicial (no autenticado, sin datos de usuario)
+    this._isAuthenticated.next(false);
+    this._userName.next(null);
+    this._userEmail.next(null);
+    this._userRole.next(null);
+  }
+
+  /**
+   * Retorna el nombre de usuario actualmente almacenado.
+   * @returns El nombre de usuario o null si no hay sesión.
+   */
+  getUserName(): string | null {
+    return this._userName.getValue();
+  }
+
+  /**
+   * Retorna el email de usuario actualmente almacenado.
+   * @returns El email de usuario o null si no hay sesión.
+   */
+  getUserEmail(): string | null {
+    return this._userEmail.getValue();
+  }
+
+  /**
+   * Retorna el rol de usuario actualmente almacenado.
+   * @returns El rol de usuario o null si no hay sesión.
+   */
+  getUserRole(): string | null {
+    return this._userRole.getValue();
+  }
+
+  /**
+   * Retorna el estado actual de autenticación.
+   * @returns true si el usuario está autenticado, false en caso contrario.
+   */
+  isLoggedIn(): boolean {
+    return this._isAuthenticated.getValue();
   }
 }

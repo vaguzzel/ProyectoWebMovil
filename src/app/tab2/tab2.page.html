@@ -23,8 +23,16 @@
           <h2 class="profile-title">Mi Perfil</h2>
           <hr class="profile-divider"/>
           <h4 class="account-info-label">INFORMACIÓN DE CUENTA</h4>
-          <p>Pepito Perez Gutierrez</p>
-          <p class="user-email">pepitoperez&#64;gmail.com</p>
+          
+          <div *ngIf="userName; else notLoggedInProfile">
+            <p>{{ userName }}</p>
+            <p class="user-email">{{ userEmail }}</p>
+            <p><strong>Rol:</strong> {{ userRole }}</p>
+          </div>
+          <ng-template #notLoggedInProfile>
+            <p>Por favor, <a [routerLink]="['/tabs/tab5']">inicia sesión</a> para ver tu perfil.</p>
+          </ng-template>
+
           <div class="profile-actions">
             <ion-button fill="outline" class="profile-button">Editar</ion-button>
             <ion-button fill="outline" class="profile-button">Cambiar contraseña</ion-button>
@@ -78,10 +86,3 @@
 
   <app-footer></app-footer>
 </ion-content>
-
-
-
-
-
-
-
