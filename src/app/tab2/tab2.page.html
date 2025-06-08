@@ -1,18 +1,17 @@
 <app-header></app-header>
 
-
-<ion-content class="profile-content" >
+<ion-content class="profile-content">
   <ion-grid>
     <ion-row>
 
       <ion-col size="12" size-md="3" class="profile-menu-col">
-        <div class="profile-menu-item"
-             [class.active]="currentView === 'perfil'"
+        <div class="profile-menu-item" 
+             [class.active]="currentView === 'perfil'" 
              (click)="changeView('perfil')">PERFIL</div>
-        <div class="profile-menu-item"
+        <div class="profile-menu-item" 
              [class.active]="currentView === 'listaDeDeseos'"
              (click)="changeView('listaDeDeseos')">MI LISTA DE DESEOS</div>
-        <div class="profile-menu-item"
+        <div class="profile-menu-item" 
              [class.active]="currentView === 'productosEnStock'"
              (click)="changeView('productosEnStock')">PRODUCTOS EN STOCK NUEVAMENTE</div>
       </ion-col>
@@ -21,9 +20,9 @@
 
         <div *ngIf="currentView === 'perfil'">
           <h2 class="profile-title">Mi Perfil</h2>
-          <hr class="profile-divider"/>
+          <hr class="profile-divider" />
           <h4 class="account-info-label">INFORMACIÓN DE CUENTA</h4>
-          
+
           <div *ngIf="userName; else notLoggedInProfile">
             <p>{{ userName }}</p>
             <p class="user-email">{{ userEmail }}</p>
@@ -41,28 +40,20 @@
 
         <div *ngIf="currentView === 'listaDeDeseos'">
           <h2 class="profile-title">Mi lista de deseos</h2>
-          <hr class="profile-divider"/>
+          <hr class="profile-divider" />
 
           <ion-grid>
             <ion-row>
-              <ion-col size="12" size-sm="6" class="wishlist-item-col" *ngFor="let item of wishlistItems">
-                <div class="wishlist-item-card">
-                  <ion-button fill="clear" class="wishlist-heart-button" (click)="toggleLike(item)">
-                    <ion-icon slot="icon-only" 
-                      [name]="item.isLiked ? 'heart' : 'heart-outline'"
-                      [color]="item.isLiked ? 'danger' : 'medium'"> 
-
-                    </ion-icon>
-                  </ion-button>
-                  <img [src]="item.imageUrl" [alt]="item.name">
-                  <div class="item-details">
-                    <p class="item-brand">{{ item.brand }}</p>
-                    <p class="item-name">{{ item.name }}</p>
-                    <p class="item-price">{{ item.price }}</p>
-                    </div>
-                </div>
+              <ion-col size="12" size-sm="6" size-md="4" class="wishlist-item-col" *ngFor="let item of wishlistItems">
+                <app-product-card
+                  [image]="item.image_url"
+                  [brand]="item.marca_nombre"
+                  [title]="item.nombre"
+                  [price]="item.precio"
+                  [isLiked]="item.isLiked"
+                  (wishlistToggle)="toggleLike(item)">
+                </app-product-card>
               </ion-col>
-
               <ion-col size="12" *ngIf="wishlistItems.length === 0">
                 <p style="text-align: center; color: grey; margin-top: 20px;">Tu lista de deseos está vacía.</p>
               </ion-col>
@@ -73,14 +64,13 @@
 
         <div *ngIf="currentView === 'productosEnStock'">
           <h2 class="profile-title">Productos en Stock Nuevamente</h2>
-          <hr class="profile-divider"/>
+          <hr class="profile-divider" />
           <p>Aquí iría la lista de productos que volvieron a estar disponibles...</p>
         </div>
 
       </ion-col>
     </ion-row>
   </ion-grid>
-
 
   <div style="height: 400px;"></div>
 

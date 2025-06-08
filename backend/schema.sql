@@ -1,9 +1,6 @@
--- schema.sql 
-
 CREATE DATABASE IF NOT EXISTS look_4_beauty;
 USE look_4_beauty;
 
--- Tabla de Usuarios con todos los campos y AUTO_INCREMENT
 CREATE TABLE Usuarios (
     id_usuario INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
@@ -16,7 +13,7 @@ CREATE TABLE Usuarios (
     fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Las demás tablas principales
+
 CREATE TABLE Marcas (
     marca_id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL UNIQUE
@@ -28,15 +25,18 @@ CREATE TABLE Categorias (
     descripcion TEXT
 );
 
+
 CREATE TABLE Producto (
     id_producto INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
     descripcion TEXT,
+    image_url VARCHAR(512), 
     marca_id INT,
     categoria_id INT,
     FOREIGN KEY (marca_id) REFERENCES Marcas(marca_id),
     FOREIGN KEY (categoria_id) REFERENCES Categorias(id_categoria)
 );
+
 
 CREATE TABLE Tiendas (
     id_tienda INT AUTO_INCREMENT PRIMARY KEY,
@@ -55,7 +55,6 @@ CREATE TABLE PrecioProductoTienda (
     FOREIGN KEY (id_producto) REFERENCES Producto(id_producto)
 );
 
--- Tabla Reseñas con clave primaria simple (id_reseña)
 CREATE TABLE Reseñas (
     id_reseña INT AUTO_INCREMENT PRIMARY KEY,
     id_producto INT NOT NULL,
@@ -67,12 +66,12 @@ CREATE TABLE Reseñas (
     FOREIGN KEY (id_usuario) REFERENCES Usuarios(id_usuario)
 );
 
--- Tabla ListadeDeseo con la restricción UNIQUE
+
 CREATE TABLE ListadeDeseo (
     id_lista INT AUTO_INCREMENT PRIMARY KEY,
     id_usuario INT NOT NULL,
     id_producto INT NOT NULL,
     FOREIGN KEY (id_usuario) REFERENCES Usuarios(id_usuario),
     FOREIGN KEY (id_producto) REFERENCES Producto(id_producto),
-    UNIQUE (id_usuario, id_producto) -- Clave para no repetir productos en la lista
+    UNIQUE (id_usuario, id_producto)
 );

@@ -1,71 +1,68 @@
-// src/app/tab2/tab2.page.ts
-import { Component, OnInit } from '@angular/core'; // Asegurarse de importar OnInit
-import { HostListener } from '@angular/core';
-import { AuthService } from '../services/auth.service'; // Importa el AuthService
+// src/app/tab2/tab2.page.ts (VERSIÓN MODIFICADA Y DINÁMICA)
 
-interface WishlistItem {
-  id: number;
-  brand: string;
-  name: string;
-  price: string;
-  imageUrl: string;
-  isLiked: boolean;
-}
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../services/auth.service';
+import { WishlistService } from '../services/wishlist.service'; // <-- 1. Importamos el servicio
 
 @Component({
   selector: 'app-tab2',
   templateUrl: 'tab2.page.html',
   styleUrls: ['tab2.page.scss'],
-  standalone: false,
+  standalone: false
 })
-export class Tab2Page implements OnInit { // Asegúrate de que implementa OnInit
+export class Tab2Page implements OnInit {
   public currentView: string = 'perfil';
-  public wishlistItems: WishlistItem[] = [
-    {
-      id: 1,
-      brand: 'TOCOBO',
-      name: 'Cica Protector Solar En Barra Cotton Soft Sun Stick SPF50',
-      price: '$24.990',
-      imageUrl: 'assets/images/tocobo_protector.webp',
-      isLiked: true
-    },
-    {
-      id: 2,
-      brand: 'RARE BEAUTY',
-      name: 'Bronceador en Barra Warm Wishes Effortless Bronzer Stick - Power Boost',
-      price: '$35.000',
-      imageUrl: 'assets/images/rare_beauty.webp',
-      isLiked: true
-    },
-  ];
+  
+  // 2. Inicializamos la lista de deseos como un arreglo vacío
+  public wishlistItems: any[] = [];
 
-  // **Variables para los datos del usuario agregadas**
   userName: string | null = null;
   userEmail: string | null = null;
   userRole: string | null = null;
 
-  constructor(private authService: AuthService) { }
+  // 3. Inyectamos el WishlistService en el constructor
+  constructor(
+    private authService: AuthService,
+    private wishlistService: WishlistService 
+  ) {}
 
-  // **ngOnInit implementado**
   ngOnInit() {
-    // Obtener los datos del usuario del AuthService al iniciar el componente
     this.userName = this.authService.getUserName();
     this.userEmail = this.authService.getUserEmail();
     this.userRole = this.authService.getUserRole();
-
-    // Suscribirse a los cambios si la página de perfil puede actualizarse sin recargar
-    this.authService.userName$.subscribe(name => this.userName = name);
-    this.authService.userEmail$.subscribe(email => this.userEmail = email);
-    this.authService.userRole$.subscribe(role => this.userRole = role);
+  }
+  
+  // Usamos ionViewWillEnter para que la lista se actualice cada vez que entramos a la pestaña
+  ionViewWillEnter() {
+    if (this.currentView === 'listaDeDeseos') {
+      this.loadWishlist();
+    }
   }
 
   changeView(viewName: string) {
     this.currentView = viewName;
-    console.log('Vista cambiada a:', this.currentView);
+    // Si el usuario cambia a la vista de la lista de deseos, cargamos los datos
+    if (viewName === 'listaDeDeseos') {
+      this.loadWishlist();
+    }
   }
 
-  toggleLike(item: WishlistItem) {
-    item.isLiked = !item.isLiked;
-    console.log('Estado actualizado para', item.name, ':', item.isLiked);
+  // 4. Nueva función para cargar los datos desde la API
+  loadWishlist() {
+    this.wishlistService.getWishlist().subscribe(items => {
+      // Le añadimos la propiedad 'isLiked' a cada item para que el corazón aparezca rojo
+      this.wishlistItems = items.map(item => ({ ...item, isLiked: true }));
+    });
+  }
+
+  // 5. Modificamos toggleLike para que elimine el producto de verdad
+  toggleLike(item: any) {
+    const productId = item.id_producto;
+
+    this.wishlistService.removeFromWishlist(productId).subscribe(() => {
+      // Si la eliminación en el backend es exitosa, quitamos el item de la lista localmente
+      // para que desaparezca de la pantalla al instante.
+      this.wishlistItems = this.wishlistItems.filter(i => i.id_producto !== productId);
+    });
   }
 }
