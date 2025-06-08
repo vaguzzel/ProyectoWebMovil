@@ -31,6 +31,12 @@ const UserModel = {
   // Método para encontrar un usuario por su ID.
   findById: (id, callback) => {
     db.query('SELECT * FROM Usuarios WHERE id_usuario = ?', [id], callback);
+  },
+
+  // --- Actualizar un usuario por su ID ---
+  updateById: (id, data, callback) => {
+      const query = 'UPDATE Usuarios SET ? WHERE id_usuario = ?';
+      db.query(query, [data, id], callback);
   }
 
   

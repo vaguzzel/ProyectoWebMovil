@@ -94,7 +94,70 @@ const UserController = {
         }
       });
     });
+  },
+
+  updateProfile: (req, res) => {
+    // Obtenemos el ID del usuario directamente del token verificado para mayor seguridad
+    const userId = req.usuario.userId; 
+    const { nombre, email } = req.body;
+
+    const userData = { nombre, email };
+
+    UserModel.updateById(userId, userData, (err, result) => {
+        if (err) {
+            // Manejar posible error de email duplicado
+            if (err.code === 'ER_DUP_ENTRY') {
+                return res.status(409).json({ message: 'El email ya está en uso por otro usuario.' });
+            }
+            return res.status(500).json({ message: 'Error al actualizar el perfil.', error: err });
+        }
+        if (result.affectedRows === 0) {
+            return res.status(404).json({ message: 'Usuario no encontrado.' });
+        }
+        res.json({ message: 'Perfil actualizado exitosamente.' });
+    });
+},
+
+// --- Cambiar la contraseña ---
+  changePassword: async (req, res) => {
+    const userId = req.usuario.userId; // Obtenemos el ID del usuario desde el token verificado
+    const { currentPassword, newPassword } = req.body;
+
+    if (!currentPassword || !newPassword) {
+        return res.status(400).json({ message: 'La contraseña actual y la nueva son requeridas.' });
+    }
+
+    try {
+        // 1. Buscar al usuario para obtener su contraseña actual hasheada
+        UserModel.findById(userId, async (err, users) => {
+            if (err) return res.status(500).json({ message: 'Error del servidor.', error: err });
+            if (users.length === 0) return res.status(404).json({ message: 'Usuario no encontrado.' });
+
+            const user = users[0];
+
+            // 2. Comparar la contraseña actual enviada con la de la BD
+            const isMatch = await bcrypt.compare(currentPassword, user.password_hash);
+            if (!isMatch) {
+                return res.status(401).json({ message: 'La contraseña actual es incorrecta.' });
+            }
+
+            // 3. Hashear la nueva contraseña
+            const salt = await bcrypt.genSalt(10);
+            const newPasswordHash = await bcrypt.hash(newPassword, salt);
+
+            // 4. Actualizar la contraseña en la BD
+            UserModel.updateById(userId, { password_hash: newPasswordHash }, (err, result) => {
+                if (err) return res.status(500).json({ message: 'Error al cambiar la contraseña.', error: err });
+                res.json({ message: 'Contraseña cambiada exitosamente.' });
+            });
+        });
+    } catch (error) {
+        res.status(500).json({ message: 'Error en el servidor.', error });
+    }
   }
+
+  
+
 };
 
 module.exports = UserController;
