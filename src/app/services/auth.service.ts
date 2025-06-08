@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs'; // Importar BehaviorSubject
 import { tap } from 'rxjs/operators'; // Importar tap para efectos secundarios en el Observable
 
@@ -84,6 +84,38 @@ export class AuthService {
     this._userEmail.next(null);
     this._userRole.next(null);
     this._userId.next(null);
+  }
+
+   /**
+   * Actualiza los datos del perfil del usuario (nombre y email).
+   * @param profileData Objeto con el nombre y/o email a actualizar.
+   * @returns Un Observable con la respuesta del servidor.
+   */
+  updateProfile(profileData: { nombre: string; email: string }): Observable<any> {
+    const token = this.getToken();
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+    return this.http.put(`${this.API_URL}/profile`, profileData, { headers }).pipe(
+      tap(() => {
+        // Si la actualización es exitosa, actualizamos los datos en localStorage y en el servicio
+        localStorage.setItem('userName', profileData.nombre);
+        localStorage.setItem('userEmail', profileData.email);
+        this._userName.next(profileData.nombre);
+        this._userEmail.next(profileData.email);
+      })
+    );
+  }
+
+  /**
+   * Envía la solicitud para cambiar la contraseña del usuario.
+   * @param passwordData Objeto con la contraseña actual y la nueva.
+   * @returns Un Observable con la respuesta del servidor.
+   */
+  changePassword(passwordData: { currentPassword: string; newPassword: string }): Observable<any> {
+    const token = this.getToken();
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    
+    return this.http.put(`${this.API_URL}/change-password`, passwordData, { headers });
   }
 
   /**
