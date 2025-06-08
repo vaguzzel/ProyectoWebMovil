@@ -34,6 +34,17 @@ const verificarToken = (req, res, next) => {
     });
 };
 
+const esAdmin = (req, res, next) => {
+    // Esta función se ejecuta DESPUÉS de verificarToken, por lo que ya tenemos req.usuario
+    if (req.usuario && req.usuario.rol === 'admin') {
+        next(); // Si el rol es 'admin', permite continuar
+    } else {
+        res.status(403).json({ message: "Acceso denegado. Se requiere rol de Administrador." });
+    }
+};
+
+
 module.exports = {
     verificarToken,
+    esAdmin
 };
