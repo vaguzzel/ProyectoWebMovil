@@ -1,6 +1,9 @@
 <ion-card class="product-card">
-  <ion-button fill="clear" class="wishlist-button">
-    <ion-icon slot="icon-only" name="heart-outline"></ion-icon>
+  <ion-button fill="clear" class="wishlist-heart-button" (click)="onWishlistClick($event)">
+    <ion-icon slot="icon-only"
+      [name]="isLiked ? 'heart' : 'heart-outline'"
+      [color]="isLiked ? 'danger' : 'medium'">
+    </ion-icon>
   </ion-button>
   <div class="big">
     <ion-img [src]="image" [alt]="title" class="img"></ion-img>

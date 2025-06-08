@@ -16,12 +16,15 @@ export class AuthService {
   private _userName = new BehaviorSubject<string | null>(localStorage.getItem('userName'));
   private _userEmail = new BehaviorSubject<string | null>(localStorage.getItem('userEmail'));
   private _userRole = new BehaviorSubject<string | null>(localStorage.getItem('userRole'));
+  private _userId = new BehaviorSubject<number | null>(this.getUserIdFromStorage());
+
 
   // Observables públicos para que otros componentes puedan suscribirse a los cambios
   isAuthenticated$ = this._isAuthenticated.asObservable();
   userName$ = this._userName.asObservable();
   userEmail$ = this._userEmail.asObservable();
   userRole$ = this._userRole.asObservable();
+  userId$ = this._userId.asObservable();
 
   // Inyectamos HttpClient para poder hacer peticiones HTTP
   constructor(private http: HttpClient) { }
@@ -29,6 +32,11 @@ export class AuthService {
   // Función privada para verificar si ya hay un token en localStorage
   private hasToken(): boolean {
     return !!localStorage.getItem('token');
+  }
+
+  private getUserIdFromStorage(): number | null {
+    const userId = localStorage.getItem('userId');
+    return userId ? +userId : null; // El '+' convierte el string a número
   }
 
   /**
@@ -68,12 +76,14 @@ export class AuthService {
     localStorage.removeItem('userName');
     localStorage.removeItem('userEmail');
     localStorage.removeItem('userRole');
+    localStorage.removeItem('userId');
 
     // Actualizar los BehaviorSubjects a su estado inicial (no autenticado, sin datos de usuario)
     this._isAuthenticated.next(false);
     this._userName.next(null);
     this._userEmail.next(null);
     this._userRole.next(null);
+    this._userId.next(null);
   }
 
   /**
@@ -106,5 +116,13 @@ export class AuthService {
    */
   isLoggedIn(): boolean {
     return this._isAuthenticated.getValue();
+  }
+
+  getToken(): string | null {
+    return localStorage.getItem('token');
+  }
+
+  getUserId(): number | null {
+    return this._userId.getValue();
   }
 }
