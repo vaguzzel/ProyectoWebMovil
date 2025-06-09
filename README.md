@@ -210,6 +210,12 @@ La app (programada) en esta entrega incluye una interfaz para visualizar:
 
 ---
 
+##Esquema MR de la Base de Datos
+
+![mr drawio](https://github.com/user-attachments/assets/5a79502e-9178-4e77-9fa8-36cdf6108825)
+
+---
+
 ## Prototipo de diseño
 [Figma - Sistema de comparación de precios de productos cosméticos entre tiendas online](https://www.figma.com/design/nCRlDbV7I8EhWRFFZQ6kzM/Look4Beauty?node-id=53-782&t=ZXB8Zn80NEDQ9Dsx-1)
 
