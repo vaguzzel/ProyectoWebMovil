@@ -210,7 +210,7 @@ La app (programada) en esta entrega incluye una interfaz para visualizar:
 
 ---
 
-##Esquema MR de la Base de Datos
+## Esquema MR de la Base de Datos
 
 ![mr drawio](https://github.com/user-attachments/assets/5a79502e-9178-4e77-9fa8-36cdf6108825)
 
