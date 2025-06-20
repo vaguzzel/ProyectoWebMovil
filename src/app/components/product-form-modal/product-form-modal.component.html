@@ -1,0 +1,42 @@
+    <ion-header>
+      <ion-toolbar color="primary">
+        <ion-title>{{ isEditMode ? 'Editar Producto' : 'Nuevo Producto' }}</ion-title>
+        <ion-buttons slot="end">
+          <ion-button (click)="dismiss()">Cerrar</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content class="ion-padding">
+      <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+        <ion-item>
+          <ion-label position="floating">Nombre del Producto</ion-label>
+          <ion-input formControlName="nombre"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Descripción</ion-label>
+          <ion-textarea formControlName="descripcion" [autoGrow]="true"></ion-textarea>
+        </ion-item>
+        
+        <!-- TODO: Cargar dinámicamente las opciones de marca y categoría -->
+        <ion-item>
+          <ion-label>Marca</ion-label>
+          <ion-select formControlName="marca_id" placeholder="Selecciona una marca">
+            <!-- <ion-select-option *ngFor="let marca of marcas" [value]="marca.marca_id">{{ marca.nombre }}</ion-select-option> -->
+          </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Categoría</ion-label>
+          <ion-select formControlName="categoria_id" placeholder="Selecciona una categoría">
+             <!-- <ion-select-option *ngFor="let cat of categorias" [value]="cat.id_categoria">{{ cat.nombre }}</ion-select-option> -->
+          </ion-select>
+        </ion-item>
+
+        <ion-button expand="block" type="submit" class="ion-margin-top" [disabled]="productForm.invalid">
+          {{ isEditMode ? 'Guardar Cambios' : 'Crear Producto' }}
+        </ion-button>
+      </form>
+    </ion-content>
+    
