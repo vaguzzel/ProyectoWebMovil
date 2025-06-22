@@ -113,11 +113,6 @@ export class Tab1Page implements OnInit, AfterViewInit {
     });
   }
 
-  verDetalleProducto(product: any) {
-    const productId = product.id_producto; // Asegúrate de que el ID del producto se llame así
-    this.router.navigate(['/tabs/tab3', productId]);
-  }
-
   updateLikedStatus() {
     this.products.forEach(p => {
       p.isLiked = this.wishlistProductIds.has(p.id_producto);

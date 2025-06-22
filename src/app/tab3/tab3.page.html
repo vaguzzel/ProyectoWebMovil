@@ -5,22 +5,22 @@
     
     <!-- Columna: Imagen del producto -->
     <div class="producto-imagen">
-        <div class="imagen-wrapper">
-          <img [src]="producto.url_imagen" [alt]="producto.nombre"/>
-          <ion-button fill="clear" class="wishlist-button">
-            <ion-icon name="heart-outline"></ion-icon>
-          </ion-button>
-        </div>
+      <div class="imagen-wrapper">
+        <img src="assets/images/placeholder-oferta-1.png"/>
+        <ion-button fill="clear" class="wishlist-button">
+          <ion-icon name="heart-outline"></ion-icon>
+        </ion-button>
       </div>
-  
-    <!-- Columna: Información del producto -->
+    </div>
+
+    <!-- Columna: Descripción y título -->
     <div class="producto-info">
-        <h1>{{ producto.marca_nombre }} <br> <strong>{{ producto.nombre }}</strong></h1>
-        <div class="descripcion">
-          <h2>Detalles del producto</h2>
-          <p class="description-text">{{ producto.descripcion }}</p>
-          <ion-button expand="block" color="#a1818a">Modo de uso</ion-button>
-        </div>
+      <h1>MAYBELLINE <br> <strong>SuperStay Vinyl Ink WITTY</strong></h1>
+      <div class="descripcion">
+        <h2 >Detalles del producto</h2>
+        <p class="description-text">Sella el vinilo en tus labios con Super Stay Vinyl Ink  Nude y ¡márcate unos labios con poder! Su acabado de efecto vinilo y su fórmula en tinta líquida llega para romper los límites de la larga duración. Agita y aplica para conseguir 16H de color y brillo. ¡Olvídate de retocar tus labios! Máximo color y brillo en una sola pasada. ¿Preparada para romper las reglas?</p>
+        <ion-button expand="block" color="#a1818a">Modo de uso</ion-button>
+      </div>
     </div>
 
     <!-- Columna: Tiendas disponibles -->
@@ -72,12 +72,4 @@
 
 
   </div>
-
-  <ng-template #loading>
-    <div style="text-align: center; margin-top: 100px;">
-      <ion-spinner name="crescent" style="width: 50px; height: 50px;"></ion-spinner>
-      <p style="margin-top: 10px;">Cargando detalles del producto...</p>
-    </div>
-  </ng-template>
-
 </ion-content>
