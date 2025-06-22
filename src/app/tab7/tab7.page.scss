@@ -1,0 +1,60 @@
+// Centra el spinner y el mensaje de estado vacío para un mejor feedback visual
+.ion-text-center, .empty-state {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--ion-color-medium);
+}
+
+// Estilos para el indicador de deslizamiento (la flecha)
+.slide-indicator {
+  color: var(--ion-color-medium-tint);
+  font-size: 1.2rem;
+  
+  // Animación sutil para que "respire", sugiriendo interacción
+  animation: pulse-horizontal 2.5s infinite ease-in-out;
+}
+
+@keyframes pulse-horizontal {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-4px);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+// Estilos para cada item de la lista de productos
+ion-item-sliding ion-item {
+  
+  // Define un tamaño para la imagen y le da espacio a la derecha
+  ion-thumbnail {
+    --size: 50px;
+    --border-radius: 8px;
+    margin-inline-end: 16px; 
+  }
+
+  ion-label {
+    // Estilo para el nombre del producto
+    h2 {
+      font-weight: 600;
+      font-size: 1rem;
+      
+      // La clave para evitar que el texto se amontone si es muy largo
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    // Estilo para la marca y categoría
+    p {
+      font-size: 0.85rem;
+      color: var(--ion-color-medium-shade);
+    }
+  }
+}

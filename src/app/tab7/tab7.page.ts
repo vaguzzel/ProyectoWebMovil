@@ -101,5 +101,9 @@ export class Tab7Page implements OnInit {
   async presentToast(message: string, color: string) {
     const toast = await this.toastCtrl.create({ message, duration: 3000, color });
     toast.present();
-}
+  }
+
+  handleImageError(event: any) {
+    event.target.src = 'https://placehold.co/80x80/e1e1e1/7f7f7f?text=N/A';
+  }
 }
