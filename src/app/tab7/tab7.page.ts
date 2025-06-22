@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ModalController, AlertController, ToastController } from '@ionic/angular';
 import { ProductService } from 'src/app/services/product.service';
 import { ProductFormModalComponent } from 'src/app/components/product-form-modal/product-form-modal.component';
+import { firstValueFrom } from 'rxjs';
 
 @Component({
   selector: 'app-tab7',
@@ -50,7 +51,7 @@ export class Tab7Page implements OnInit {
     // Si estamos editando, necesitamos obtener todos los detalles del producto, incluyendo sus ofertas
     if (product) {
       try {
-        productToEdit = await this.productService.getProductById(product.id_producto).toPromise();
+        productToEdit = await firstValueFrom(this.productService.getProductById(product.id_producto));
       } catch (err) {
         this.presentToast('No se pudieron cargar los detalles del producto.', 'danger');
         return;
@@ -100,5 +101,9 @@ export class Tab7Page implements OnInit {
   async presentToast(message: string, color: string) {
     const toast = await this.toastCtrl.create({ message, duration: 3000, color });
     toast.present();
-}
+  }
+
+  handleImageError(event: any) {
+    event.target.src = 'https://placehold.co/80x80/e1e1e1/7f7f7f?text=N/A';
+  }
 }

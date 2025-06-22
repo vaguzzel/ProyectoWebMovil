@@ -30,9 +30,8 @@ const ProductController = {
 
   getById: (req, res) => {
     const productId = req.params.id;
-    
+
     // 1. Primero, obtenemos los detalles del producto.
-    
     ProductModel.getById(productId, (err, products) => {
       if (err) {
         // Logueamos el error para depuración en el servidor
@@ -59,7 +58,6 @@ const ProductController = {
         res.json(product);
       });
     });
-    
   },
 
   update: (req, res) => {
@@ -76,7 +74,25 @@ const ProductController = {
       if (result.affectedRows === 0) return res.status(404).json({ message: 'Producto no encontrado.' });
       res.status(204).send();
     });
+  },
+
+  buscarProductos: (req, res) => { // <-- Se quita el async
+  const palabraClave = req.query.q;
+  if (!palabraClave) {
+    return res.status(400).json({ message: 'El parámetro de búsqueda "q" es requerido.' });
   }
+  
+  // Se llama al modelo con el estilo de callback
+  ProductModel.buscarPorPalabraClave(palabraClave, (err, productosEncontrados) => {
+    if (err) {
+      console.error('Error en el controlador al buscar productos:', err);
+      return res.status(500).json({ message: 'Error interno del servidor al buscar productos.' });
+    }
+    res.json(productosEncontrados);
+  });
+}
+ 
+
 };
 
 module.exports = ProductController;

@@ -3,6 +3,16 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service'; // 1. Importar AuthService
 
+export interface Producto {
+  id_producto: string;
+  nombre: string;
+  descripcion: number;
+  marca_id: string;
+  categoria_id?: string; 
+  image_url?: string;
+}
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -48,4 +58,12 @@ export class ProductService {
     return this.http.delete(`${this.apiUrl}/${id}`, { headers: this.getAuthHeaders() });
   }
   
+
+  buscarProductos(palabraClave: string): Observable<Producto[]> {
+   const url = `${this.apiUrl}/buscar?q=${palabraClave}`;
+
+    console.log('Solicitando URL al backend:', url);
+
+    return this.http.get<Producto[]>(url);
+  } 
 }
