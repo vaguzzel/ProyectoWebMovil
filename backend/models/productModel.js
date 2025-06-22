@@ -1,14 +1,11 @@
-
-const db = require('../config/db');
+const db = require('../config/db'); // Asegúrate de que este 'db' soporta callbacks y transacciones como lo usas
 
 const ProductModel = {
-  // Crear un nuevo producto
+  // Crear un nuevo producto con ofertas (lógica de transacción existente)
   createWithOffers: (productData, offersData, callback) => {
-    // 1. Iniciar la transacción
     db.beginTransaction(err => {
       if (err) { return callback(err); }
 
-      // 2. Insertar el producto principal
       db.query('INSERT INTO Producto SET ?', productData, (err, productResult) => {
         if (err) {
           return db.rollback(() => callback(err));
@@ -16,7 +13,6 @@ const ProductModel = {
 
         const productId = productResult.insertId;
 
-        // Si no hay ofertas, simplemente confirmamos la transacción y terminamos.
         if (!offersData || offersData.length === 0) {
           return db.commit(err => {
             if (err) {
@@ -26,23 +22,20 @@ const ProductModel = {
           });
         }
 
-        // 3. Preparar las inserciones para la tabla pivote PrecioProductoTienda
         const priceInserts = offersData.map(offer => [
           offer.id_tienda,
           productId,
           offer.precio,
-          offer.stock, // Asegúrate de que tu frontend envíe esto
+          offer.stock,
           offer.url_producto
         ]);
 
-        // 4. Insertar todas las ofertas
         const query = 'INSERT INTO PrecioProductoTienda (id_tienda, id_producto, precio, stock, url_producto) VALUES ?';
         db.query(query, [priceInserts], (err, priceResult) => {
           if (err) {
             return db.rollback(() => callback(err));
           }
 
-          // 5. Si todo fue exitoso, confirmar la transacción
           db.commit(err => {
             if (err) {
               return db.rollback(() => callback(err));
@@ -54,9 +47,7 @@ const ProductModel = {
     });
   },
 
-
-
-  // Obtener todos los productos con el nombre de su marca y categoría
+  // Obtener todos los productos
   getAll: (callback) => {
     const query = `
       SELECT p.*, m.nombre AS marca_nombre, c.nombre AS categoria_nombre
@@ -67,14 +58,14 @@ const ProductModel = {
     db.query(query, callback);
   },
 
-  // Obtener un producto por su ID, incluyendo datos de marca y categoría
+  // Obtener producto por ID (lógica existente)
   getById: (id, callback) => {
     const query = `
-      SELECT 
+      SELECT
         p.id_producto, p.nombre, p.descripcion, p.image_url,
         m.nombre AS marca_nombre,
         c.nombre AS categoria_nombre,
-        (SELECT 
+        (SELECT
           JSON_ARRAYAGG(
             JSON_OBJECT(
               'id_tienda', t.id_tienda,
@@ -106,30 +97,52 @@ const ProductModel = {
     db.query('DELETE FROM Producto WHERE id_producto = ?', [id], callback);
   },
 
-  // Encontrar productos por categoría (ejemplo de búsqueda específica)
+  // Encontrar productos por categoría
   findByCategory: (categoryId, callback) => {
     db.query('SELECT * FROM Producto WHERE categoria_id = ?', [categoryId], callback);
   },
 
-  searchByName: (query, callback) => {
-    let sql = `SELECT * FROM Producto`;
+  // --- Método de búsqueda adaptado al estilo directo de db.query ---
+  buscarPorPalabraClave: (palabraClave, callback) => {
+    const query = `
+      SELECT
+        id_producto,
+        nombre,
+        descripcion,
+        marca_id,
+        categoria_id,
+        image_url
+      FROM
+        producto
+      WHERE
+        nombre LIKE ? OR CAST(descripcion AS CHAR) LIKE ?
+    `;
 
-    
-    let params = [];
+    const searchTerm = `%${palabraClave}%`;
 
-    // Si la cadena de búsqueda no está vacía, añade la cláusula WHERE
-    if (query) {
-      sql += ` WHERE nombre LIKE ? OR descripcion LIKE ?`; // Busca en 'nombre' o 'descripcion'
-      params.push(`%${query}%`, `%${query}%`); // Añade '%' para búsqueda parcial (LIKE)
-    }
-
-    sql += ` ORDER BY nombre ASC`; // Opcional: Ordena los resultados por nombre alfabéticamente
-
-    db.query(sql, params, callback); // Ejecuta la consulta
-  },
-
-
-
+    // Pasamos el callback directamente a db.query,
+    // asumiendo que db.query manejará la estructura (err, rows) para nosotros.
+    // El mapeo de datos se haría en el controlador si fuera necesario,
+    // o en el frontend, o se dejaría así si los nombres de columna ya coinciden.
+    db.query(query, [searchTerm, searchTerm], (err, rows) => {
+      if (err) {
+        console.error('Error al buscar productos en el modelo:', err);
+        return callback(err); // Propaga el error
+      }
+      // Realizamos el mapeo aquí para mantener la consistencia de los datos
+      // que el modelo debe devolver al controlador.
+      const productosFormateados = rows.map(row => ({
+        id_producto: row.id_producto,
+        nombre: row.nombre,
+        descripcion: row.descripcion, // Asegúrate de que `descripcion` es correcta aquí
+        marca_id: row.marca_id,
+        categoria_id: row.categoria_id || null,
+        image_url: row.image_url || null
+      }));
+       callback(null, productosFormateados); // Devuelve los datos formateados
+    });
+  }
 };
+
 
 module.exports = ProductModel;

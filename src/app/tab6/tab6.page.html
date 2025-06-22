@@ -11,122 +11,49 @@
 
     <div class="search-title">
       <h1>Resultados de la búsqueda</h1>
-      <p>Palabras clave: <strong>ram</strong></p>
+      <p>Palabras clave: <strong>{{ palabraClave }}</strong></p>
     </div>
 
+    <div *ngIf="cargando" class="ion-text-center ion-padding">
+      <ion-spinner name="crescent"></ion-spinner>
+      <p>Cargando productos...</p>
+    </div>
+
+    <div *ngIf="error" class="ion-text-center ion-padding">
+      <p class="ion-text-danger">{{ error }}</p>
+    </div>
+
+    <div *ngIf="!cargando && !error && productosEncontrados.length === 0 && palabraClave" class="ion-text-center ion-padding">
+      <p>No se encontraron productos para "{{ palabraClave }}".</p>
+    </div>
+
+    <div *ngIf="!cargando && !error && productosEncontrados.length === 0 && !palabraClave" class="ion-text-center ion-padding">
+      <p>Ingresa un término de búsqueda en el encabezado para encontrar productos.</p>
+    </div>
 
     <ion-grid class="product-grid">
       <ion-row>
-        <ion-col size="12" size-sm="6" size-md="4" size-lg="3">
+        <ion-col
+          size="12"
+          size-sm="6"
+          size-md="4"
+          size-lg="3"
+          *ngFor="let producto of productosEncontrados"
+        >
           <ion-card class="product-card">
-            <img src="assets/images/mouse-gamenote.jpg" alt="Gamenote MS1006 RGB Backlit Programmable Gaming Mouse" />
+            <img [src]="producto.image_url || 'assets/images/placeholder-product.jpg'" [alt]="producto.nombre" />
             <ion-card-header>
-              <ion-card-title>Gamenote MS1006 RGB Backlit Programmable Gaming Mouse</ion-card-title>
+              <ion-card-title>{{ producto.nombre }}</ion-card-title>
             </ion-card-header>
             <ion-card-content>
-              <p class="price">$1.990</p>
-              <ion-button expand="block" fill="clear">Ver Producto</ion-button>
+              <p *ngIf="producto.descripcion">{{ producto.descripcion }}</p>
+              <ion-button expand="block" fill="clear" [routerLink]="['/producto', producto.id_producto]">Ver Producto</ion-button>
             </ion-card-content>
           </ion-card>
         </ion-col>
-
-        <ion-col size="12" size-sm="6" size-md="4" size-lg="3">
-          <ion-card class="product-card">
-            <img src="assets/images/mouse-ultra-x6.jpg" alt="Ultra X6 Tecnology (29UTX-00X6)" />
-            <ion-card-header>
-              <ion-card-title>Ultra X6 Tecnology (29UTX-00X6)</ion-card-title>
-            </ion-card-header>
-            <ion-card-content>
-              <p class="price">$2.432</p>
-              <ion-button expand="block" fill="clear">Ver Producto</ion-button>
-            </ion-card-content>
-          </ion-card>
-        </ion-col>
-
-        <ion-col size="12" size-sm="6" size-md="4" size-lg="3">
-          <ion-card class="product-card">
-            <img src="assets/images/mouse-xtrike-me.jpg" alt="Xtrike Me GM-203" />
-            <ion-card-header>
-              <ion-card-title>Xtrike Me GM-203</ion-card-title>
-            </ion-card-header>
-            <ion-card-content>
-              <p class="price">$2.782</p>
-              <ion-button expand="block" fill="clear">Ver Producto</ion-button>
-            </ion-card-content>
-          </ion-card>
-        </ion-col>
-
-        <ion-col size="12" size-sm="6" size-md="4" size-lg="3">
-          <ion-card class="product-card">
-            <img src="assets/images/auriculares-warrior.jpg" alt="Warrior Rama (PH219)" />
-            <ion-card-header>
-              <ion-card-title>Warrior Rama (PH219)</ion-card-title>
-            </ion-card-header>
-            <ion-card-content>
-              <p class="price">$2.990</p>
-              <p>Descripción breve del producto.</p>
-              <ion-button expand="block" fill="clear">Ver Producto</ion-button>
-            </ion-card-content>
-          </ion-card>
-        </ion-col>
-
-        <ion-col size="12" size-sm="6" size-md="4" size-lg="3">
-            <ion-card class="product-card">
-              <img src="assets/images/placeholder-product.jpg" alt="Producto de Ejemplo 5" />
-              <ion-card-header>
-                <ion-card-title>Producto de Ejemplo 5</ion-card-title>
-              </ion-card-header>
-              <ion-card-content>
-                <p class="price">$XXX.XXX</p>
-                <p>Descripción breve del producto.</p>
-                <ion-button expand="block" fill="clear">Ver Producto</ion-button>
-              </ion-card-content>
-            </ion-card>
-          </ion-col>
-          <ion-col size="12" size-sm="6" size-md="4" size-lg="3">
-            <ion-card class="product-card">
-              <img src="assets/images/placeholder-product.jpg" alt="Producto de Ejemplo 6" />
-              <ion-card-header>
-                <ion-card-title>Producto de Ejemplo 6</ion-card-title>
-              </ion-card-header>
-              <ion-card-content>
-                <p class="price">$XXX.XXX</p>
-                <p>Descripción breve del producto.</p>
-                <ion-button expand="block" fill="clear">Ver Producto</ion-button>
-              </ion-card-content>
-            </ion-card>
-          </ion-col>
-          <ion-col size="12" size-sm="6" size-md="4" size-lg="3">
-            <ion-card class="product-card">
-              <img src="assets/images/placeholder-product.jpg" alt="Producto de Ejemplo 7" />
-              <ion-card-header>
-                <ion-card-title>Producto de Ejemplo 7</ion-card-title>
-              </ion-card-header>
-              <ion-card-content>
-                <p class="price">$XXX.XXX</p>
-                <p>Descripción breve del producto.</p>
-                <ion-button expand="block" fill="clear">Ver Producto</ion-button>
-              </ion-card-content>
-            </ion-card>
-          </ion-col>
-          <ion-col size="12" size-sm="6" size-md="4" size-lg="3">
-            <ion-card class="product-card">
-              <img src="assets/images/placeholder-product.jpg" alt="Producto de Ejemplo 8" />
-              <ion-card-header>
-                <ion-card-title>Producto de Ejemplo 8</ion-card-title>
-              </ion-card-header>
-              <ion-card-content>
-                <p class="price">$XXX.XXX</p>
-                <p>Descripción breve del producto.</p>
-                <ion-button expand="block" fill="clear">Ver Producto</ion-button>
-              </ion-card-content>
-            </ion-card>
-          </ion-col>
       </ion-row>
     </ion-grid>
   </div>
 
-
   <app-footer></app-footer>
 </ion-content>
-

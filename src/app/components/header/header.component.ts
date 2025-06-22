@@ -70,11 +70,15 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
 
   realizarBusqueda() {
-    if (this.searchQuery.trim()) { // Verifica que la palabra clave no esté vacía
-      // Navega a la página de búsqueda (/busqueda)
-      // y pasa la palabra clave como un parámetro de consulta 'q'
-      this.router.navigate(['/busqueda'], { queryParams: { q: this.searchQuery.trim() } });
-      this.searchQuery = ''; // Opcional: limpiar la barra de búsqueda después de buscar
+    if (this.searchQuery && this.searchQuery.trim() !== '') {
+      // Navega a la Tab6Page (ruta '/busqueda') y pasa la palabra clave como parámetro de consulta 'q'
+      this.router.navigate(['/tabs/tab6'], { queryParams: { q: this.searchQuery.trim() } });
+    } else {
+      // Opcional: Si el campo está vacío, puedes navegar a la página de búsqueda sin un query
+      // o mostrar una alerta. Por ahora, solo navegaremos sin queryParams.
+      this.router.navigate(['/tabs/tab6']);
     }
+    // Opcional: Limpia el campo de búsqueda después de realizar la búsqueda
+    // this.searchQuery = '';
   }
 }

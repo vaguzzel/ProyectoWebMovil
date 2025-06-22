@@ -60,7 +60,10 @@ export class ProductService {
   
 
   buscarProductos(palabraClave: string): Observable<Producto[]> {
-    // Asumiendo que tu backend tiene un endpoint como /api/productos/buscar?q=palabraClave
-    return this.http.get<Producto[]>(`<span class="math-inline">\{this\.apiUrl\}/buscar?q\=</span>{palabraClave}`);
-  }
+   const url = `${this.apiUrl}/buscar?q=${palabraClave}`;
+
+    console.log('Solicitando URL al backend:', url);
+
+    return this.http.get<Producto[]>(url);
+  } 
 }
