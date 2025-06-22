@@ -13,6 +13,7 @@ ion-content {
     gap: 50px;
     padding-inline: 50px;
     padding-top: 50px;
+    padding-bottom: 300px;
     @media (max-width: 768px) {
         grid-template-columns: 1fr;
       }

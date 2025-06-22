@@ -16,14 +16,6 @@ const ProductController = {
     });
   },
 
-  getById: (req, res) => {
-    ProductModel.getById(req.params.id, (err, product) => {
-      if (err) return res.status(500).json({ message: 'Error al obtener el producto.', error: err });
-      if (product.length === 0) return res.status(404).json({ message: 'Producto no encontrado.' });
-      res.json(product[0]);
-    });
-  },
-
   update: (req, res) => {
     ProductModel.update(req.params.id, req.body, (err, result) => {
       if (err) return res.status(500).json({ message: 'Error al actualizar el producto.', error: err });
@@ -39,6 +31,10 @@ const ProductController = {
       res.status(204).send();
     });
   }
+
+  
+
+
 };
 
 module.exports = ProductController;

@@ -43,7 +43,27 @@ const ProductModel = {
   // Encontrar productos por categoría (ejemplo de búsqueda específica)
   findByCategory: (categoryId, callback) => {
     db.query('SELECT * FROM Producto WHERE categoria_id = ?', [categoryId], callback);
-  }
+  },
+
+  searchByName: (query, callback) => {
+    let sql = `SELECT * FROM Producto`;
+
+    
+    let params = [];
+
+    // Si la cadena de búsqueda no está vacía, añade la cláusula WHERE
+    if (query) {
+      sql += ` WHERE nombre LIKE ? OR descripcion LIKE ?`; // Busca en 'nombre' o 'descripcion'
+      params.push(`%${query}%`, `%${query}%`); // Añade '%' para búsqueda parcial (LIKE)
+    }
+
+    sql += ` ORDER BY nombre ASC`; // Opcional: Ordena los resultados por nombre alfabéticamente
+
+    db.query(sql, params, callback); // Ejecuta la consulta
+  },
+
+
+
 };
 
 module.exports = ProductModel;
