@@ -1,0 +1,118 @@
+<app-header></app-header>
+
+<ion-content [fullscreen]="true">
+  <form [formGroup]="soporteForm" (ngSubmit)="enviarTicket()">
+    <ion-grid class="support-grid">
+      <ion-row class="ion-align-items-stretch ion-no-padding">
+
+        <ion-col size="12" size-md="5" class="left-column ion-hide-md-down">
+          </ion-col>
+
+        <ion-col size="12" size-md="7" class="right-column ion-padding">
+          <h1>Soporte Técnico</h1>
+          <p>¿Necesitas ayuda? Completa el formulario y te contactaremos pronto.</p>
+
+          <ion-item lines="none" class="input-item">
+            <ion-label position="stacked">Nombre Completo</ion-label>
+            <ion-input type="text" formControlName="nombre" placeholder="Ingresa tu nombre"></ion-input>
+          </ion-item>
+          <ion-note color="danger" *ngIf="soporteForm.get('nombre')?.invalid && soporteForm.get('nombre')?.touched">
+            El nombre es requerido.
+          </ion-note>
+
+          <ion-item lines="none" class="input-item">
+            <ion-label position="stacked">Correo Electrónico</ion-label>
+            <ion-input type="email" formControlName="email" placeholder="Ingresa tu correo"></ion-input>
+          </ion-item>
+          <ion-note color="danger" *ngIf="soporteForm.get('email')?.invalid && soporteForm.get('email')?.touched && soporteForm.get('email')?.errors?.['required']">
+            El correo electrónico es requerido.
+          </ion-note>
+          <ion-note color="danger" *ngIf="soporteForm.get('email')?.invalid && soporteForm.get('email')?.touched && soporteForm.get('email')?.errors?.['email']">
+            Por favor, ingresa un correo electrónico válido.
+          </ion-note>
+
+          <ion-item lines="none" class="input-item">
+            <ion-label position="stacked">Tipo de Consulta</ion-label>
+            <ion-select formControlName="tipoConsulta" placeholder="Selecciona el tipo de consulta">
+              <ion-select-option value="">-- Selecciona --</ion-select-option>
+              <ion-select-option value="problema_tecnico">Problema Técnico</ion-select-option>
+              <ion-select-option value="consulta_general">Consulta General</ion-select-option>
+              <ion-select-option value="sugerencia">Sugerencia</ion-select-option>
+              <ion-select-option value="otro">Otro</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-note color="danger" *ngIf="soporteForm.get('tipoConsulta')?.invalid && soporteForm.get('tipoConsulta')?.touched">
+            El tipo de consulta es requerido.
+          </ion-note>
+
+          <ion-item lines="none" class="input-item">
+            <ion-label position="stacked">Prioridad</ion-label>
+            <ion-select formControlName="prioridad" placeholder="Selecciona la prioridad">
+              <ion-select-option value="">-- Selecciona --</ion-select-option>
+              <ion-select-option value="baja">Baja</ion-select-option>
+              <ion-select-option value="media">Media</ion-select-option>
+              <ion-select-option value="alta">Alta</ion-select-option>
+              <ion-select-option value="urgente">Urgente</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-note color="danger" *ngIf="soporteForm.get('prioridad')?.invalid && soporteForm.get('prioridad')?.touched">
+            La prioridad es requerida.
+          </ion-note>
+
+          <ion-item lines="none" class="input-item">
+            <ion-label position="stacked">Asunto</ion-label>
+            <ion-input type="text" formControlName="asunto" placeholder="Ingresa un breve asunto"></ion-input>
+          </ion-item>
+          <ion-note color="danger" *ngIf="soporteForm.get('asunto')?.invalid && soporteForm.get('asunto')?.touched && soporteForm.get('asunto')?.errors?.['required']">
+            El asunto es requerido.
+          </ion-note>
+          <ion-note color="danger" *ngIf="soporteForm.get('asunto')?.invalid && soporteForm.get('asunto')?.touched && soporteForm.get('asunto')?.errors?.['minlength']">
+            El asunto debe tener al menos 5 caracteres.
+          </ion-note>
+
+          <ion-item lines="none" class="input-item">
+            <ion-label position="stacked">Descripción</ion-label>
+            <ion-textarea
+              formControlName="descripcion"
+              placeholder="Describe detalladamente tu consulta o problema..."
+              rows="6"
+              maxlength="1000">
+            </ion-textarea>
+          </ion-item>
+          <ion-note color="danger" *ngIf="soporteForm.get('descripcion')?.invalid && soporteForm.get('descripcion')?.touched && soporteForm.get('descripcion')?.errors?.['required']">
+            La descripción es requerida.
+          </ion-note>
+          <ion-note color="danger" *ngIf="soporteForm.get('descripcion')?.invalid && soporteForm.get('descripcion')?.touched && soporteForm.get('descripcion')?.errors?.['minlength']">
+            La descripción debe tener al menos 10 caracteres.
+          </ion-note>
+          <ion-note color="medium" class="character-count">
+            {{ getDescripcionLength() }}/1000 caracteres
+          </ion-note>
+
+          <ion-button
+            expand="block"
+            type="submit"
+            class="support-button"
+            [disabled]="soporteForm.invalid || enviando">
+            <ion-spinner name="crescent" *ngIf="enviando"></ion-spinner>
+            {{ enviando ? 'Enviando...' : 'Enviar Ticket de Soporte' }}
+          </ion-button>
+
+          <div class="support-info">
+            <h3>Información Adicional</h3>
+            <p><strong>Tiempo de respuesta:</strong></p>
+            <ul>
+              <li>Urgente: 2-4 horas</li>
+              <li>Alta: 4-8 horas</li>
+              <li>Media: 24 horas</li>
+              <li>Baja: 48-72 horas</li>
+            </ul>
+            <p><strong>Horario de atención:</strong> Lunes a Viernes, 9:00 - 18:00 (GMT-4)</p>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>
+
+<app-footer></app-footer>
