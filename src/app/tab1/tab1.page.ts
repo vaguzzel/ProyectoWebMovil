@@ -78,7 +78,21 @@ export class Tab1Page implements OnInit, AfterViewInit {
         if (swiperEl && swiperEl.swiper) swiperEl.swiper.slideNext();
       });
     }
-    // ... (puedes añadir aquí la lógica para el slider de "Más Vendidos" si lo necesitas)
+    
+    const masVendidosPrev = document.querySelector('.mas-vendidos-prev');
+    const masVendidosNext = document.querySelector('.mas-vendidos-next');
+    if (masVendidosPrev) {
+      masVendidosPrev.addEventListener('click', () => {
+        const swiperEl = document.querySelector('.mas-vendidos-swiper') as SwiperContainer;
+        if (swiperEl && swiperEl.swiper) swiperEl.swiper.slidePrev();
+      });
+    }
+    if (masVendidosNext) {
+      masVendidosNext.addEventListener('click', () => {
+        const swiperEl = document.querySelector('.mas-vendidos-swiper') as SwiperContainer;
+        if (swiperEl && swiperEl.swiper) swiperEl.swiper.slideNext();
+      });
+    }
   }
 
   // --- Funciones para cargar datos y manejar la lista de deseos ---
@@ -99,15 +113,20 @@ export class Tab1Page implements OnInit, AfterViewInit {
     });
   }
 
+  verDetalleProducto(product: any) {
+    const productId = product.id_producto; // Asegúrate de que el ID del producto se llame así
+    this.router.navigate(['/tabs/tab3', productId]);
+  }
+
   updateLikedStatus() {
     this.products.forEach(p => {
       p.isLiked = this.wishlistProductIds.has(p.id_producto);
     });
   }
 
-  // ¡ESTA ES LA FUNCIÓN CLAVE QUE FALTABA!
+
   toggleWishlist(product: any) {
-    console.log('PASO 2: La página principal RECIBIÓ el clic para:', product.nombre); // <-- AÑADE ESTA LÍNEA
+    console.log('PASO 2: La página principal RECIBIÓ el clic para:', product.nombre); 
     if (!this.authService.isLoggedIn()) {
       this.router.navigate(['/tabs/tab5']); // Redirige a la página de login
       return;
@@ -115,7 +134,7 @@ export class Tab1Page implements OnInit, AfterViewInit {
 
     const productId = product.id_producto;
     
-    // Hacemos el cambio visual inmediatamente para una mejor experiencia de usuario
+    
     product.isLiked = !product.isLiked;
 
     if (product.isLiked) {

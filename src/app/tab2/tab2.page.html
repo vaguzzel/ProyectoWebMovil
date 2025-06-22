@@ -11,9 +11,6 @@
         <div class="profile-menu-item" 
              [class.active]="currentView === 'listaDeDeseos'"
              (click)="changeView('listaDeDeseos')">MI LISTA DE DESEOS</div>
-        <div class="profile-menu-item" 
-             [class.active]="currentView === 'productosEnStock'"
-             (click)="changeView('productosEnStock')">PRODUCTOS EN STOCK NUEVAMENTE</div>
       </ion-col>
 
       <ion-col size="12" size-md="9" class="profile-details-col">
@@ -60,12 +57,6 @@
 
             </ion-row>
           </ion-grid>
-        </div>
-
-        <div *ngIf="currentView === 'productosEnStock'">
-          <h2 class="profile-title">Productos en Stock Nuevamente</h2>
-          <hr class="profile-divider" />
-          <p>Aquí iría la lista de productos que volvieron a estar disponibles...</p>
         </div>
 
       </ion-col>
