@@ -27,6 +27,14 @@
     </ion-item>
     <!-- Aquí iría el desplegable de Marcas si lo tienes -->
 
+    <!-- ¡NUEVO CAMPO PARA MARCA! -->
+    <ion-item>
+      <ion-label>Marca</ion-label>
+      <ion-select formControlName="marca_id" placeholder="Selecciona">
+        <ion-select-option *ngFor="let marca of marcas" [value]="marca.marca_id">{{ marca.nombre }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+
     <!-- Sección de Ofertas -->
     <ion-list-header class="ion-margin-top">Ofertas de Precio</ion-list-header>
     <div formArrayName="ofertas">
