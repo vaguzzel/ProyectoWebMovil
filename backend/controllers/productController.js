@@ -29,12 +29,34 @@ const ProductController = {
   },
 
   getById: (req, res) => {
-    ProductModel.getById(req.params.id, (err, product) => {
-      if (err) return res.status(500).json({ message: 'Error al obtener el producto.', error: err });
-      if (!product || product.length === 0) {
+    const productId = req.params.id;
+
+    // 1. Primero, obtenemos los detalles del producto.
+    ProductModel.getById(productId, (err, products) => {
+      if (err) {
+        // Logueamos el error para depuración en el servidor
+        console.error("Error en getById (product):", err);
+        return res.status(500).json({ message: 'Error al obtener el producto.', error: err });
+      }
+
+      if (!products || products.length === 0) {
         return res.status(404).json({ message: 'Producto no encontrado.' });
       }
-      res.json(product[0]); // Devuelve el objeto único
+
+      const product = products[0];
+
+      // 2. Luego, obtenemos sus ofertas de precios.
+      ProductModel.getOffersByProductId(productId, (err, offers) => {
+        if (err) {
+            // Logueamos el error para depuración en el servidor
+            console.error("Error en getOffersByProductId:", err);
+            return res.status(500).json({ message: 'Error al obtener las ofertas del producto.', error: err });
+        }
+
+        // 3. Combinamos los resultados y los enviamos como una sola respuesta.
+        product.ofertas = offers; // Añadimos el array de ofertas al objeto del producto
+        res.json(product);
+      });
     });
   },
 
