@@ -85,7 +85,6 @@ const ProductModel = {
     `;
     db.query(query, [id], callback);
   },
-
   // Actualizar un producto
   update: (id, data, callback) => {
     db.query('UPDATE Producto SET ? WHERE id_producto = ?', [data, id], callback);
@@ -103,44 +102,51 @@ const ProductModel = {
 
   // --- Método de búsqueda adaptado al estilo directo de db.query ---
   buscarPorPalabraClave: (palabraClave, callback) => {
-    const query = `
-      SELECT
-        id_producto,
-        nombre,
-        descripcion,
-        marca_id,
-        categoria_id,
-        image_url
-      FROM
-        producto
-      WHERE
-        nombre LIKE ? OR CAST(descripcion AS CHAR) LIKE ?
-    `;
+  // 1. Consulta SQL actualizada: combina los JOINs de `getAll` con el WHERE de la búsqueda.
+  const query = `
+    SELECT
+      p.id_producto,
+      p.nombre,
+      p.descripcion,
+      p.image_url,
+      p.marca_id,
+      p.categoria_id,
+      m.nombre AS marca_nombre,    -- Se añade el nombre de la marca
+      c.nombre AS categoria_nombre -- Se añade el nombre de la categoría
+    FROM
+      Producto p
+    LEFT JOIN
+      Marcas m ON p.marca_id = m.marca_id
+    LEFT JOIN
+      Categorias c ON p.categoria_id = c.id_categoria
+    WHERE
+      p.nombre LIKE ? OR p.descripcion LIKE ? OR m.nombre LIKE ?
+  `;
 
-    const searchTerm = `%${palabraClave}%`;
+  const searchTerm = `%${palabraClave}%`;
 
-    // Pasamos el callback directamente a db.query,
-    // asumiendo que db.query manejará la estructura (err, rows) para nosotros.
-    // El mapeo de datos se haría en el controlador si fuera necesario,
-    // o en el frontend, o se dejaría así si los nombres de columna ya coinciden.
-    db.query(query, [searchTerm, searchTerm], (err, rows) => {
-      if (err) {
-        console.error('Error al buscar productos en el modelo:', err);
-        return callback(err); // Propaga el error
-      }
-      // Realizamos el mapeo aquí para mantener la consistencia de los datos
-      // que el modelo debe devolver al controlador.
-      const productosFormateados = rows.map(row => ({
-        id_producto: row.id_producto,
-        nombre: row.nombre,
-        descripcion: row.descripcion, // Asegúrate de que `descripcion` es correcta aquí
-        marca_id: row.marca_id,
-        categoria_id: row.categoria_id || null,
-        image_url: row.image_url || null
-      }));
-       callback(null, productosFormateados); // Devuelve los datos formateados
-    });
-  }
+  // 2. Se pasan 3 parámetros para los 3 '?' de la cláusula WHERE.
+  db.query(query, [searchTerm, searchTerm, searchTerm], (err, rows) => {
+    if (err) {
+      console.error('Error al buscar productos en el modelo:', err);
+      return callback(err);
+    }
+    
+    // 3. Se actualiza el mapeo para incluir los nuevos campos en el objeto final.
+    const productosFormateados = rows.map(row => ({
+      id_producto: row.id_producto,
+      nombre: row.nombre,
+      descripcion: row.descripcion,
+      marca_id: row.marca_id,
+      categoria_id: row.categoria_id,
+      image_url: row.image_url || null,
+      marca_nombre: row.marca_nombre || null,     // Se añade la nueva propiedad
+      categoria_nombre: row.categoria_nombre || null // Se añade la nueva propiedad
+    }));
+    
+    callback(null, productosFormateados);
+  });
+}
 };
 
 

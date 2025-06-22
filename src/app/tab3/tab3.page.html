@@ -29,10 +29,14 @@
     <div class="producto-tiendas">
       <app-store-card
         *ngFor="let oferta of producto.ofertas"
+        
         [storeName]="oferta.tienda_nombre"
         [price]="oferta.precio"
         [availability]="oferta.stock > 0 ? 'Disponible' : 'Sin stock'"
-        [rating]="4"> </app-store-card>
+        [rating]="4"
+        [productUrl]="oferta.url_producto">
+       </app-store-card>
+        
     </div>
   </div>
 
