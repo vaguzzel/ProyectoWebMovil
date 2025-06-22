@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
+import { adminGuard } from '../shared/guards/admin.guard';
 
 const routes: Routes = [
   {
@@ -34,6 +35,12 @@ const routes: Routes = [
         loadChildren: () => import('../tab6/tab6.module').then(m => m.Tab6PageModule)
       },
 
+      {
+        // 2. AÑADE ESTE BLOQUE COMPLETO PARA TAB7
+        path: 'tab7',
+        loadChildren: () => import('../tab7/tab7.module').then(m => m.Tab7PageModule),
+        canActivate: [adminGuard] // 3. ¡Aquí se protege la ruta!
+      },
       {
         path: '',
         redirectTo: '/tabs/tab1',

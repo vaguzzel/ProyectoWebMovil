@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>{{ isEditMode ? 'Editar Producto' : 'Nuevo Producto' }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">Cerrar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+    <!-- Sección de Datos del Producto -->
+    <ion-list-header>Datos del Producto</ion-list-header>
+    <ion-item>
+      <ion-label position="floating">Nombre del Producto</ion-label>
+      <ion-input formControlName="nombre"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Descripción</ion-label>
+      <ion-textarea formControlName="descripcion" [autoGrow]="true"></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label>Categoría</ion-label>
+      <ion-select formControlName="categoria_id" placeholder="Selecciona">
+        <ion-select-option *ngFor="let cat of categorias" [value]="cat.id_categoria">{{ cat.nombre }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <!-- Aquí iría el desplegable de Marcas si lo tienes -->
+
+    <!-- Sección de Ofertas -->
+    <ion-list-header class="ion-margin-top">Ofertas de Precio</ion-list-header>
+    <div formArrayName="ofertas">
+      <div *ngFor="let offer of ofertasFormArray.controls; let i = index" [formGroupName]="i" class="offer-group">
+        <ion-item-divider>
+          <ion-label>Oferta #{{ i + 1 }}</ion-label>
+          <ion-button slot="end" fill="clear" color="danger" (click)="removeOffer(i)">
+            <ion-icon name="trash-outline"></ion-icon>
+          </ion-button>
+        </ion-item-divider>
+        <ion-item>
+          <ion-label>Tienda</ion-label>
+          <ion-select formControlName="id_tienda" placeholder="Selecciona">
+            <ion-select-option *ngFor="let tienda of tiendas" [value]="tienda.id_tienda">{{ tienda.nombre }}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Precio</ion-label>
+          <ion-input formControlName="precio" type="number"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Stock</ion-label>
+          <ion-input formControlName="stock" type="number"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">URL del Producto</ion-label>
+          <ion-input formControlName="url_producto"></ion-input>
+        </ion-item>
+      </div>
+    </div>
+
+    <ion-button fill="outline" expand="block" (click)="addOffer()" class="ion-margin-top">
+      <ion-icon slot="start" name="add"></ion-icon>
+      Añadir Oferta
+    </ion-button>
+
+    <ion-button expand="block" type="submit" class="ion-margin-top" [disabled]="productForm.invalid">
+      {{ isEditMode ? 'Guardar Cambios' : 'Crear Producto' }}
+    </ion-button>
+  </form>
+</ion-content>

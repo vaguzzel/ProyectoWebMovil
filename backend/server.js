@@ -6,6 +6,7 @@
  const categoryRoutes = require('./routes/category.routes');
  const productRoutes = require('./routes/product.routes');
  const wishlistRoutes = require('./routes/wishlist.routes');
+ const tiendaRoutes = require('./routes/tienda.routes');
 
  const app = express();
  const port = process.env.PORT || 5000;
@@ -24,6 +25,7 @@ app.use('/api/brands', brandRoutes);
 app.use('/api/categories', categoryRoutes);
 app.use('/api/products', productRoutes);
 app.use('/api/wishlist', wishlistRoutes);
+app.use('/api/tiendas', tiendaRoutes);
 
 /*
 app.get('/api/data', (req, res) => {

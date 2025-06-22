@@ -32,8 +32,11 @@
       <ion-label>Busqueda productos</ion-label>
     </ion-tab-button>
 
-    
-    
+    <ion-tab-button *ngIf="isAdmin" tab="tab7" href="/tabs/tab7">
+      <ion-icon name="shield-checkmark-outline"></ion-icon>
+      <ion-label>Admin</ion-label>
+    </ion-tab-button>
+
   </ion-tab-bar>
 
 </ion-tabs>

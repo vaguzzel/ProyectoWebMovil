@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { AuthService } from './auth.service'; // 1. Importar AuthService
 
 export interface Producto {
   id_producto: string;
@@ -18,11 +19,45 @@ export interface Producto {
 export class ProductService {
   private apiUrl = 'http://localhost:5000/api/products';
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private authService: AuthService // 2. Inyectar AuthService en el constructor
+  ) { }
+
+  // Método para obtener las cabeceras con el token de autorización
+  private getAuthHeaders(): HttpHeaders {
+    const token = this.authService.getToken();
+    return new HttpHeaders().set('Authorization', `Bearer ${token}`);
+  }
 
   getProducts(): Observable<any[]> {
     return this.http.get<any[]>(this.apiUrl);
   }
+
+  // --- MÉTODOS CRUD ---
+
+  // Obtiene un producto por su ID, con sus ofertas (público)
+  getProductById(id: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/${id}`);
+  }
+
+  // Crea un nuevo producto junto con sus ofertas (protegido)
+  createProductWithOffers(productData: any): Observable<any> {
+    return this.http.post(this.apiUrl, productData, { headers: this.getAuthHeaders() });
+  }
+
+  // Actualiza un producto y sus ofertas (protegido)
+  // NOTA: La lógica de actualización completa con ofertas aún no está en el backend,
+  // pero preparamos el servicio para cuando esté lista.
+  updateProductWithOffers(id: number, productData: any): Observable<any> {
+    return this.http.put(`${this.apiUrl}/${id}`, productData, { headers: this.getAuthHeaders() });
+  }
+
+  // Elimina un producto (protegido)
+  deleteProduct(id: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/${id}`, { headers: this.getAuthHeaders() });
+  }
+  
 
   buscarProductos(palabraClave: string): Observable<Producto[]> {
     // Asumiendo que tu backend tiene un endpoint como /api/productos/buscar?q=palabraClave
