@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { Tab6PageRoutingModule } from './tab6-routing.module';
+import { Tab6PageRoutingModule } from './tab7-routing.module';
 
-import { Tab6Page } from './tab6.page';
+import { Tab7Page } from './tab7.page';
 
 @NgModule({
   imports: [
@@ -15,6 +15,6 @@ import { Tab6Page } from './tab6.page';
     IonicModule,
     Tab6PageRoutingModule
   ],
-  declarations: [Tab6Page]
+  declarations: [Tab7Page]
 })
-export class Tab6PageModule {}
+export class Tab7PageModule {}

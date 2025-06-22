@@ -24,31 +24,28 @@ export class ProductService {
     return this.http.get<any[]>(this.apiUrl);
   }
 
-  // --- NUEVOS MÉTODOS CRUD ---
+  // --- MÉTODOS CRUD ---
 
-  /**
-   * Crea un nuevo producto.
-   * @param productData Los datos del producto a crear.
-   */
-  createProduct(productData: any): Observable<any> {
+  // Obtiene un producto por su ID, con sus ofertas (público)
+  getProductById(id: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/${id}`);
+  }
+
+  // Crea un nuevo producto junto con sus ofertas (protegido)
+  createProductWithOffers(productData: any): Observable<any> {
     return this.http.post(this.apiUrl, productData, { headers: this.getAuthHeaders() });
   }
 
-  /**
-   * Actualiza un producto existente por su ID.
-   * @param productId El ID del producto a actualizar.
-   * @param productData Los nuevos datos del producto.
-   */
-  updateProduct(productId: number, productData: any): Observable<any> {
-    return this.http.put(`${this.apiUrl}/${productId}`, productData, { headers: this.getAuthHeaders() });
+  // Actualiza un producto y sus ofertas (protegido)
+  // NOTA: La lógica de actualización completa con ofertas aún no está en el backend,
+  // pero preparamos el servicio para cuando esté lista.
+  updateProductWithOffers(id: number, productData: any): Observable<any> {
+    return this.http.put(`${this.apiUrl}/${id}`, productData, { headers: this.getAuthHeaders() });
   }
 
-  /**
-   * Elimina un producto por su ID.
-   * @param productId El ID del producto a eliminar.
-   */
-  deleteProduct(productId: number): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/${productId}`, { headers: this.getAuthHeaders() });
+  // Elimina un producto (protegido)
+  deleteProduct(id: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/${id}`, { headers: this.getAuthHeaders() });
   }
   
 }
