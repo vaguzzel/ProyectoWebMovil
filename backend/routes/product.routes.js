@@ -6,6 +6,7 @@ const { verificarToken, esAdmin } = require('../middleware/authJwt');
 // Rutas para Productos (el prefijo /api/products se definirá en server.js)
 router.get('/', ProductController.getAll);
 router.get('/buscar', ProductController.buscarProductos);
+router.get('/:id', ProductController.getById)
 
 router.put('/:id',verificarToken, esAdmin,ProductController.update);
 router.delete('/:id', verificarToken, esAdmin,ProductController.delete);

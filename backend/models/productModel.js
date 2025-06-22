@@ -58,31 +58,30 @@ const ProductModel = {
     db.query(query, callback);
   },
 
-  // Obtener producto por ID (lógica existente)
+  // Obtener un producto por su ID, incluyendo datos de marca y categoría
   getById: (id, callback) => {
     const query = `
-      SELECT
-        p.id_producto, p.nombre, p.descripcion, p.image_url,
-        m.nombre AS marca_nombre,
-        c.nombre AS categoria_nombre,
-        (SELECT
-          JSON_ARRAYAGG(
-            JSON_OBJECT(
-              'id_tienda', t.id_tienda,
-              'tienda_nombre', t.nombre,
-              'precio', ppt.precio,
-              'stock', ppt.stock,
-              'url_producto', ppt.url_producto
-            )
-          )
-        FROM PrecioProductoTienda ppt
-        JOIN Tiendas t ON t.id_tienda = ppt.id_tienda
-        WHERE ppt.id_producto = p.id_producto
-        ) AS ofertas
+      SELECT p.*, m.nombre AS marca_nombre, c.nombre AS categoria_nombre
       FROM Producto p
       LEFT JOIN Marcas m ON p.marca_id = m.marca_id
       LEFT JOIN Categorias c ON p.categoria_id = c.id_categoria
       WHERE p.id_producto = ?
+    `;
+    db.query(query, [id], callback);
+  },
+  
+  getOffersByProductId: (id, callback) => {
+    const query = `
+      SELECT 
+        t.id_tienda,
+        t.nombre AS tienda_nombre,
+        ppt.precio,
+        ppt.stock,
+        ppt.url_producto
+      FROM PrecioProductoTienda ppt
+      JOIN Tiendas t ON t.id_tienda = ppt.id_tienda
+      WHERE ppt.id_producto = ?
+      ORDER BY ppt.precio ASC
     `;
     db.query(query, [id], callback);
   },
