@@ -20,14 +20,31 @@
       <ion-textarea formControlName="descripcion" [autoGrow]="true"></ion-textarea>
     </ion-item>
     <ion-item>
+      <ion-label>Marca</ion-label>
+      <ion-select formControlName="marca_id" placeholder="Selecciona">
+        <ion-select-option *ngFor="let marca of marcas" [value]="marca.marca_id">{{ marca.nombre }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
       <ion-label>Categoría</ion-label>
       <ion-select formControlName="categoria_id" placeholder="Selecciona">
         <ion-select-option *ngFor="let cat of categorias" [value]="cat.id_categoria">{{ cat.nombre }}</ion-select-option>
       </ion-select>
     </ion-item>
-    <!-- Aquí iría el desplegable de Marcas si lo tienes -->
 
-    <!-- Sección de Ofertas -->
+    <!-- ¡NUEVO! Campo para subir imagen -->
+    <ion-item>
+      <ion-label>Imagen del Producto</ion-label>
+      <input type="file" (change)="onFileSelected($event)" accept="image/*" #fileInput>
+    </ion-item>
+
+    <!-- ¡NUEVO! Vista previa de la imagen -->
+    <div class="image-preview" *ngIf="imagePreviewUrl">
+      <img [src]="imagePreviewUrl" alt="Vista previa de la imagen">
+    </div>
+
+
+    <!-- Sección de Ofertas (sin cambios) -->
     <ion-list-header class="ion-margin-top">Ofertas de Precio</ion-list-header>
     <div formArrayName="ofertas">
       <div *ngFor="let offer of ofertasFormArray.controls; let i = index" [formGroupName]="i" class="offer-group">

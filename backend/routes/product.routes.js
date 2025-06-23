@@ -2,14 +2,28 @@ const express = require('express');
 const router = express.Router();
 const ProductController = require('../controllers/productController');
 const { verificarToken, esAdmin } = require('../middleware/authJwt');
+const uploadMiddleware = require('../middleware/upload');
 
-// Rutas para Productos (el prefijo /api/products se definirá en server.js)
+// --- Rutas Públicas ---
 router.get('/', ProductController.getAll);
 router.get('/buscar', ProductController.buscarProductos);
-router.get('/:id', ProductController.getById)
+router.get('/:id', ProductController.getById);
 
-router.put('/:id',verificarToken, esAdmin,ProductController.update);
-router.delete('/:id', verificarToken, esAdmin,ProductController.delete);
-router.post('/', verificarToken, esAdmin,ProductController.create);
+// --- Rutas Protegidas ---
+// Agrupamos los middlewares en un array. Esta es la sintaxis más segura.
+router.post('/', 
+    [verificarToken, esAdmin, uploadMiddleware], 
+    ProductController.create
+);
+
+router.put('/:id', 
+    [verificarToken, esAdmin, uploadMiddleware], 
+    ProductController.update
+);
+
+router.delete('/:id', 
+    [verificarToken, esAdmin], 
+    ProductController.delete
+);
 
 module.exports = router;
