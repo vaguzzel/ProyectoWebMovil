@@ -6,13 +6,36 @@ const ProductController = {
     // 1. Separar los datos del producto de sus ofertas
     const { ofertas, ...productData } = req.body;
 
+    if (req.file) {
+      // Si se subió una imagen, asignamos su URL al producto
+      // Ej: 'images/image-1679603387794-293257803.png'
+      productData.image_url = 'images/' + req.file.filename;
+    } else if (!productData.image_url) {
+      // Opcional: Asignar una imagen por defecto si no se sube ninguna
+      productData.image_url = 'images/placeholder-product.jpg';
+    }
+
+    let parsedOffers = [];
+    try {
+      // Intentamos parsear las ofertas, asumiendo que vienen como un string JSON
+      if (ofertas && typeof ofertas === 'string') {
+        parsedOffers = JSON.parse(ofertas);
+      } else if (Array.isArray(ofertas)) {
+        // Si ya es un array, lo usamos directamente
+        parsedOffers = ofertas;
+      }
+    } catch (e) {
+      console.error("Error al parsear las ofertas:", e);
+      return res.status(400).json({ message: 'El formato de las ofertas es inválido.' });
+    }
+
     // Validar que los datos básicos existan
     if (!productData.nombre || !productData.marca_id || !productData.categoria_id) {
       return res.status(400).json({ message: 'Nombre, marca y categoría son requeridos.' });
     }
 
     // 2. Llamar al nuevo método del modelo que maneja la transacción
-    ProductModel.createWithOffers(productData, ofertas, (err, result) => {
+    ProductModel.createWithOffers(productData, parsedOffers, (err, result) => {
       if (err) {
         console.error("Error en transacción:", err);
         return res.status(500).json({ message: 'Error al crear el producto.', error: err });
@@ -61,6 +84,7 @@ const ProductController = {
   },
 
   update: (req, res) => {
+    // 1. Verificamos si se subió una nueva imagen
     ProductModel.update(req.params.id, req.body, (err, result) => {
       if (err) return res.status(500).json({ message: 'Error al actualizar el producto.', error: err });
       if (result.affectedRows === 0) return res.status(404).json({ message: 'Producto no encontrado.' });

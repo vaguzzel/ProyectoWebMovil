@@ -26,9 +26,12 @@ export class ProductFormModalComponent implements OnInit {
   isEditMode = false;
   
   // Datos para los desplegables
-  marcas: any[] = []; // Suponiendo que las tienes de algún servicio o son estáticas
+  marcas: any[] = []; 
   categorias: any[] = [];
   tiendas: any[] = [];
+
+  selectedFile: File | null = null;
+  imagePreviewUrl: string | ArrayBuffer | null = null;
 
   constructor(
     private fb: FormBuilder,
@@ -42,8 +45,25 @@ export class ProductFormModalComponent implements OnInit {
 
   ngOnInit() {
     this.isEditMode = !!this.productToEdit;
+    if (this.isEditMode && this.productToEdit.image_url) {
+      this.imagePreviewUrl = 'http://localhost:5000/' + this.productToEdit.image_url;
+    }
     this.initForm();
     this.loadInitialData();
+  }
+
+  onFileSelected(event: any): void {
+    const file = event.target.files[0];
+    if (file) {
+      this.selectedFile = file;
+
+      // Generar una URL local para la vista previa instantánea
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.imagePreviewUrl = reader.result;
+      };
+      reader.readAsDataURL(file);
+    }
   }
 
   // Carga los datos necesarios para los menús desplegables
@@ -70,12 +90,14 @@ export class ProductFormModalComponent implements OnInit {
     this.productForm = this.fb.group({
       nombre: [this.productToEdit?.nombre || '', Validators.required],
       descripcion: [this.productToEdit?.descripcion || ''],
-      marca_id: [this.productToEdit?.marca_id || null, Validators.required], 
+      marca_id: [this.productToEdit?.marca_id || null, Validators.required],
       categoria_id: [this.productToEdit?.categoria_id || null, Validators.required],
-      image_url: [this.productToEdit?.image_url || 'assets/images/placeholder.png'],
-      ofertas: this.fb.array([]) // Inicializamos el FormArray vacío
+      // El campo 'image_url' se elimina del formulario, ya que ahora manejamos un archivo.
+      ofertas: this.fb.array([])
     });
   }
+
+
 
   // Getter para acceder fácilmente al FormArray de ofertas desde el HTML
   get ofertasFormArray() {
@@ -112,19 +134,37 @@ export class ProductFormModalComponent implements OnInit {
       return;
     }
 
-    // Usaremos el servicio que ya tienes preparado
-    const action = this.isEditMode
-      ? this.productService.updateProductWithOffers(this.productToEdit.id_producto, this.productForm.value)
-      : this.productService.createProductWithOffers(this.productForm.value);
+    // 1. Crear un objeto FormData para poder enviar el archivo
+    const formData = new FormData();
 
+    // 2. Añadir todos los campos de texto del formulario al FormData
+    formData.append('nombre', this.productForm.get('nombre')?.value);
+    formData.append('descripcion', this.productForm.get('descripcion')?.value);
+    formData.append('marca_id', this.productForm.get('marca_id')?.value);
+    formData.append('categoria_id', this.productForm.get('categoria_id')?.value);
+    
+    // 3. Convertir el array de ofertas a un string JSON y añadirlo
+    formData.append('ofertas', JSON.stringify(this.productForm.get('ofertas')?.value));
+
+    // 4. Si se seleccionó un nuevo archivo de imagen, añadirlo al FormData
+    if (this.selectedFile) {
+      formData.append('image', this.selectedFile, this.selectedFile.name);
+    }
+
+    // El resto de la lógica para llamar al servicio es casi igual, pero enviamos formData
+    const action = this.isEditMode 
+      ? this.productService.updateProductWithOffers(this.productToEdit.id_producto, formData)
+      : this.productService.createProductWithOffers(formData);
+      
     action.subscribe({
       next: () => {
         const message = this.isEditMode ? 'Producto actualizado con éxito.' : 'Producto creado con éxito.';
         this.presentToast(message, 'success');
-        this.dismiss({ reloaded: true }); // Avisamos a la página anterior que debe recargar
+        this.dismiss({ reloaded: true });
       },
       error: (err) => {
-        this.presentToast('Ocurrió un error al guardar el producto.', 'danger');
+        const errorMessage = err.error?.message || 'Ocurrió un error al guardar el producto.';
+        this.presentToast(errorMessage, 'danger');
         console.error(err);
       }
     });
