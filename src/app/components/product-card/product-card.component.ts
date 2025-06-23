@@ -16,23 +16,26 @@ export class ProductCardComponent {
   @Input() price: number = 0;
   @Input() previousPrice?: number;
   @Input() isLiked: boolean = false;
-  @Input() productId: number | string = '';
-  @Input() isNavigable: boolean = false;
-
+  @Input() productId: string = '';
   @Output() wishlistToggle = new EventEmitter<void>();
 
-  // 2. INYECTAMOS ROUTER EN EL CONSTRUCTOR
-  constructor(private router: Router) { }
 
-  // 3. NUEVO MÉTODO PARA EL CLIC EN LA TARJETA
-  onCardClick() {
-    // Solo navega si la tarjeta está configurada como navegable y tiene un ID
-    if (this.isNavigable && this.productId) {
-      this.router.navigate(['/tabs/tab3', this.productId]);
+  public get fullImageUrl(): string {
+    // Si la imagen es una URL completa, la devolvemos tal cual.
+    if (this.image && !this.image.startsWith('http')) {
+      return `http://localhost:5000/${this.image}`;
     }
+    // Si la imagen no está definida, devolvemos una imagen por defecto.
+    return this.image || 'assets/images/placeholder-product.jpg';
   }
 
-  // Este método se mantiene igual, deteniendo la propagación del clic
+  constructor() { }
+  /*
+  onWishlistClick(event: Event) {
+    event.stopPropagation(); // Evita que otros eventos de clic se disparen
+    this.wishlistToggle.emit();
+  }*/
+
   onWishlistClick(event: Event) {
     event.stopPropagation(); // Previene que se active onCardClick()
     this.wishlistToggle.emit();

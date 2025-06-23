@@ -15,7 +15,7 @@ export class StoreCardComponent  implements OnInit {
    @Input() price: number = 0; // Precio del producto en esa tienda
    @Input() availability: string = 'Info disponibilidad'; // Texto de disponibilidad/envío
    @Input() rating: number = 0; // Calificación (ej: 3.5, 4, etc. sobre 5)
-   
+   @Input() productUrl: string = '';
   constructor() { }
 
   ngOnInit() {}

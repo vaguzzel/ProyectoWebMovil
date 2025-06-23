@@ -14,12 +14,13 @@
 
     <div class="producto-imagen">
       <div class="imagen-wrapper">
-        <img [src]="producto.image_url" [alt]="producto.nombre"/>
+        <img [src]="getFullImageUrl(producto.image_url)" [alt]="producto.nombre"/>
       </div>
     </div>
 
     <div class="producto-info">
-      <h1>{{ producto.marca_nombre }} <br> <strong>{{ producto.nombre }}</strong></h1>
+      <p class="title"><strong>{{ producto.nombre }}</strong> </p>
+      <p class="title">{{ producto.marca_nombre }}</p>
       <div class="descripcion">
         <h2>Detalles del producto</h2>
         <p class="description-text">{{ producto.descripcion }}</p>
@@ -29,10 +30,14 @@
     <div class="producto-tiendas">
       <app-store-card
         *ngFor="let oferta of producto.ofertas"
+        
         [storeName]="oferta.tienda_nombre"
         [price]="oferta.precio"
         [availability]="oferta.stock > 0 ? 'Disponible' : 'Sin stock'"
-        [rating]="4"> </app-store-card>
+        [rating]="4"
+        [productUrl]="oferta.url_producto">
+       </app-store-card>
+        
     </div>
   </div>
 

@@ -4,11 +4,9 @@ const express = require('express');
 const router = express.Router();
 const ProductController = require('../controllers/productController');
 const { verificarToken, esAdmin } = require('../middleware/authJwt');
+const uploadMiddleware = require('../middleware/upload');
 
-// --- INICIO DE LA CORRECCIÓN ---
-// Se reordenan las rutas para que las más específicas estén primero.
-
-// Rutas públicas
+// --- Rutas Públicas ---
 router.get('/', ProductController.getAll);
 router.get('/buscar', ProductController.buscarProductos);
 

@@ -1,15 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { AuthService } from './auth.service'; // 1. Importar AuthService
+import { AuthService } from './auth.service'; 
 
 export interface Producto {
   id_producto: string;
   nombre: string;
-  descripcion: number;
+  descripcion: string;
   marca_id: string;
   categoria_id?: string; 
   image_url?: string;
+  marca_nombre?: string;
+  categoria_nombre?: string;
 }
 
 
@@ -50,9 +52,6 @@ export class ProductService {
     return this.http.post(this.apiUrl, productData, { headers: this.getAuthHeaders() });
   }
 
-  // Actualiza un producto y sus ofertas (protegido)
-  // NOTA: La lógica de actualización completa con ofertas aún no está en el backend,
-  // pero preparamos el servicio para cuando esté lista.
   updateProductWithOffers(id: number, productData: any): Observable<any> {
     return this.http.put(`${this.apiUrl}/${id}`, productData, { headers: this.getAuthHeaders() });
   }

@@ -42,7 +42,7 @@ ion-card.product-card {
 }
 
 .big {
-  height: 300px;
+  height: 150;
 }
 
 .small {
@@ -88,7 +88,15 @@ ion-card-title {
   margin: 0;
 }
 
+.product-link-wrapper {
+ text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: all 0.2s ease-in-out; // Opcional: para una transición suave del efecto
 
-.product-card.navigable {
-  cursor: pointer; // Muestra la "manito" solo si la tarjeta es navegable
+  // Esto se activa solo cuando el puntero del mouse está encima del enlace
+  &:hover {
+    // Hacemos que el subrayado aparezca en el hover
+    text-decoration: underline;
+  }
 }

@@ -10,6 +10,7 @@ import { HeaderComponent } from '../components/header/header.component';
 import { ProductCardComponent } from '../components/product-card/product-card.component';
 import { StoreCardComponent } from '../components/store-card/store-card.component';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
