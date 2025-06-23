@@ -13,7 +13,8 @@
             [title]="product.nombre"
             [price]="9990" [isLiked]="product.isLiked"
             [productId]="product.id_producto"
-            (wishlistToggle)="toggleWishlist(product)">
+            (wishlistToggle)="toggleWishlist(product)"
+            [isNavigable]="true">
           </app-product-card>
         </swiper-slide>
       </swiper-container>
@@ -83,7 +84,8 @@
             [title]="product.nombre"
             [price]="9990" [isLiked]="product.isLiked"
             [productId]="product.id_producto"
-            (wishlistToggle)="toggleWishlist(product)">
+            (wishlistToggle)="toggleWishlist(product)"
+            [isNavigable]="true">
           </app-product-card>
         </swiper-slide>
       </swiper-container>

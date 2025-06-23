@@ -17,8 +17,12 @@ export class ProductCardComponent {
   @Input() previousPrice?: number;
   @Input() isLiked: boolean = false;
   @Input() productId: string = '';
+  
+  @Input() isNavigable: boolean = false;
+  
   @Output() wishlistToggle = new EventEmitter<void>();
 
+  constructor(private router: Router) { }
 
   public get fullImageUrl(): string {
     // Si la imagen es una URL completa, la devolvemos tal cual.
@@ -29,12 +33,14 @@ export class ProductCardComponent {
     return this.image || 'assets/images/placeholder-product.jpg';
   }
 
-  constructor() { }
-  /*
-  onWishlistClick(event: Event) {
-    event.stopPropagation(); // Evita que otros eventos de clic se disparen
-    this.wishlistToggle.emit();
-  }*/
+  // AÑADE ESTA FUNCIÓN DE NAVEGACIÓN QUE FALTABA
+  onCardClick() {
+    // Solo navega si la tarjeta está marcada como navegable y tiene un ID
+    if (this.isNavigable && this.productId) {
+      this.router.navigate(['/tabs/tab3', this.productId]);
+    }
+  }
+
 
   onWishlistClick(event: Event) {
     event.stopPropagation(); // Previene que se active onCardClick()
