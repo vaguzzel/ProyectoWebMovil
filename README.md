@@ -98,7 +98,6 @@ La app (programada) en esta entrega incluye una interfaz para visualizar:
 - **RNF-02: Seguridad**
   - Solo usuarios autenticados pueden ingresar al sistema.
   - Los roles deben restringir el acceso a funciones según permisos (Administrador, Editor, Visualizador).
-  - Acceso protegido por HTTPS y almacenamiento seguro de contraseñas.
 - **RNF-03: Usabilidad**
   - La interfaz debe ser intuitiva y fácil de usar.
   - Compatible con pantallas móviles y escritorio (responsive design).
