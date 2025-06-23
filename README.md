@@ -69,7 +69,6 @@ La app (programada) en esta entrega incluye una interfaz para visualizar:
 ### Roles del Sistema
 - **Sistema**: Automatización de funciones.
 - **Administrador**: Control total sobre el sistema.
-- **Moderador**: Puede añadir, actualizar, eliminar productos y moderar comentarios.
 - **Usuario**: Puede ver información detallada de productos y agregar comentarios.
 
 ### Requerimientos Funcionales por Rol
@@ -84,32 +83,13 @@ La app (programada) en esta entrega incluye una interfaz para visualizar:
 - **RF-ADM-01**: El administrador puede añadir productos.
 - **RF-ADM-02**: El administrador puede editar cualquier producto existente.
 - **RF-ADM-03**: El administrador puede eliminar productos que hayan sido descontinuados.
-- **RF-ADM-04**: El administrador puede configurar alertas de baja de precios.
-- **RF-ADM-05**: El administrador puede configurar alertas de vuelta de stock.
-- **RF-ADM-06**: El administrador puede ver y gestionar las cuentas de usuario.
-
-
-#### Rol-Moderador
-- **RF-MOD-01**: El moderador puede registrar nuevos productos ingresando:
-  - Nombre
-  - Código (ID único)
-  - Categoría
-  - Precio
-  - Stock (entero positivo)
-  - Descripción
-- **RF-MOD-02**: El moderador puede editar productos existentes.
-- **RF-MOD-03**: El moderador puede aplicar filtros y buscar productos por nombre, código, categoría, stock o precio.
-- **RF-MOD-04**: El moderador puede eliminar o fijar comentarios en listas de comentarios de productos.
-- **RF-MOD-05**: El moderador puede comentar en la sección de un producto para resolver dudas o dar recomendaciones a usuarios.
 
 #### Rol-Usuario
 - **RF-US-01**: El usuario puede acceder a la lista de productos y sus detalles.
-- **RF-US-02**: El usuario puede utilizar la función de búsqueda y filtrado por nombre, marca, tipo, precio o palabras clave.
-- **RF-US-03**: El usuario puede dar su opinión y calificación de un producto que compró y el lugar de donde lo compró.
-- **RF-US-04**: El usuario puede marcar productos como deseados y estos son agregados a su wishlist.
-- **RF-US-05**: El usuario puede acceder a su página de perfil y modificar detalles de su cuenta.
-- **RF-US-06**: El usuario puede acceder a las categorías de productos más globales.
-- **RF-US-07**: El usuario puede comentar en la sección de un producto para resolver dudas o dar recomendaciones.
+- **RF-US-02**: El usuario puede utilizar la función de búsqueda.
+- **RF-US-03**: El usuario puede marcar productos como deseados y estos son agregados a su wishlist.
+- **RF-US-04**: El usuario puede acceder a su página de perfil y modificar detalles de su cuenta.
+- **RF-US-05**: El usuario puede acceder a las categorías de productos más globales.
 
 ### Requerimientos No Funcionales
 
