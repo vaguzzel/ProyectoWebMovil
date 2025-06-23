@@ -46,6 +46,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.authSubscription.unsubscribe();
   }
 
+  // --- FUNCIÓN PARA NAVEGAR A LA NUEVA PÁGINA ---
+  goToCategories() {
+    this.router.navigate(['/tabs/tab9']);
+  }
+
   goToTab2() {
     this.router.navigate(['/tabs/tab2']);
   }

@@ -98,7 +98,13 @@ const ProductModel = {
 
   // Encontrar productos por categoría
   findByCategory: (categoryId, callback) => {
-    db.query('SELECT * FROM Producto WHERE categoria_id = ?', [categoryId], callback);
+    const query = `
+      SELECT p.*, m.nombre AS marca_nombre
+      FROM Producto p
+      LEFT JOIN Marcas m ON p.marca_id = m.marca_id
+      WHERE p.categoria_id = ?
+    `;
+    db.query(query, [categoryId], callback);
   },
 
   // --- Método de búsqueda adaptado al estilo directo de db.query ---

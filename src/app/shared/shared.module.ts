@@ -1,5 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+import { RouterModule } from '@angular/router';
+
+
 import { FooterComponent } from '../components/footer/footer.component';
 import { IonicModule } from '@ionic/angular';
 import { HeaderComponent } from '../components/header/header.component';
@@ -13,7 +17,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     IonicModule,
-    FormsModule
+    FormsModule,
+    RouterModule
   ],
   exports: [
     CommonModule,
@@ -21,7 +26,8 @@ import { FormsModule } from '@angular/forms';
     FooterComponent ,
     HeaderComponent,
     ProductCardComponent,
-    StoreCardComponent
+    StoreCardComponent,
+    RouterModule
   ]
 })
 export class SharedModule { }

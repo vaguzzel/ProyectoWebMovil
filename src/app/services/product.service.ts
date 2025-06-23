@@ -36,6 +36,10 @@ export class ProductService {
 
   // --- MÉTODOS CRUD ---
 
+  getProductsByCategory(categoryId: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/category/${categoryId}`);
+  }
+
   // Obtiene un producto por su ID, con sus ofertas (público)
   getProductById(id: number): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/${id}`);

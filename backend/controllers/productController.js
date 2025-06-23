@@ -60,6 +60,16 @@ const ProductController = {
     });
   },
 
+  getProductsByCategory: (req, res) => {
+    const categoryId = req.params.id;
+    ProductModel.findByCategory(categoryId, (err, products) => {
+      if (err) {
+        return res.status(500).json({ message: 'Error al obtener los productos por categoría.', error: err });
+      }
+      res.json(products);
+    });
+  },
+
   update: (req, res) => {
     ProductModel.update(req.params.id, req.body, (err, result) => {
       if (err) return res.status(500).json({ message: 'Error al actualizar el producto.', error: err });

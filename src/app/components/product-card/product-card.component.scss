@@ -87,3 +87,8 @@ ion-card-title {
   min-height: 35px;
   margin: 0;
 }
+
+
+.product-card.navigable {
+  cursor: pointer; // Muestra la "manito" solo si la tarjeta es navegable
+}

@@ -42,6 +42,10 @@ const routes: Routes = [
         canActivate: [adminGuard] // 3. ¡Aquí se protege la ruta!
       },
       {
+        path: 'tab9',
+        loadChildren: () => import('../tab9/tab9.module').then(m => m.Tab9PageModule)
+      },
+      {
         path: '',
         redirectTo: '/tabs/tab1',
         pathMatch: 'full'

@@ -1,0 +1,36 @@
+<app-header></app-header>
+
+<ion-content [fullscreen]="true">
+  <ion-grid fixed>
+    <div class="header-container">
+      <h1 class="page-title">{{ categoryName }}</h1>
+    </div>
+
+    <div *ngIf="isLoading" class="ion-text-center" style="margin-top: 50px;">
+      <ion-spinner name="crescent" style="transform: scale(1.5);"></ion-spinner>
+    </div>
+
+    <div *ngIf="!isLoading">
+      <div *ngIf="products.length === 0" class="empty-state">
+        <p>No se encontraron productos en esta categoría.</p>
+      </div>
+
+      <ion-row>
+        <ion-col size="12" size-sm="6" size-md="4" size-lg="3" *ngFor="let product of products">
+          
+          <app-product-card
+            [image]="product.image_url"
+            [brand]="product.marca_nombre"
+            [title]="product.nombre"
+            [productId]="product.id_producto"
+            [price]="9990" 
+            [isLiked]="product.isLiked"
+            [isNavigable]="true"
+            (wishlistToggle)="toggleWishlist(product)">
+          </app-product-card>
+          </ion-col>
+      </ion-row>
+    </div>
+  </ion-grid>
+  
+  </ion-content>
