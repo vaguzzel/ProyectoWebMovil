@@ -15,6 +15,16 @@ export class ProductCardComponent {
   @Input() productId: string = '';
   @Output() wishlistToggle = new EventEmitter<void>();
 
+
+  public get fullImageUrl(): string {
+    // Si la imagen es una URL completa, la devolvemos tal cual.
+    if (this.image && !this.image.startsWith('http')) {
+      return `http://localhost:5000/${this.image}`;
+    }
+    // Si la imagen no está definida, devolvemos una imagen por defecto.
+    return this.image || 'assets/images/placeholder-product.jpg';
+  }
+
   constructor() { }
   /*
   onWishlistClick(event: Event) {
