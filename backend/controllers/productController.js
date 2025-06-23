@@ -84,11 +84,36 @@ const ProductController = {
   },
 
   update: (req, res) => {
-    // 1. Verificamos si se subió una nueva imagen
-    ProductModel.update(req.params.id, req.body, (err, result) => {
-      if (err) return res.status(500).json({ message: 'Error al actualizar el producto.', error: err });
-      if (result.affectedRows === 0) return res.status(404).json({ message: 'Producto no encontrado.' });
-      res.json({ message: 'Producto actualizado.' });
+    const productId = req.params.id;
+    const { ofertas, ...productData } = req.body;
+
+    // Verificar si se está subiendo una nueva imagen
+    if (req.file) {
+      productData.image_url = 'images/' + req.file.filename;
+    }
+
+    // El array de ofertas puede venir como string JSON desde un form-data, o como array
+    let parsedOffers = [];
+    try {
+        if (ofertas && typeof ofertas === 'string') {
+            parsedOffers = JSON.parse(ofertas);
+        } else if (Array.isArray(ofertas)) {
+            parsedOffers = ofertas;
+        }
+    } catch (e) {
+        console.error("Error al parsear las ofertas en la actualización:", e);
+        return res.status(400).json({ message: 'El formato de las ofertas es inválido.' });
+    }
+
+    ProductModel.updateWithOffers(productId, productData, parsedOffers, (err, result) => {
+      if (err) {
+        // El modelo ya loguea el error específico, aquí solo enviamos la respuesta
+        return res.status(500).json({ message: 'Error al actualizar el producto.', error: err });
+      }
+      if (result.affectedRows === 0) {
+        return res.status(404).json({ message: 'Producto no encontrado.' });
+      }
+      res.json({ message: 'Producto actualizado exitosamente.' });
     });
   },
 

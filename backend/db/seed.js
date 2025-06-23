@@ -78,20 +78,27 @@ async function seedDatabase() {
     const preciosSQL = `
       INSERT IGNORE INTO PrecioProductoTienda (id_tienda, id_producto, precio, stock, url_producto) VALUES
         -- Sunscreen (ID 1)
-        ((SELECT id_tienda FROM Tiendas WHERE nombre = 'Cruz Verde'), 1, 12990, 50, 'https://www.cruzverde.cl/'),
-        ((SELECT id_tienda FROM Tiendas WHERE nombre = 'Falabella'), 1, 13490, 30, 'https://www.falabella.com/falabella-cl/'),
+        (1, 1, 12990, 50, 'https://www.cruzverde.cl/'),
+        (5, 1, 13490, 30, 'https://www.falabella.com/falabella-cl/'),
+        -- Lipbalm (ID 2)
+        (2, 2, 6990, 100, 'https://www.maicao.cl/'),
+        -- Limpiador Oleoso (ID 3)
+        (4, 3, 18990, 45, 'https://dbs.cl/'),
+        (8, 3, 19990, 20, 'https://www.blush-bar.cl/'),
         -- Liquid Blush (ID 5)
-        ((SELECT id_tienda FROM Tiendas WHERE nombre = 'DBS Beauty Store'), 5, 24990, 100, 'https://dbs.cl/'),
-        ((SELECT id_tienda FROM Tiendas WHERE nombre = 'Falabella'), 5, 25990, 80, 'https://www.falabella.com/falabella-cl/'),
-        ((SELECT id_tienda FROM Tiendas WHERE nombre = 'Blush-Bar'), 5, 26990, 40, 'https://www.blush-bar.cl/'),
+        (4, 5, 24990, 100, 'https://dbs.cl/'),
+        (5, 5, 25990, 80, 'https://www.falabella.com/falabella-cl/'),
+        (8, 5, 26990, 40, 'https://www.blush-bar.cl/'),
+        -- Concealer (ID 6)
+        (6, 6, 8990, 70, 'https://www.nyxcosmetics.cl/'),
         -- 3D Hydra Lip Gloss (ID 9)
-        ((SELECT id_tienda FROM Tiendas WHERE nombre = 'Falabella'), 9, 9990, 120, 'https://www.falabella.com/falabella-cl/'),
-        ((SELECT id_tienda FROM Tiendas WHERE nombre = 'NYX Cosmetics'), 9, 10490, 60, 'https://www.nyxcosmetics.cl/'),
+        (5, 9, 9990, 120, 'https://www.falabella.com/falabella-cl/'),
+        (6, 9, 10490, 60, 'https://www.nyxcosmetics.cl/'),
         -- Limpiador Facial Cerave (ID 10)
-        ((SELECT id_tienda FROM Tiendas WHERE nombre = 'Maicao'), 10, 8990, 200, 'https://www.maicao.cl/'),
-        ((SELECT id_tienda FROM Tiendas WHERE nombre = 'Cruz Verde'), 10, 8490, 150, 'https://www.cruzverde.cl/'),
+        (2, 10, 8990, 200, 'https://www.maicao.cl/'),
+        (1, 10, 8490, 150, 'https://www.cruzverde.cl/'),
         -- Heartleaf Toner (ID 12)
-        ((SELECT id_tienda FROM Tiendas WHERE nombre = 'DBS Beauty Store'), 12, 19990, 25, 'https://dbs.cl/');
+        (4, 12, 19990, 25, 'https://dbs.cl/');
     `;
     await connection.query(preciosSQL);
     console.log('Paso 6/6: Precios de productos insertados correctamente.');

@@ -54,4 +54,14 @@ export class Tab3Page implements OnInit {
       }
     });
   }
+
+  public getFullImageUrl(imagePath: string | null | undefined): string {
+    // Verificar si la ruta de la imagen es válida y no es una URL completa
+    if (imagePath && !imagePath.startsWith('http')) {
+      // Devolver la URL completa concatenando con el dominio del backend
+      return `http://localhost:5000/${imagePath}`;
+    }
+    // Si la imagen es una URL completa o no está definida, devolver una imagen por defecto
+    return imagePath || 'assets/images/placeholder-product.jpg';
+  }
 }

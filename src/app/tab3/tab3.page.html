@@ -14,7 +14,7 @@
 
     <div class="producto-imagen">
       <div class="imagen-wrapper">
-        <img [src]="producto.image_url" [alt]="producto.nombre"/>
+        <img [src]="getFullImageUrl(producto.image_url)" [alt]="producto.nombre"/>
       </div>
     </div>
 

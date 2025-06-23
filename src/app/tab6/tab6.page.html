@@ -41,7 +41,7 @@
           *ngFor="let producto of productosEncontrados"
         >
           <ion-card class="product-card">
-            <img [src]="producto.image_url || 'assets/images/placeholder-product.jpg'" [alt]="producto.nombre" />
+            <img [src]="getFullImageUrl(producto.image_url)" [alt]="producto.nombre"/>
             <ion-card-header>
               <ion-card-title>{{ producto.nombre }}</ion-card-title>
             </ion-card-header>

@@ -90,6 +90,59 @@ const ProductModel = {
     db.query('UPDATE Producto SET ? WHERE id_producto = ?', [data, id], callback);
   },
 
+  updateWithOffers: (productId, productData, offersData, callback) => {
+    db.beginTransaction(err => {
+      if (err) { return callback(err); }
+
+      // 1. Actualizar la tabla principal 'Producto'
+      db.query('UPDATE Producto SET ? WHERE id_producto = ?', [productData, productId], (err, result) => {
+        if (err) {
+          console.error("Error al actualizar la tabla Producto:", err);
+          return db.rollback(() => callback(err));
+        }
+
+        // 2. Borrar las ofertas antiguas de la tabla 'PrecioProductoTienda'
+        db.query('DELETE FROM PrecioProductoTienda WHERE id_producto = ?', [productId], (err, deleteResult) => {
+          if (err) {
+            console.error("Error al borrar ofertas antiguas:", err);
+            return db.rollback(() => callback(err));
+          }
+
+          // 3. Si no hay nuevas ofertas, terminamos la transacción aquí.
+          if (!offersData || offersData.length === 0) {
+            return db.commit(err => {
+              if (err) { return db.rollback(() => callback(err)); }
+              callback(null, result);
+            });
+          }
+
+          // 4. Preparar e insertar las nuevas ofertas
+          const priceInserts = offersData.map(offer => [
+            offer.id_tienda,
+            productId,
+            offer.precio,
+            offer.stock,
+            offer.url_producto
+          ]);
+          
+          const query = 'INSERT INTO PrecioProductoTienda (id_tienda, id_producto, precio, stock, url_producto) VALUES ?';
+          db.query(query, [priceInserts], (err, priceResult) => {
+            if (err) {
+              console.error("Error al insertar nuevas ofertas:", err);
+              return db.rollback(() => callback(err));
+            }
+
+            // 5. Si todo fue exitoso, confirmar la transacción.
+            db.commit(err => {
+              if (err) { return db.rollback(() => callback(err)); }
+              callback(null, result);
+            });
+          });
+        });
+      });
+    });
+  },
+
   // Eliminar un producto
   delete: (id, callback) => {
     db.query('DELETE FROM Producto WHERE id_producto = ?', [id], callback);

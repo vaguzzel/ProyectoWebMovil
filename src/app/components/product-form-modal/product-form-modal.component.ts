@@ -4,6 +4,7 @@ import { ModalController, ToastController } from '@ionic/angular';
 import { ProductService } from 'src/app/services/product.service';
 import { TiendaService } from 'src/app/services/tienda.service';
 import { CategoryService } from 'src/app/services/category.service';
+import { BrandService } from 'src/app/services/brand.service';
 import { forkJoin } from 'rxjs';
 
 // Imports para Standalone Component
@@ -38,6 +39,7 @@ export class ProductFormModalComponent implements OnInit {
     private productService: ProductService,
     private tiendaService: TiendaService,
     private categoryService: CategoryService,
+    private brandService: BrandService, 
     private toastCtrl: ToastController
   ) {}
 
@@ -69,11 +71,12 @@ export class ProductFormModalComponent implements OnInit {
     // Usamos forkJoin para ejecutar ambas peticiones en paralelo
     forkJoin({
       categorias: this.categoryService.getCategories(),
-      tiendas: this.tiendaService.getTiendas()
-      // Podrías añadir aquí el servicio de marcas si lo tienes
-    }).subscribe(({ categorias, tiendas }) => {
+      tiendas: this.tiendaService.getTiendas(),
+      marcas: this.brandService.getBrands()
+    }).subscribe(({ categorias, tiendas, marcas }) => {
       this.categorias = categorias;
       this.tiendas = tiendas;
+      this.marcas = marcas;
 
       // Si estamos en modo edición, poblamos las ofertas existentes
       if (this.isEditMode && this.productToEdit.ofertas) {
