@@ -42,7 +42,7 @@ ion-card.product-card {
 }
 
 .big {
-  height: 300px;
+  height: 150;
 }
 
 .small {
@@ -86,4 +86,17 @@ ion-card-title {
   line-height: 1.3;
   min-height: 35px;
   margin: 0;
+}
+
+.product-link-wrapper {
+ text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: all 0.2s ease-in-out; // Opcional: para una transición suave del efecto
+
+  // Esto se activa solo cuando el puntero del mouse está encima del enlace
+  &:hover {
+    // Hacemos que el subrayado aparezca en el hover
+    text-decoration: underline;
+  }
 }

@@ -12,7 +12,7 @@ export class ProductCardComponent {
   @Input() price: number = 0;
   @Input() previousPrice?: number;
   @Input() isLiked: boolean = false;
-
+  @Input() productId: string = '';
   @Output() wishlistToggle = new EventEmitter<void>();
 
   constructor() { }

@@ -118,6 +118,7 @@ ion-content {
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden; // Para que el border-radius funcione con la imagen
+  
 
   img {
     width: 100%;
@@ -135,8 +136,16 @@ ion-content {
     font-size: 1.1em;
     font-weight: 600;
     color: #333;
-    margin-bottom: 5px;
-    min-height: 50px; // Asegura que el título tenga un espacio mínimo, útil para títulos de 2 líneas
+    min-height: 25px; // Asegura que el título tenga un espacio mínimo, útil para títulos de 2 líneas
+  }
+
+  ion-card-subtitle {
+    font-size: 0.9rem; // La marca un poco más pequeña
+    color: var(--ion-color-medium-shade); // Un color gris para la marca
+    text-transform: uppercase; // Opcional: Pone la marca en mayúsculas
+    letter-spacing: 0.5px;   // Opcional: Un poco de espacio entre letras
+    padding-left: 15px;
+    text-align: left;
   }
 
   ion-card-content {

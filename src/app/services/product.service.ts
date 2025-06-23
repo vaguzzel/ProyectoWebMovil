@@ -6,10 +6,12 @@ import { AuthService } from './auth.service'; // 1. Importar AuthService
 export interface Producto {
   id_producto: string;
   nombre: string;
-  descripcion: number;
+  descripcion: string;
   marca_id: string;
   categoria_id?: string; 
   image_url?: string;
+  marca_nombre?: string;
+  categoria_nombre?: string;
 }
 
 
