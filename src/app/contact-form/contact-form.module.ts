@@ -1,11 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
 import { IonicModule } from '@ionic/angular';
-
 import { ContactFormPageRoutingModule } from './contact-form-routing.module';
-
 import { ContactFormPage } from './contact-form.page';
 
 @NgModule({
@@ -13,7 +11,9 @@ import { ContactFormPage } from './contact-form.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    ContactFormPageRoutingModule
+    ContactFormPageRoutingModule,
+    SharedModule,
+    ReactiveFormsModule
   ],
   declarations: [ContactFormPage]
 })
