@@ -5,7 +5,13 @@
         <span class="logo-look">Look</span><span class="logo-4">4</span><span class="logo-beauty">Beauty</span>
       </div>
       <div class="search-container">
-        <ion-searchbar placeholder="¿Qué buscas?" class="custom-searchbar"></ion-searchbar>
+        <ion-searchbar
+          placeholder="¿Qué buscas?"
+          class="custom-searchbar"
+          [(ngModel)]="searchQuery"
+          (keyup.enter)="realizarBusqueda()"
+          (ionInput)="onSearchChange($event)"
+        ></ion-searchbar>
       </div>
       <div class="navigation-items">
         <ion-buttons>

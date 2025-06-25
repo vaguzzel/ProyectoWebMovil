@@ -2,7 +2,8 @@
   <ion-card-content>
     <div class="card-layout">
       <div class="store-info">
-        <h3 class="store-name">{{ storeName }}</h3>
+        <a [href]="productUrl" target="_blank" rel="noopener noreferrer" class="store-link">
+          <h3 class="store-name">{{ storeName }}</h3></a>
         <div class="price">{{ price | currency:'$':'symbol':'1.0-0' }}</div>
         <p class="availability">{{ availability }}</p>
       </div>

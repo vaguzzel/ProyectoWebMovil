@@ -11,6 +11,7 @@ import { Subscription } from 'rxjs';
   standalone: false // Mantén esto en false
 })
 export class HeaderComponent implements OnInit, OnDestroy {
+  searchQuery: string = ''; 
   userName: string | null = null;
   isLoggedIn: boolean = false;
   private authSubscription: Subscription = new Subscription();
@@ -60,5 +61,24 @@ export class HeaderComponent implements OnInit, OnDestroy {
   logout() {
     this.authService.logout();
     this.router.navigate(['/tabs/tab5']); // Redirigir a la página de login
+  }
+
+
+  onSearchChange(event: any) {
+    this.searchQuery = event.detail.value;
+  }
+
+
+  realizarBusqueda() {
+    if (this.searchQuery && this.searchQuery.trim() !== '') {
+      // Navega a la Tab6Page (ruta '/busqueda') y pasa la palabra clave como parámetro de consulta 'q'
+      this.router.navigate(['/tabs/tab6'], { queryParams: { q: this.searchQuery.trim() } });
+    } else {
+      // Opcional: Si el campo está vacío, puedes navegar a la página de búsqueda sin un query
+      // o mostrar una alerta. Por ahora, solo navegaremos sin queryParams.
+      this.router.navigate(['/tabs/tab6']);
+    }
+    // Opcional: Limpia el campo de búsqueda después de realizar la búsqueda
+    // this.searchQuery = '';
   }
 }

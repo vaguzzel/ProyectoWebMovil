@@ -1,0 +1,30 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
+import { IonicModule } from '@ionic/angular';
+import { ActivatedRoute } from '@angular/router';
+import { Tab6PageRoutingModule } from './tab6-routing.module';
+import { ProductService, Producto } from '../services/product.service';
+
+
+import { Tab6Page } from './tab6.page';
+
+@NgModule({
+  imports: [
+    CommonModule,
+    FormsModule,
+    IonicModule,
+    SharedModule,
+    Tab6PageRoutingModule
+  ],
+  declarations: [Tab6Page]
+})
+export class Tab6PageModule {}
+
+
+
+
+
+
+

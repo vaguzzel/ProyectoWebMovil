@@ -1,75 +1,45 @@
 <app-header></app-header>
 
 <ion-content>
-  <div class="producto-grid">
-    
-    <!-- Columna: Imagen del producto -->
+
+  <div *ngIf="cargando" class="ion-text-center ion-padding">
+    <ion-spinner name="crescent"></ion-spinner>
+  </div>
+
+  <div *ngIf="error" class="ion-text-center ion-padding" style="color: red;">
+    <p>{{ error }}</p>
+  </div>
+
+  <div *ngIf="producto" class="producto-grid">
+
     <div class="producto-imagen">
       <div class="imagen-wrapper">
-        <img src="assets/images/placeholder-oferta-1.png"/>
-        <ion-button fill="clear" class="wishlist-button">
-          <ion-icon name="heart-outline"></ion-icon>
-        </ion-button>
+        <img [src]="getFullImageUrl(producto.image_url)" [alt]="producto.nombre"/>
       </div>
     </div>
 
-    <!-- Columna: Descripción y título -->
     <div class="producto-info">
-      <h1>MAYBELLINE <br> <strong>SuperStay Vinyl Ink WITTY</strong></h1>
+      <p class="title"><strong>{{ producto.nombre }}</strong> </p>
+      <p class="title">{{ producto.marca_nombre }}</p>
       <div class="descripcion">
-        <h2 >Detalles del producto</h2>
-        <p class="description-text">Sella el vinilo en tus labios con Super Stay Vinyl Ink  Nude y ¡márcate unos labios con poder! Su acabado de efecto vinilo y su fórmula en tinta líquida llega para romper los límites de la larga duración. Agita y aplica para conseguir 16H de color y brillo. ¡Olvídate de retocar tus labios! Máximo color y brillo en una sola pasada. ¿Preparada para romper las reglas?</p>
-        <ion-button expand="block" color="#a1818a">Modo de uso</ion-button>
+        <h2>Detalles del producto</h2>
+        <p class="description-text">{{ producto.descripcion }}</p>
       </div>
     </div>
 
-    <!-- Columna: Tiendas disponibles -->
     <div class="producto-tiendas">
       <app-store-card
-        storeName="Maicao"
-        [price]="6990"
-        availability="Solo retiro en tienda"
-        [rating]="4">
-      </app-store-card>
-
-      <app-store-card
-        storeName="Maicao"
-        [price]="6990"
-        availability="Solo retiro en tienda"
-        [rating]="4">
-      </app-store-card>
-
-      <app-store-card
-        storeName="Maicao"
-        [price]="6990"
-        availability="Solo retiro en tienda"
-        [rating]="4">
-      </app-store-card>
-
-      <app-store-card
-        storeName="Maicao"
-        [price]="6990"
-        availability="Solo retiro en tienda"
-        [rating]="4">
-      </app-store-card>
-
-      <app-store-card
-        storeName="Maicao"
-        [price]="6990"
-        availability="Solo retiro en tienda"
-        [rating]="4">
-      </app-store-card>
-
-      <app-store-card
-        storeName="Maicao"
-        [price]="6990"
-        availability="Solo retiro en tienda"
-        [rating]="4">
-      </app-store-card>
-      
+        *ngFor="let oferta of producto.ofertas"
+        
+        [storeName]="oferta.tienda_nombre"
+        [price]="oferta.precio"
+        [availability]="oferta.stock > 0 ? 'Disponible' : 'Sin stock'"
+        [rating]="4"
+        [productUrl]="oferta.url_producto">
+       </app-store-card>
+        
     </div>
-
-
-
   </div>
+
+  <app-footer *ngIf="producto"></app-footer>
 </ion-content>

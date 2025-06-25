@@ -1,4 +1,4 @@
-## Proyecto Final - Entrega Parcial 1  
+## Proyecto Final - Entrega Final 
 ### Ingeniería Web y móvil.
 **Integrantes:** 
 - Ulysses Barreto 21.615.085-6
@@ -23,9 +23,55 @@ Debes tener el node.js instalado
 npm install
 ionic serve
 ```
+Para ejecutar el BackEnd
+
+- Prerrequisitos:
+  - Tener un gestor de base de datos MySQL en funcionamiento (se recomienda usar XAMPP).
+  - Tener Node.js instalado.
+
+Pasos:
+1. Iniciar MySQL: Abre XAMPP y asegúrate de que el servicio de MySQL esté iniciado.
+
+2. Crear la Base de Datos:
+   - Ve a tu gestor de base de datos (ej. http://localhost/phpmyadmin).
+   - Crea una nueva base de datos con el nombre exacto: look_4_beauty.
+     
+3. Crear las Tablas:
+   - Selecciona la base de datos look_4_beauty.
+   - Ve a la pestaña "SQL".
+   - Copia todo el contenido del archivo backend/schema.sql y pégalo en el cuadro de texto.
+   - Ejecuta el script. Esto creará todas las tablas, pero las dejará vacías.
+   - 
+4. Instalar Dependencias y Poblar la Base de Datos:
+   - Abre una terminal y navega hasta la carpeta backend del proyecto.
+     ```bash
+     cd backend
+     ```
+   - Instala todas las dependencias del servidor:
+     ```bash
+     npm install
+     ```
+   - Ejecuta el script de "siembra" para llenar las tablas con los datos de prueba (productos, categorías, etc.):
+     ```bash
+     npm run seed
+     ```
+
+5. Iniciar el Servidor del Backend:
+   - En la misma terminal (dentro de la carpeta backend), inicia el servidor:
+     ```bash
+     npm start
+     ```
+     
+   - Si todo sale bien, verás un mensaje que dice "Servidor de Node.js escuchando en http://localhost:5000". Deja esta terminal abierta.
+    
+Creación de un Usuario Administrador 
+
+Para probar la implementacion de CRUD en los productos, es necesario iniciar sesión con una cuenta admin, por lo que se generó una mediante la seed con los siguientes datos:
+     admin@look4beauty.com Pass: admin
+
+Una vez completados estos pasos, la próxima vez que se inicie sesión con ese usuario, tendrá permisos de administrador.
 
 ---
-
 # Sistema de comparación de precios de mercado de productos de maquillaje
 
 ## Resumen del Proyecto

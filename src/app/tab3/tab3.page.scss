@@ -13,6 +13,7 @@ ion-content {
     gap: 50px;
     padding-inline: 50px;
     padding-top: 50px;
+    padding-bottom: 300px;
     @media (max-width: 768px) {
         grid-template-columns: 1fr;
       }
@@ -60,7 +61,7 @@ ion-content {
 //para definir los colores
 .producto-info {
     color: black;
-  
+    padding-top: 90px;
     ion-button {
       background-color: #a1818a;
       color: black;
@@ -84,3 +85,20 @@ ion-content {
     }
   }
   
+
+.title {
+  font-weight: bold;
+  font-size: 20px;
+  margin: 0;
+}
+
+.title strong {
+  // --- Aquí pones los estilos que quieres SOLO para la marca ---
+  
+  display: block; // Ayuda a que se comporte como un bloque separado
+  font-size: 2rem;          // Un tamaño ligeramente más pequeño para la marca
+  font-weight: 600;         // Un grosor de letra más ligero (normal)
+  color: black;              // Un color gris más suave para la marca
+  text-transform: uppercase; // Pone la marca en mayúsculas para un look de "diseñador"
+  letter-spacing: 1.5px;      // Un poco de espacio entre las letras de la marca     // Pequeño espacio entre la marca y el nombre
+}

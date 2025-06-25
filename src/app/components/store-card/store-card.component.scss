@@ -11,6 +11,23 @@ ion-card-content {
   padding: 10px 15px; 
 }
 
+ 
+// src/app/components/store-card/app-store-card.component.scss
+
+.store-link {
+  text-decoration: none; // Quita el subrayado por defecto del enlace.
+  color: black; 
+  font-size: 1.1rem;    
+  font-weight: 600;   
+
+  // Opcional: añade un efecto visual cuando el usuario pasa el mouse por encima.
+  &:hover {
+    text-decoration: underline; // Vuelve a poner el subrayado solo en el hover.
+    // O podrías cambiar el color, por ejemplo:
+    // color: var(--ion-color-primary);
+  }
+}
+
 .card-layout {
   display: grid;
   grid-template-columns: 1fr auto;
@@ -25,7 +42,7 @@ ion-card-content {
 }
 
 .store-name {
-  font-size: 1.5em;  
+  font-size: 1.1em;  
   margin: 0 0 4px 0; // Sin margen superior/inferior, 4px abajo
   color: #333333b4;
 }
