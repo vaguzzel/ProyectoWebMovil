@@ -12,10 +12,10 @@
 **Fecha de entrega:** 21/04/2025
 
 ---
+
 ### Cómo ejecutar el proyecto
 Debes tener el node.js instalado
 
-Para ejecutar el FrontEnd
 1. Clona este repositorio o descarga el `.zip`.
 2. En la raíz del proyecto, ejecuta:
 
@@ -23,76 +23,7 @@ Para ejecutar el FrontEnd
 npm install
 ionic serve
 ```
-Para ejecutar el BackEnd
 
-- Prerrequisitos:
-  - Tener un gestor de base de datos MySQL en funcionamiento (se recomienda usar XAMPP).
-  - Tener Node.js instalado.
-
-Pasos:
-1. Iniciar MySQL: Abre XAMPP y asegúrate de que el servicio de MySQL esté iniciado.
-
-2. Crear la Base de Datos:
-   - Ve a tu gestor de base de datos (ej. http://localhost/phpmyadmin).
-   - Crea una nueva base de datos con el nombre exacto: look_4_beauty.
-     
-3. Crear las Tablas:
-   - Selecciona la base de datos look_4_beauty.
-   - Ve a la pestaña "SQL".
-   - Copia todo el contenido del archivo backend/schema.sql y pégalo en el cuadro de texto.
-   - Ejecuta el script. Esto creará todas las tablas, pero las dejará vacías.
-   - 
-4. Instalar Dependencias y Poblar la Base de Datos:
-   - Abre una terminal y navega hasta la carpeta backend del proyecto.
-     ```bash
-     cd backend
-     ```
-   - Instala todas las dependencias del servidor:
-     ```bash
-     npm install
-     ```
-   - Ejecuta el script de "siembra" para llenar las tablas con los datos de prueba (productos, categorías, etc.):
-     ```bash
-     npm run seed
-     ```
-
-5. Iniciar el Servidor del Backend:
-   - En la misma terminal (dentro de la carpeta backend), inicia el servidor:
-     ```bash
-     npm start
-     ```
-     
-   - Si todo sale bien, verás un mensaje que dice "Servidor de Node.js escuchando en http://localhost:5000". Deja esta terminal abierta.
-    
-Creación de un Usuario Administrador 
-
-Actualmente, el rol de administrador se asigna manualmente directamente en la base de datos, siendo esta la forma de añadir o eliminar marcas, categorias o productos.
-
-Pasos:
-
-    Crear una cuenta de usuario normal: Primero, utiliza la interfaz de la aplicación para registrar un nuevo usuario a través del formulario "Crear cuenta".
-
-    Acceder a la Base de Datos.
-
-    Ubicar al Usuario:
-
-        Selecciona la base de datos look_4_beauty.
-
-        Abrir la tabla usuarios.
-
-        Buscar la fila correspondiente al usuario que se acaba de registrar. 
-
-    Modificar el Rol:
-
-        Hacer "Click" en editar.
-
-        Buscar la columna llamada rol.
-
-        Cambiar el valor de 'usuario' a 'admin'.
-
-        Guardar los cambios.
-
-Una vez completados estos pasos, la próxima vez que se inicie sesión con ese usuario, tendrá permisos de administrador.
 ---
 
 # Sistema de comparación de precios de mercado de productos de maquillaje
@@ -138,7 +69,6 @@ La app (programada) en esta entrega incluye una interfaz para visualizar:
 ### Roles del Sistema
 - **Sistema**: Automatización de funciones.
 - **Administrador**: Control total sobre el sistema.
-- **Moderador**: Puede añadir, actualizar, eliminar productos y moderar comentarios.
 - **Usuario**: Puede ver información detallada de productos y agregar comentarios.
 
 ### Requerimientos Funcionales por Rol
@@ -153,32 +83,13 @@ La app (programada) en esta entrega incluye una interfaz para visualizar:
 - **RF-ADM-01**: El administrador puede añadir productos.
 - **RF-ADM-02**: El administrador puede editar cualquier producto existente.
 - **RF-ADM-03**: El administrador puede eliminar productos que hayan sido descontinuados.
-- **RF-ADM-04**: El administrador puede configurar alertas de baja de precios.
-- **RF-ADM-05**: El administrador puede configurar alertas de vuelta de stock.
-- **RF-ADM-06**: El administrador puede ver y gestionar las cuentas de usuario.
-
-
-#### Rol-Moderador
-- **RF-MOD-01**: El moderador puede registrar nuevos productos ingresando:
-  - Nombre
-  - Código (ID único)
-  - Categoría
-  - Precio
-  - Stock (entero positivo)
-  - Descripción
-- **RF-MOD-02**: El moderador puede editar productos existentes.
-- **RF-MOD-03**: El moderador puede aplicar filtros y buscar productos por nombre, código, categoría, stock o precio.
-- **RF-MOD-04**: El moderador puede eliminar o fijar comentarios en listas de comentarios de productos.
-- **RF-MOD-05**: El moderador puede comentar en la sección de un producto para resolver dudas o dar recomendaciones a usuarios.
 
 #### Rol-Usuario
 - **RF-US-01**: El usuario puede acceder a la lista de productos y sus detalles.
-- **RF-US-02**: El usuario puede utilizar la función de búsqueda y filtrado por nombre, marca, tipo, precio o palabras clave.
-- **RF-US-03**: El usuario puede dar su opinión y calificación de un producto que compró y el lugar de donde lo compró.
-- **RF-US-04**: El usuario puede marcar productos como deseados y estos son agregados a su wishlist.
-- **RF-US-05**: El usuario puede acceder a su página de perfil y modificar detalles de su cuenta.
-- **RF-US-06**: El usuario puede acceder a las categorías de productos más globales.
-- **RF-US-07**: El usuario puede comentar en la sección de un producto para resolver dudas o dar recomendaciones.
+- **RF-US-02**: El usuario puede utilizar la función de búsqueda.
+- **RF-US-03**: El usuario puede marcar productos como deseados y estos son agregados a su wishlist.
+- **RF-US-04**: El usuario puede acceder a su página de perfil y modificar detalles de su cuenta.
+- **RF-US-05**: El usuario puede acceder a las categorías de productos más globales.
 
 ### Requerimientos No Funcionales
 
@@ -207,12 +118,6 @@ La app (programada) en esta entrega incluye una interfaz para visualizar:
 [Estructura de Navegación](https://whimsical.com/look4beauty-RssnWPKSDMGrXbKVyYxjRJ)
 
 **Para más detalle, revisar figma con detenimiento por favor.**
-
----
-
-## Esquema MR de la Base de Datos
-
-![mr drawio](https://github.com/user-attachments/assets/5a79502e-9178-4e77-9fa8-36cdf6108825)
 
 ---
 
