@@ -3,6 +3,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service'; // Ruta relativa corregida basada en tu estructura de carpetas
 import { Subscription } from 'rxjs';
+import { Category, CategoryService } from 'src/app/services/category.service';
 
 @Component({
   selector: 'app-header',
@@ -15,13 +16,16 @@ export class HeaderComponent implements OnInit, OnDestroy {
   userName: string | null = null;
   isLoggedIn: boolean = false;
   private authSubscription: Subscription = new Subscription();
+  public categories: Category[] = [];
 
   constructor(
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private categoryService: CategoryService // Inyectar el servicio de categorías
   ) { }
 
   ngOnInit() {
+    this.loadCategories();
     // Suscribirse al estado de autenticación
     this.authSubscription.add(
       this.authService.isAuthenticated$.subscribe(isAuthenticated => {
@@ -44,6 +48,17 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     // Asegurarse de desuscribirse para evitar fugas de memoria
     this.authSubscription.unsubscribe();
+  }
+
+  loadCategories() {
+    this.categoryService.getCategories().subscribe(
+      (data) => {
+        this.categories = data;
+      },
+      (error) => {
+        console.error('Error al cargar las categorías en el header:', error);
+      }
+    );
   }
 
   goToTab2() {
