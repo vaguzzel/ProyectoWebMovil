@@ -58,6 +58,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.router.navigate(['/tabs/tab5']);
   }
 
+   goToContacto() { // Método para el botón de iniciar sesión
+    this.router.navigate(['/tabs/contact-form']);
+  }
+
+
   logout() {
     this.authService.logout();
     this.router.navigate(['/tabs/tab5']); // Redirigir a la página de login
