@@ -1,0 +1,91 @@
+/* src/app/pages/contacto-form/contacto-form.page.scss */
+
+ion-content {
+  --background: #FFE5D9; // Fondo base por si algo falla
+
+}
+
+.main-grid {
+  height: 100%;
+  width: 100%;
+  padding: 0;
+}
+
+.left-column {
+    min-height: 900px;
+    background: linear-gradient(
+      to bottom,
+      #9D8189 0%,
+      #A9777F 48%,
+      #F4ACB7 100%
+    );
+    background-color: #A9777F;
+  }
+
+
+.right-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #FFE5D9;
+}
+
+.form-wrapper {
+  max-width: 450px;
+  margin: auto;
+  margin-top: 10px;
+  width: 100%;
+  
+  h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 8px;
+  }
+
+  p {
+    color: #666;
+    margin-bottom: 30px;
+    font-size: 1rem;
+  }
+}
+
+.input-item {
+  --background: #f4f4f4;
+  --padding-start: 16px;
+  --color: black;
+  --inner-padding-end: 16px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  
+  ion-label[position="stacked"] {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #555;
+    margin-left: 10px;
+    margin-bottom: 5px;
+  }
+
+  ion-input, ion-textarea {
+    --placeholder-color: #999;
+  }
+}
+
+.submit-button {
+  --background: #D3B8AE;
+  --background-activated: #c5a99e;
+  --color: #FFFFFF;
+  --border-radius: 8px;
+  --box-shadow: none;
+  font-weight: bold;
+  height: 50px;
+  font-size: 1.1rem;
+  margin-top: 20px;
+}
+
+// En pantallas pequeñas, el fondo blanco ocupa todo
+@media (max-width: 767px) {
+  .right-column {
+    background-color: #f7f8fa;
+  }
+}

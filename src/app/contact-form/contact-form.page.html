@@ -1,0 +1,55 @@
+<app-header></app-header>
+
+<ion-content>
+  <ion-grid class="main-grid">
+    <ion-row class="ion-align-items-stretch ion-no-padding">
+
+      <ion-col size="12" size-md="5" class="left-column ion-hide-md-down">
+        </ion-col>
+
+      <ion-col size="12" size-md="7" class="right-column ion-padding">
+        
+        <div class="form-wrapper">
+          <h1>Contáctanos</h1>
+          <p>Envíanos tu consulta y te responderemos a la brevedad.</p>
+
+          <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+
+            <ion-item lines="none" class="input-item">
+              <ion-label position="stacked">Nombre</ion-label>
+              <ion-input type="text" formControlName="nombre" placeholder="Ingresa tu nombre"></ion-input>
+            </ion-item>
+            
+            <ion-item lines="none" class="input-item">
+              <ion-label position="stacked">Apellido</ion-label>
+              <ion-input type="text" formControlName="apellido" placeholder="Ingresa tu apellido"></ion-input>
+            </ion-item>
+
+            <ion-item lines="none" class="input-item">
+              <ion-label position="stacked">Correo Electrónico</ion-label>
+              <ion-input type="email" formControlName="correo" placeholder="tu@correo.com"></ion-input>
+            </ion-item>
+
+            <ion-item lines="none" class="input-item">
+              <ion-label position="stacked">¿Qué ayuda necesitas?</ion-label>
+              <ion-textarea
+                rows="4"
+                formControlName="ayuda"
+                placeholder="Describe tu solicitud aquí...">
+              </ion-textarea>
+            </ion-item>
+
+            <ion-button expand="block" type="submit" class="submit-button" [disabled]="contactForm.invalid || isSubmitting">
+              <span *ngIf="!isSubmitting">Enviar Solicitud</span>
+              <ion-spinner *ngIf="isSubmitting" name="crescent"></ion-spinner>
+            </ion-button>
+
+          </form>
+          </div>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <app-footer></app-footer>
+</ion-content>
