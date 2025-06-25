@@ -41,6 +41,11 @@ const routes: Routes = [
         loadChildren: () => import('../tab7/tab7.module').then(m => m.Tab7PageModule),
         canActivate: [adminGuard] // 3. ¡Aquí se protege la ruta!
       },
+
+      {
+        path: 'contact-form',
+        loadChildren: () => import('../contact-form/contact-form.module').then(m=> m.ContactFormPageModule)
+      },
       {
         path: '',
         redirectTo: '/tabs/tab1',
