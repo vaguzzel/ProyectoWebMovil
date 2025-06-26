@@ -1,0 +1,45 @@
+<app-header></app-header>
+
+<ion-content>
+  <div class="search-results-container ion-padding">
+    <div class="breadcrumbs">
+      <ion-breadcrumbs>
+        <ion-breadcrumb href="/tabs/tab1">Inicio</ion-breadcrumb>
+        <ion-breadcrumb>Categorías</ion-breadcrumb>
+        <ion-breadcrumb>{{ pageTitle }}</ion-breadcrumb>
+      </ion-breadcrumbs>
+    </div>
+
+    <div class="search-title">
+      <h1>{{ pageTitle }}</h1>
+      <p *ngIf="categoryDescription">{{ categoryDescription }}</p>
+    </div>
+
+    <div *ngIf="isLoading" class="ion-text-center ion-padding">
+      <ion-spinner name="crescent"></ion-spinner>
+    </div>
+
+    <div *ngIf="!isLoading && products.length === 0" class="ion-text-center ion-padding">
+      <p class="error-msg">No se encontraron productos en esta categoría.</p>
+    </div>
+
+    <ion-grid *ngIf="!isLoading && products.length > 0" class="product-grid">
+      <ion-row>
+        <ion-col size="12" size-sm="6" size-md="4" size-lg="3" *ngFor="let product of products">
+          
+          <app-product-card
+            [image]="product.image_url"
+            [brand]="product.marca_nombre"
+            [title]="product.nombre"
+            [price]="9990" 
+            [isLiked]="product.isLiked" [productId]="product.id_producto"
+            (wishlistToggle)="toggleWishlist(product)">
+          </app-product-card>
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <app-footer></app-footer>
+</ion-content>

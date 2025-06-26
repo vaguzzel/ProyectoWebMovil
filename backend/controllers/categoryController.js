@@ -38,7 +38,18 @@ const CategoryController = {
       if (result.affectedRows === 0) return res.status(404).json({ message: 'Categoría no encontrada.' });
       res.status(204).send();
     });
+  },
+
+  getProductsByCategory: (req, res) => {
+    const categoryId = req.params.id;
+    CategoryModel.getProductsByCategoryId(categoryId, (err, products) => {
+      if (err) {
+        return res.status(500).json({ message: `Error al obtener productos para la categoría ${categoryId}.`, error: err });
+      }
+      res.json(products);
+    });
   }
+
 };
 
 module.exports = CategoryController;

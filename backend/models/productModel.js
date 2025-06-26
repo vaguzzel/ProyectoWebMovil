@@ -143,9 +143,48 @@ const ProductModel = {
     });
   },
 
-  // Eliminar un producto
+  // Borrar un producto y sus ofertas asociadas
+  // Este método ahora maneja la eliminación en cascada de las ofertas y otros datos relacionados
   delete: (id, callback) => {
-    db.query('DELETE FROM Producto WHERE id_producto = ?', [id], callback);
+    db.beginTransaction(err => {
+      if (err) { return callback(err); }
+
+      // 1. Borrar de ListadeDeseo
+      db.query('DELETE FROM ListadeDeseo WHERE id_producto = ?', [id], (err, result1) => {
+        if (err) {
+          return db.rollback(() => callback(err));
+        }
+
+        // 2. Borrar de Reseñas
+        db.query('DELETE FROM Reseñas WHERE id_producto = ?', [id], (err, result2) => {
+          if (err) {
+            return db.rollback(() => callback(err));
+          }
+
+          // 3. Borrar de PrecioProductoTienda
+          db.query('DELETE FROM PrecioProductoTienda WHERE id_producto = ?', [id], (err, result3) => {
+            if (err) {
+              return db.rollback(() => callback(err));
+            }
+
+            // 4. Finalmente, borrar de la tabla Producto
+            db.query('DELETE FROM Producto WHERE id_producto = ?', [id], (err, result4) => {
+              if (err) {
+                return db.rollback(() => callback(err));
+              }
+
+              // Si todo salió bien, confirmamos todos los cambios
+              db.commit(err => {
+                if (err) {
+                  return db.rollback(() => callback(err));
+                }
+                callback(null, result4); // Devolvemos el resultado del último borrado
+              });
+            });
+          });
+        });
+      });
+    });
   },
 
   // Encontrar productos por categoría

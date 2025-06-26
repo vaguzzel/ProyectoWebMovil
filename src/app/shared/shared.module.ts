@@ -7,6 +7,7 @@ import { ProductCardComponent } from '../components/product-card/product-card.co
 import { StoreCardComponent } from '../components/store-card/store-card.component';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { CategoryMenuComponent } from '../components/category-menu/category-menu.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     IonicModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    CategoryMenuComponent
   ],
   exports: [
     CommonModule,
@@ -23,7 +25,8 @@ import { RouterModule } from '@angular/router';
     FooterComponent ,
     HeaderComponent,
     ProductCardComponent,
-    StoreCardComponent
+    StoreCardComponent,
+    CategoryMenuComponent
   ]
 })
 export class SharedModule { }

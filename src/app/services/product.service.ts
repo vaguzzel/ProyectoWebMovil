@@ -64,5 +64,10 @@ export class ProductService {
     console.log('Solicitando URL al backend:', url);
 
     return this.http.get<Producto[]>(url);
-  } 
+  }
+  
+  getProductsByCategoryId(categoryId: number): Observable<any[]> {
+  // Método para obtener productos por ID de categoría
+    return this.http.get<any[]>(`http://localhost:5000/api/categories/${categoryId}/products`);
+  }
 }

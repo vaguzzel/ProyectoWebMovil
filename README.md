@@ -66,8 +66,31 @@ Pasos:
     
 Creación de un Usuario Administrador 
 
-Para probar la implementacion de CRUD en los productos, es necesario iniciar sesión con una cuenta admin, por lo que se generó una mediante la seed con los siguientes datos:
-     admin@look4beauty.com Pass: admin
+Actualmente, el rol de administrador se asigna manualmente directamente en la base de datos, siendo esta la forma de añadir o eliminar marcas, categorias o productos.
+
+Pasos:
+
+    Crear una cuenta de usuario normal: Primero, utiliza la interfaz de la aplicación para registrar un nuevo usuario a través del formulario "Crear cuenta".
+
+    Acceder a la Base de Datos.
+
+    Ubicar al Usuario:
+
+        Selecciona la base de datos look_4_beauty.
+
+        Abrir la tabla usuarios.
+
+        Buscar la fila correspondiente al usuario que se acaba de registrar. 
+
+    Modificar el Rol:
+
+        Hacer "Click" en editar.
+
+        Buscar la columna llamada rol.
+
+        Cambiar el valor de 'usuario' a 'admin'.
+
+        Guardar los cambios.
 
 Una vez completados estos pasos, la próxima vez que se inicie sesión con ese usuario, tendrá permisos de administrador.
 
