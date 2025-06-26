@@ -20,5 +20,9 @@
       getCategories(): Observable<Category[]> {
         return this.http.get<Category[]>(this.apiUrl);
       }
+
+      getById(id: number): Observable<Category> {
+        return this.http.get<Category>(`${this.apiUrl}/${id}`);
+      }
     }
     

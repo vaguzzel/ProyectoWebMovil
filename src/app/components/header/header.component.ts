@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service'; // Ruta relativa corregida basada en tu estructura de carpetas
 import { Subscription } from 'rxjs';
 import { Category, CategoryService } from 'src/app/services/category.service';
+import { PopoverController } from '@ionic/angular';
+import { CategoryMenuComponent } from '../category-menu/category-menu.component';
 
 @Component({
   selector: 'app-header',
@@ -21,7 +23,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   constructor(
     private router: Router,
     private authService: AuthService,
-    private categoryService: CategoryService // Inyectar el servicio de categorías
+    private categoryService: CategoryService, // Inyectar el servicio de categorías
+    private popoverCtrl: PopoverController
   ) { }
 
   ngOnInit() {
@@ -50,6 +53,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.authSubscription.unsubscribe();
   }
 
+  // Método para cargar las categorías desde el servicio
   loadCategories() {
     this.categoryService.getCategories().subscribe(
       (data) => {
@@ -91,14 +95,23 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   realizarBusqueda() {
     if (this.searchQuery && this.searchQuery.trim() !== '') {
-      // Navega a la Tab6Page (ruta '/busqueda') y pasa la palabra clave como parámetro de consulta 'q'
+      // Si la búsqueda no está vacía, redirige a la Tab6Page con el parámetro de consulta
       this.router.navigate(['/tabs/tab6'], { queryParams: { q: this.searchQuery.trim() } });
     } else {
-      // Opcional: Si el campo está vacío, puedes navegar a la página de búsqueda sin un query
-      // o mostrar una alerta. Por ahora, solo navegaremos sin queryParams.
+      // Si la búsqueda está vacía, redirige a la Tab6Page sin parámetros de consulta
       this.router.navigate(['/tabs/tab6']);
     }
-    // Opcional: Limpia el campo de búsqueda después de realizar la búsqueda
-    // this.searchQuery = '';
+  }
+
+  async presentCategoryPopover(ev: any) {
+    const popover = await this.popoverCtrl.create({
+      component: CategoryMenuComponent, // El componente que mostraremos
+      event: ev, // El evento de clic para que sepa dónde posicionarse
+      translucent: true,
+      componentProps: { // Le pasamos la lista de categorías al componente hijo
+        categories: this.categories 
+      }
+    });
+    return await popover.present();
   }
 }

@@ -78,7 +78,7 @@ export class Tab1Page implements OnInit, AfterViewInit {
         if (swiperEl && swiperEl.swiper) swiperEl.swiper.slideNext();
       });
     }
-    // ... (puedes añadir aquí la lógica para el slider de "Más Vendidos" si lo necesitas)
+    
   }
 
   // --- Funciones para cargar datos y manejar la lista de deseos ---
@@ -105,7 +105,7 @@ export class Tab1Page implements OnInit, AfterViewInit {
     });
   }
 
-  // ¡ESTA ES LA FUNCIÓN CLAVE QUE FALTABA!
+  
   toggleWishlist(product: any) {
     console.log('PASO 2: La página principal RECIBIÓ el clic para:', product.nombre); // <-- AÑADE ESTA LÍNEA
     if (!this.authService.isLoggedIn()) {
