@@ -11,7 +11,7 @@
             [image]="product.image_url"
             [brand]="product.marca_nombre"
             [title]="product.nombre"
-            [price]="9990" [isLiked]="product.isLiked"
+            [price]="product.precio_mas_bajo" [isLiked]="product.isLiked"
             [productId]="product.id_producto"
             (wishlistToggle)="toggleWishlist(product)">
           </app-product-card>
@@ -33,7 +33,7 @@
         <div class="category-text">
           <h3>Skincare</h3>
           <p>Todo lo que necesitas para tu rutina</p>
-          <ion-button class="category-button" fill="solid" shape="round">Revisa aquí</ion-button>
+          <ion-button class="category-button" fill="solid" shape="round" [routerLink]="['/products/category', 1]">Revisa aquí</ion-button>
         </div>
         <div class="category-image">
           <img src="/assets/images/placeholder-categoria-1.png" alt="Skincare">
@@ -43,7 +43,7 @@
         <div class="category-text">
           <h3>Labios</h3>
           <p>Encuentra tu tono ideal</p>
-          <ion-button class="category-button" fill="solid" shape="round">Revisa aquí</ion-button>
+          <ion-button class="category-button" fill="solid" shape="round" [routerLink]="['/products/category', 3]">Revisa aquí</ion-button>
         </div>
         <div class="category-image">
           <img src="/assets/images/placeholder-categoria-2.png" alt="Labios">
@@ -77,20 +77,20 @@
     <div class="mas-vendidos-slider-container slider-container">
 
       <swiper-container class="mas-vendidos-swiper" slides-per-view="auto" space-between="10">
-        <swiper-slide *ngFor="let product of products.slice(0, 4)"> <app-product-card
+        <swiper-slide *ngFor="let product of products.slice(0, 10)"> <app-product-card
             [image]="product.image_url"
             [brand]="product.marca_nombre"
             [title]="product.nombre"
-            [price]="9990" [isLiked]="product.isLiked"
+            [price]="product.precio_mas_bajo" [isLiked]="product.isLiked"
             [productId]="product.id_producto"
             (wishlistToggle)="toggleWishlist(product)">
           </app-product-card>
         </swiper-slide>
       </swiper-container>
-      <ion-button fill="clear" class="slider-nav prev-button mv-prev">
+      <ion-button fill="clear" class="slider-nav prev-button mas-vendidos-prev">
         <ion-icon slot="icon-only" name="chevron-back-outline"></ion-icon>
       </ion-button>
-      <ion-button fill="clear" class="slider-nav next-button mv-next">
+      <ion-button fill="clear" class="slider-nav next-button mas-vendidos-next">
         <ion-icon slot="icon-only" name="chevron-forward-outline"></ion-icon>
       </ion-button>
     </div>

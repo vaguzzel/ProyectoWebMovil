@@ -7,11 +7,19 @@ const WishlistModel = {
     db.query('INSERT INTO ListadeDeseo SET ?', data, callback);
   },
 
-  // Obtener todos los productos en la lista de deseos de un usuario específico
+  // Obtener todos los productos en la lista de deseos de un usuario específico con el precio más bajo
+  // Si no hay ofertas, se asigna un precio por defecto de 10990
   getByUser: (userId, callback) => {
-    // JOIN para obtener la información completa de los productos, no solo sus IDs
     const query = `
-      SELECT p.*, m.nombre as marca_nombre, c.nombre as categoria_nombre
+      SELECT 
+        p.*, 
+        m.nombre as marca_nombre, 
+        c.nombre as categoria_nombre,
+        -- Y aquí también añadimos la lógica de precios
+        COALESCE(
+          (SELECT MIN(ppt.precio) FROM PrecioProductoTienda ppt WHERE ppt.id_producto = p.id_producto),
+          10990
+        ) AS precio_mas_bajo
       FROM ListadeDeseo w
       JOIN Producto p ON w.id_producto = p.id_producto
       LEFT JOIN Marcas m ON p.marca_id = m.marca_id

@@ -47,10 +47,18 @@ const ProductModel = {
     });
   },
 
-  // Obtener todos los productos
+  // Obtener todos los productos con el producto asociado más bajo, si no, precio por defecto 10990
   getAll: (callback) => {
     const query = `
-      SELECT p.*, m.nombre AS marca_nombre, c.nombre AS categoria_nombre
+      SELECT 
+        p.*, 
+        m.nombre AS marca_nombre, 
+        c.nombre AS categoria_nombre,
+        -- Aquí está la magia:
+        COALESCE(
+          (SELECT MIN(ppt.precio) FROM PrecioProductoTienda ppt WHERE ppt.id_producto = p.id_producto),
+          10990 -- Precio por defecto si no hay ofertas
+        ) AS precio_mas_bajo
       FROM Producto p
       LEFT JOIN Marcas m ON p.marca_id = m.marca_id
       LEFT JOIN Categorias c ON p.categoria_id = c.id_categoria

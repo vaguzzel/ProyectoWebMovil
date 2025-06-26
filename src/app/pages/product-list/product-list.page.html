@@ -31,7 +31,7 @@
             [image]="product.image_url"
             [brand]="product.marca_nombre"
             [title]="product.nombre"
-            [price]="9990" 
+            [price]="product.precio_mas_bajo"
             [isLiked]="product.isLiked" [productId]="product.id_producto"
             (wishlistToggle)="toggleWishlist(product)">
           </app-product-card>

@@ -50,6 +50,7 @@ export class Tab1Page implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     setTimeout(() => {
       this.initializeSwiperNavigation();
+      this.initializeMasVendidosSwiper();
     }, 500);
   }
 
@@ -62,7 +63,7 @@ export class Tab1Page implements OnInit, AfterViewInit {
     }
   }
 
-  // --- Función para inicializar las flechas de los sliders ---
+  // --- Función para inicializar las flechas de los sliders de ofertas---
   initializeSwiperNavigation() {
     const ofertasPrev = document.querySelector('.ofertas-prev');
     const ofertasNext = document.querySelector('.ofertas-next');
@@ -79,6 +80,24 @@ export class Tab1Page implements OnInit, AfterViewInit {
       });
     }
     
+  }
+
+  // --- Función para inicializar el slider de "Más Vendidos" ---
+  initializeMasVendidosSwiper() {
+    const masVendidosPrev = document.querySelector('.mas-vendidos-prev');
+    const masVendidosNext = document.querySelector('.mas-vendidos-next');
+    if (masVendidosPrev) {
+      masVendidosPrev.addEventListener('click', () => {
+        const swiperEl = document.querySelector('.mas-vendidos-swiper') as SwiperContainer;
+        if (swiperEl && swiperEl.swiper) swiperEl.swiper.slidePrev();
+      });
+    }
+    if (masVendidosNext) {
+      masVendidosNext.addEventListener('click', () => {
+        const swiperEl = document.querySelector('.mas-vendidos-swiper') as SwiperContainer;
+        if (swiperEl && swiperEl.swiper) swiperEl.swiper.slideNext();
+      });
+    }
   }
 
   // --- Funciones para cargar datos y manejar la lista de deseos ---

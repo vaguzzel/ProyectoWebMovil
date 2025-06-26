@@ -49,9 +49,9 @@
                   [image]="item.image_url"
                   [brand]="item.marca_nombre"
                   [title]="item.nombre"
-                  [price]="item.precio"
+                  [price]="item.precio_mas_bajo"
                   [isLiked]="item.isLiked"
-                  (wishlistToggle)="toggleLike(item)">
+                  [productId]="item.id_producto" (wishlistToggle)="toggleLike(item)">
                 </app-product-card>
               </ion-col>
               <ion-col size="12" *ngIf="wishlistItems.length === 0">
